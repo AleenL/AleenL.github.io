@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="前端,requires," />
 
 
 
@@ -87,19 +87,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="为什么要使用require.js？在我最先接触前端的时候，我发现所有的JavaScript代码都会写在一个文件里面，文件包含了CSS代码，html代码，JavaSrcipt代码，只要加载一个文件即可，可是随着我学习的深入，发现代码越来越复杂，代码量也越来越多，一个文件已经无法满足了，所以代码被分成若干个文件进行加载，可这种方式有很多弊端。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/04/01/hello-world/index.html">
+<meta property="og:title" content="requiresjs初级接触(1)">
+<meta property="og:url" content="http://yoursite.com/2017/04/05/requiresjs初级接触/index.html">
 <meta property="og:site_name" content="李子豪的前端自习室">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2017-04-01T02:48:55.000Z">
+<meta property="og:description" content="为什么要使用require.js？在我最先接触前端的时候，我发现所有的JavaScript代码都会写在一个文件里面，文件包含了CSS代码，html代码，JavaSrcipt代码，只要加载一个文件即可，可是随着我学习的深入，发现代码越来越复杂，代码量也越来越多，一个文件已经无法满足了，所以代码被分成若干个文件进行加载，可这种方式有很多弊端。">
+<meta property="og:image" content="http://yoursite.com/img/input.png">
+<meta property="og:updated_time" content="2017-04-05T10:05:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="requiresjs初级接触(1)">
+<meta name="twitter:description" content="为什么要使用require.js？在我最先接触前端的时候，我发现所有的JavaScript代码都会写在一个文件里面，文件包含了CSS代码，html代码，JavaSrcipt代码，只要加载一个文件即可，可是随着我学习的深入，发现代码越来越复杂，代码量也越来越多，一个文件已经无法满足了，所以代码被分成若干个文件进行加载，可这种方式有很多弊端。">
+<meta name="twitter:image" content="http://yoursite.com/img/input.png">
 
 
 
@@ -127,13 +126,13 @@ Quick">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/01/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/05/requiresjs初级接触/"/>
 
 
 
 
 
-  <title> Hello World | 李子豪的前端自习室 </title>
+  <title> requiresjs初级接触(1) | 李子豪的前端自习室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +251,7 @@ Quick">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/01/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/05/requiresjs初级接触/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Allen Lee">
@@ -273,7 +272,7 @@ Quick">
             
             
               
-                Hello World
+                requiresjs初级接触(1)
               
             
           </h1>
@@ -288,8 +287,8 @@ Quick">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-01T10:48:55+08:00">
-                2017-04-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T16:48:55+08:00">
+                2017-04-05
               </time>
             
 
@@ -306,7 +305,7 @@ Quick">
 
           
           
-             <span id="/2017/04/01/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+             <span id="/2017/04/05/requiresjs初级接触/" class="leancloud_visitors" data-flag-title="requiresjs初级接触(1)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -335,16 +334,36 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+        <h3 id="为什么要使用require-js？"><a href="#为什么要使用require-js？" class="headerlink" title="为什么要使用require.js？"></a>为什么要使用require.js？</h3><p>在我最先接触前端的时候，我发现所有的JavaScript代码都会写在一个文件里面，文件包含了CSS代码，html代码，JavaSrcipt代码，只要加载一个文件即可，可是随着我学习的深入，发现代码越来越复杂，代码量也越来越多，一个文件已经无法满足了，所以代码被分成若干个文件进行加载，可这种方式有很多弊端。<br><a id="more"></a></p>
+<ol>
+<li>代码必须依次加载，顺序乱了就会报错</li>
+<li>多人协作下，代码中很多变量名会相同，导致代码运行出错</li>
+<li>加载的时候，文件过多网页就会失去响应，时间拉长<br>为了解决这样的问题，require.js应运而生，它解决了上述问题，实现了js的异步加载和管理模块之间的依赖性，方便了代码的编写和维护。</li>
+</ol>
+<h3 id="使用requrie-js的方法"><a href="#使用requrie-js的方法" class="headerlink" title="使用requrie.js的方法"></a>使用requrie.js的方法</h3><h4 id="进入官网，下载最新的requrie文件。"><a href="#进入官网，下载最新的requrie文件。" class="headerlink" title="进入官网，下载最新的requrie文件。"></a>进入官网，下载最新的requrie文件。</h4><p> 下载完成后，将文件放到你所需要编辑的网页文件夹下，<br> <img src="/img/input.png" alt="&#39;放置require.js文件&#39;"><br> 然后在html文档中插入script标签，</p>
+<p> <code>&lt;script src=&quot;js/require.js&quot; defer async=&quot;true&quot;&gt;&lt;/script&gt;</code></p>
+<p> 这样表明这个文件需要异步加载，避免了网页失去响应，同时你可以吧这个文件放到head里面去。</p>
+<h4 id="载我们自己的代码"><a href="#载我们自己的代码" class="headerlink" title="载我们自己的代码"></a>载我们自己的代码</h4><p> 成功加载require.js以后，下一步就要加载我们自己的代码了，一般我们需要加入一个入口模块，在代码界普遍使用main作为入口模块名，将这个入口文件同样放在js文档下，代码如下：</p>
+<p> <code>&lt;script src=&quot;js/require,js&quot; data-main=&quot;js/main&quot;&gt;&lt;/script&gt;</code></p>
+<h4 id="入口模块怎么写？"><a href="#入口模块怎么写？" class="headerlink" title="入口模块怎么写？"></a>入口模块怎么写？</h4><p> 入口模块依赖于其他模块，这个时候就要使用AMD规范定义的require()函数。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">require([&apos;module1&apos;,&apos;module2&apos;],function(module1,module2))&#123;</div><div class="line">  //to do something</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p> require()函数接受两个参数，第一个是一个数组，数组中包含所使用的模块名，第二个是一个回调函数，当前面制定的模块都加载成功后，他将会被调用。</p>
+<h4 id="模块的加载"><a href="#模块的加载" class="headerlink" title="模块的加载"></a>模块的加载</h4><p>  使用require.config()方法，我们可以对模块的加载进行自定义，require.config()就卸载住模块(main.js)的头部，参数就是一个对象，这个对象的paths属性制定各个模块的加载路径。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">require.config(&#123;</div><div class="line">	paths:&#123;</div><div class="line">		&quot;module1&quot;:&quot;module1.min&quot;,</div><div class="line">		&quot;module2&quot;:&quot;module2.min&quot;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> 上面的写法是旨在模块说在和main模块在同一个目录下，如果这些模块在其他的目录下，则有下面两种写法：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">require.config(&#123;</div><div class="line">paths:&#123;</div><div class="line"> &quot;module1&quot;: &quot;xx/module1.min&quot;,</div><div class="line"> &quot;module2&quot;: &quot;xx/module2.min&quot;</div><div class="line">&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> 第二种是直接改变基目录（baseURL）</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">require.config(&#123;</div><div class="line">	baseUrl:&quot;js/xx&quot;,</div><div class="line">	paths:&#123;</div><div class="line">		&quot;module1&quot;:&quot;module1.min&quot;,</div><div class="line">		&quot;module2&quot;:&quot;module2.min&quot;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="require使用实例。"><a href="#require使用实例。" class="headerlink" title="require使用实例。"></a>require使用实例。</h3><p> require.js加载的模块，采用的是AMD规范，模块的写法要使用AMD所归定的写法，模块使用define()函数来定义，如果一个模块不依赖其他模块，那么可以直接定义在define()函数之中。</p>
+<p> 假定一个math.js文件，定义了一个math模块，那么根据AMD的规定。模块就要这样写：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//math.js</div><div class="line"></div><div class="line">define(function()&#123;</div><div class="line">	var mult = fuction(x,y)&#123;</div><div class="line">	 return x*y</div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	return &#123;</div><div class="line">	 mult: mult</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> 那么在main.js模块就要使用如下代码进行加载：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//main.js</div><div class="line"></div><div class="line">require([&apos;math&apos;],function(math)&#123;</div><div class="line"> console.log(math.mult(2,3));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> 如果math模块还要依赖其他模块的话，那么define（）函数的第一个参数，就必须是一个数组，知名该模块的依赖性。举个例子,比如math模块必须依赖”Num”模块下的mult函数：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//main.js</div><div class="line">require([&apos;math&apos;],function(math)&#123;</div><div class="line"> console.log(2.3)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> math 模块：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> //math.js</div><div class="line"></div><div class="line"> define([&quot;Num&quot;],function(myLib)&#123;</div><div class="line">	var foo = function(x,y)&#123;</div><div class="line">		return Num.mult(x,y)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	return &#123;</div><div class="line">		foo:foo</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> Num模块：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> //Num.js</div><div class="line"></div><div class="line"> define(function()&#123;</div><div class="line">	var Mult = function(x,y)&#123;</div><div class="line">		return x+y</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	return &#123;</div><div class="line">		Mult: Mult</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -371,6 +390,14 @@ Quick">
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/requires/" rel="tag"># requires</a>
+          
+        </div>
+      
 
       
         
@@ -380,15 +407,15 @@ Quick">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/04/01/hello/" rel="next" title="我困在了眼前的苟且">
+                <i class="fa fa-chevron-left"></i> 我困在了眼前的苟且
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/01/初来乍到，请多包涵/" rel="prev" title="初来乍到，请多包涵">
-                初来乍到，请多包涵 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,7 +535,7 @@ Quick">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要使用require-js？"><span class="nav-number">1.</span> <span class="nav-text">为什么要使用require.js？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用requrie-js的方法"><span class="nav-number">2.</span> <span class="nav-text">使用requrie.js的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进入官网，下载最新的requrie文件。"><span class="nav-number">2.1.</span> <span class="nav-text">进入官网，下载最新的requrie文件。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#载我们自己的代码"><span class="nav-number">2.2.</span> <span class="nav-text">载我们自己的代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#入口模块怎么写？"><span class="nav-number">2.3.</span> <span class="nav-text">入口模块怎么写？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模块的加载"><span class="nav-number">2.4.</span> <span class="nav-text">模块的加载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#require使用实例。"><span class="nav-number">3.</span> <span class="nav-text">require使用实例。</span></a></li></ol></div>
             
 
           </div>
