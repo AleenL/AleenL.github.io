@@ -87,23 +87,20 @@
 
 
 
-<meta name="description" content="####快速启动一个React页面!
-macOS 或者 Linux 当中用create-react-app可以快速启动一个React页面：
+<meta name="description" content="快速启动一个React页面!macOS 或者 Linux 当中用create-react-app可以快速启动一个React页面：
 12345npm install -g create-react-appcreate-react-app my-appcd my-app/npm start
 然后打开src/App.js编辑页面内容即可，页面服务在 http://localhost:3000/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React入门指南2">
 <meta property="og:url" content="http://yoursite.com/2017/04/20/React入门指南2/index.html">
 <meta property="og:site_name" content="李子豪的前端自习室">
-<meta property="og:description" content="####快速启动一个React页面!
-macOS 或者 Linux 当中用create-react-app可以快速启动一个React页面：
+<meta property="og:description" content="快速启动一个React页面!macOS 或者 Linux 当中用create-react-app可以快速启动一个React页面：
 12345npm install -g create-react-appcreate-react-app my-appcd my-app/npm start
 然后打开src/App.js编辑页面内容即可，页面服务在 http://localhost:3000/">
-<meta property="og:updated_time" content="2017-04-20T05:03:00.000Z">
+<meta property="og:updated_time" content="2017-04-20T05:04:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React入门指南2">
-<meta name="twitter:description" content="####快速启动一个React页面!
-macOS 或者 Linux 当中用create-react-app可以快速启动一个React页面：
+<meta name="twitter:description" content="快速启动一个React页面!macOS 或者 Linux 当中用create-react-app可以快速启动一个React页面：
 12345npm install -g create-react-appcreate-react-app my-appcd my-app/npm start
 然后打开src/App.js编辑页面内容即可，页面服务在 http://localhost:3000/">
 
@@ -341,8 +338,7 @@ macOS 或者 Linux 当中用create-react-app可以快速启动一个React页面�
       
 
       
-        <p>####快速启动一个React页面!</p>
-<p>macOS 或者 Linux 当中用<a href="https://github.com/facebookincubator/create-react-app#quick-overview" target="_blank" rel="external">create-react-app</a>可以快速启动一个React页面：</p>
+        <h4 id="快速启动一个React页面"><a href="#快速启动一个React页面" class="headerlink" title="快速启动一个React页面!"></a>快速启动一个React页面!</h4><p>macOS 或者 Linux 当中用<a href="https://github.com/facebookincubator/create-react-app#quick-overview" target="_blank" rel="external">create-react-app</a>可以快速启动一个React页面：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -g create-react-app</div><div class="line"></div><div class="line">create-react-app my-app</div><div class="line">cd my-app/</div><div class="line">npm start</div></pre></td></tr></table></figure>
 <p>然后打开src/App.js编辑页面内容即可，页面服务在 <a href="http://localhost:3000/" target="_blank" rel="external">http://localhost:3000/</a><br><a id="more"></a></p>
 <h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><p>React支持的的JSX语法能够让HTML的语言直接卸载啊JavaScript语言之中，不需要加任何引号，它允许HTMl和JavaScript混写。</p>
@@ -350,8 +346,7 @@ macOS 或者 Linux 当中用create-react-app可以快速启动一个React页面�
 <p>上述的代码体现了JSX的基本规则，就是遇到HTML标签就用HTML的会泽解析；遇到JavaScript，就用JavaScript规则解析。</p>
 <p>JSX允许直接在模版内插入JavaScript的变量，如果这个变量时一个数组就会遍历这个数组。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var arr = [</div><div class="line">   &lt;li&gt;this is one&lt;/li&gt;,</div><div class="line">   &lt;li&gt;this is two&lt;/li&gt;,</div><div class="line">   &lt;li&gt;this is three&lt;/li&gt;,</div><div class="line">   ];</div><div class="line">   ReactDOM.render(</div><div class="line">       &lt;ul&gt;&#123;arr&#125;&lt;/ul&gt;,</div><div class="line">       document.getElementById(&apos;index&apos;)</div><div class="line">   );</div></pre></td></tr></table></figure>
-<p>####模块化</p>
-<p>React 允许将代码封装成组件，然后像插入HTML的标签一样，在网页中插入这个组件。使用React.createrClass方法进行生成组件。<br>JSX中使用’{}’符号来定义变量。</p>
+<h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><p>React 允许将代码封装成组件，然后像插入HTML的标签一样，在网页中插入这个组件。使用React.createrClass方法进行生成组件。<br>JSX中使用’{}’符号来定义变量。</p>
 <p>我们可以使用ES6类来定义组件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class HelloMessage extends React.Component &#123;</div><div class="line">	render() &#123;</div><div class="line">		return &lt;h1&gt;Hello,&#123;this.props.name&#125;&lt;/h1&gt;</div><div class="line">	&#125;</div><div class="line">	ReactDOM.render(</div><div class="line">        &lt;HelloMessage name = &quot;World&quot; /&gt;,</div><div class="line">        document.getElementById(&apos;index&apos;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>我们也可以正常的使用JSX进行定义组件，两个效果时相同的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var HelloMessage = React.createClass(&#123;</div><div class="line">        render :function()&#123;</div><div class="line">            return &lt;h1&gt;Hello &#123;this.props.name&#125;&lt;/h1&gt;;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    ReactDOM.render(</div><div class="line">        &lt;HelloMessage name = &quot;World&quot; /&gt;,</div><div class="line">        document.getElementById(&apos;index&apos;)</div><div class="line">    )</div></pre></td></tr></table></figure></p>
 <p>上述代码中，<code>HelloMessage</code> 就是一个组件类。模版插入<code>&lt;HelloMessage  /&gt;</code>时会自动生成一个HelloMessage的实例，所有的组件类都有自己的render用于输出组件。</p>
@@ -537,7 +532,7 @@ macOS 或者 Linux 当中用create-react-app可以快速启动一个React页面�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX"><span class="nav-number">1.</span> <span class="nav-text">JSX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PropTypes"><span class="nav-number">1.1.</span> <span class="nav-text">PropTypes</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#快速启动一个React页面"><span class="nav-number">1.</span> <span class="nav-text">快速启动一个React页面!</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX"><span class="nav-number"></span> <span class="nav-text">JSX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模块化"><span class="nav-number">1.</span> <span class="nav-text">模块化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PropTypes"><span class="nav-number">2.</span> <span class="nav-text">PropTypes</span></a></li></ol></div>
             
 
           </div>
