@@ -1,0 +1,874 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,CSS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言转眼都2016年已经过了三个多月，我始终在前端学习的路上无法努力前行，也许是因为自知前路坎坷，望而却步，少了最初接触前端时候的热情，也许真的是性格使然，两天打鱼三天晒网，使我落后于他人却不自知，可能现在的我正在一条艰难的路上行走，这是每个人必经的道路，身后的路途我也披荆斩棘一路走来，我身边多有半途而废回头的人，可是我心有不甘，也许再付出一些，再努力一些，就能冲破桎梏，也许走过这个最艰难的时光，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入浅出CSS动画">
+<meta property="og:url" content="http://yoursite.com/2017/04/24/深入浅出CSS动画/index.html">
+<meta property="og:site_name" content="李子豪的前端自习室">
+<meta property="og:description" content="前言转眼都2016年已经过了三个多月，我始终在前端学习的路上无法努力前行，也许是因为自知前路坎坷，望而却步，少了最初接触前端时候的热情，也许真的是性格使然，两天打鱼三天晒网，使我落后于他人却不自知，可能现在的我正在一条艰难的路上行走，这是每个人必经的道路，身后的路途我也披荆斩棘一路走来，我身边多有半途而废回头的人，可是我心有不甘，也许再付出一些，再努力一些，就能冲破桎梏，也许走过这个最艰难的时光，">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3257837-e295f136d4855abe.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3257837-e40a2c0d9c65dbc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-04-24T13:45:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入浅出CSS动画">
+<meta name="twitter:description" content="前言转眼都2016年已经过了三个多月，我始终在前端学习的路上无法努力前行，也许是因为自知前路坎坷，望而却步，少了最初接触前端时候的热情，也许真的是性格使然，两天打鱼三天晒网，使我落后于他人却不自知，可能现在的我正在一条艰难的路上行走，这是每个人必经的道路，身后的路途我也披荆斩棘一路走来，我身边多有半途而废回头的人，可是我心有不甘，也许再付出一些，再努力一些，就能冲破桎梏，也许走过这个最艰难的时光，">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3257837-e295f136d4855abe.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/24/深入浅出CSS动画/"/>
+
+
+
+
+
+  <title> 深入浅出CSS动画 | 李子豪的前端自习室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李子豪的前端自习室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">努力成为前端小牛</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/24/深入浅出CSS动画/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                深入浅出CSS动画
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-24T21:44:24+08:00">
+                2017-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/24/深入浅出CSS动画/" class="leancloud_visitors" data-flag-title="深入浅出CSS动画">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>转眼都2016年已经过了三个多月，我始终在前端学习的路上无法努力前行，也许是因为自知前路坎坷，望而却步，少了最初接触前端时候的热情，也许真的是性格使然，两天打鱼三天晒网，使我落后于他人却不自知，可能现在的我正在一条艰难的路上行走，这是每个人必经的道路，身后的路途我也披荆斩棘一路走来，我身边多有半途而废回头的人，可是我心有不甘，也许再付出一些，再努力一些，就能冲破桎梏，也许走过这个最艰难的时光，就能顺利踏入真正的热土，即使一无所获，我也不能在这里放弃。<br>我今后的每一步，都要脚踏实地。</p>
+<h5 id="什么是帧动画"><a href="#什么是帧动画" class="headerlink" title="什么是帧动画"></a>什么是帧动画</h5><p>我们知道所有的动画都是用单个的画面组合而成，当我们将每一页的画面连贯起来，就会变成一段小小的动画，小的时候我们在课本上画上一页一页的小人，然后将他快速的翻动就能看见一个动着的小人，每一页就表示一帧，现代电影一般是每秒24帧，这就代表一秒的动画，需要24张照片，动画相对较少，每秒大概在12-16帧左右。<br>而相对于网页上的动画，只要满足浏览者感觉这个画面在动即可，一方面节省编程的繁琐，另一方面优化浏览器的性能，通常一秒钟的动画使用8个画面即可。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3257837-e295f136d4855abe.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="u=3281790429,1922634607&amp;fm=23&amp;gp=0.jpg"></p>
+<h5 id="如何使用帧动画"><a href="#如何使用帧动画" class="headerlink" title="如何使用帧动画"></a>如何使用帧动画</h5><p>如果我们要使用帧动画的话，就要学习CSS中的<code>animation</code>属性</p>
+<p>其实<code>animation</code>是一个简写值，它包括了animation的八个子属性值</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>作用</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>animation-name</td>
+<td>动画名称</td>
+<td>规定绑定keyframes的名称</td>
+</tr>
+<tr>
+<td>time</td>
+<td>时间</td>
+<td>数值ms(毫秒数)、s(秒数)</td>
+</tr>
+<tr>
+<td>animation-timing-function</td>
+<td>规定运动曲线</td>
+<td>ease、linear、ease-in、ease-out、step-start、step-end、step([,[start  end]?)、cubic-bezier(x1,y1,x2,y2)</td>
+</tr>
+<tr>
+<td>animation-iteration-count</td>
+<td>动画播放次数</td>
+<td>默认为1、infinite为无限制</td>
+</tr>
+<tr>
+<td>animation-direction</td>
+<td>规定动画是否反方向运动</td>
+<td>normal、reverse、alternate、alternate-reverse)</td>
+</tr>
+<tr>
+<td>animation-play-state</td>
+<td>定义动画是否运行或暂停</td>
+<td>running、paused、normal</td>
+</tr>
+<tr>
+<td>animation-fill-mode</td>
+<td>定义动画播放时间外的状态</td>
+<td>none、forwards、backwards、both</td>
+</tr>
+</tbody>
+</table>
+<p>我们现在将每一个属性拆开了，揉碎了，仔细的进行解释。</p>
+<h5 id="属性值的作用"><a href="#属性值的作用" class="headerlink" title="属性值的作用"></a>属性值的作用</h5><p><code>animation-name</code>：动画名称，它规定了这个动画的名称，这个名称需要绑定在keyframes上面，keyframes是什么意思呢，他其实就像我们翻动画书的那只手，他确定我们在那张图片上进行操作。<br>一般的css语法就是，当确定animation-name后，绑定在keyframes上面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">animation-name:man-run;</div><div class="line">@keyframes man-run&#123;...&#125;//例子而已</div></pre></td></tr></table></figure></p>
+<p><code>time</code>:time确定两个时间，前面一个是规定完成这个动画所需要的时间，全称叫animation-duration，第二个叫动画延迟开始播放的时间，全称叫animation-delay<br><code>animation-timeing-function</code>:规定动画的运动曲线，分别有9个值</p>
+<ul>
+<li>ease：动画缓慢开始，接着加速，最后减慢，默认值</li>
+<li>linear：动画从头到尾的速度是相同的；</li>
+<li>ease-in:以低速开始；</li>
+<li>ease-out：以低速结束；</li>
+<li>ease-in-out：动画以低速开始和结束</li>
+</ul>
+<p>然后比较复杂的是steps(n,[start | end ]?)，这个属于阶梯函数，这个函数可以把动画平均划分为基本相等的，这个n是个自然整数，意思是将一个动画平均分成n等分，知道平均的走完这个动画，这样跟linear区分开，因为linear是吧动画作为一个整体，中间没有断点，而steps是把动画分段平均执行。</p>
+<ul>
+<li><p>step-start：等同于steps(1,start)，动画分成一步，动画执行时为开始左侧端点的部分为开始。</p>
+</li>
+<li><p>step-end：等同于steps(1,end)，动画分成一步，动画执行时以结尾端点为开始，默认值为end。</p>
+</li>
+</ul>
+<p><code>animation-iteration-count</code>:动画播放次数，默认为1，infinite为无限制播放，如果设定无限制播放，那么动画就会永远播放下去。</p>
+<p><code>animation-direction</code>，规定动画是否反方向运动。normal表示正常转动播放，为默认值，reverse表示反向转动，alternate一开始正常转动，播放完一次后在反向转动，加入设置animation-iteration-count为1的话，则该值无效，alternate-reverse表示一开始为反向转动，播放一次之后按照回归正常转动，交替转动，设置count为1，该值无效。</p>
+<p><code>animation-play-state</code>：定义动画是否运行或者暂停，这是后来新增的属性，有两个属性值，running和paused。默认为normal，动画正常播放。加入为paused，那么动画暂停。加入一个动画一开始为运动，那么设置paused则会暂停动画，如果动画暂停，使用running则会运行动画。</p>
+<p><code>animation-fill-mode</code>:定义动画播放时间外的状态，就是在动画播放后的状态；none表示不改变默认的行为，forwards则是停在动画最后的那个画面，backwards则是回调到动画最开始出现的画面，both则应用为动画结束或开始的状态。</p>
+<p>下面是我做的一个小的demo，运用到的是这个图片</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3257837-e40a2c0d9c65dbc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bear-25676f9.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.bear&#123;</div><div class="line">		width:6.25em;</div><div class="line">		height:3.125em;</div><div class="line">		left:-5%;</div><div class="line">        bottom:20px;</div><div class="line">		position: absolute;</div><div class="line">		margin-left: -3.125em;</div><div class="line">		z-index: 999;</div><div class="line">		background: url(小熊.png) 0 0 no-repeat;</div><div class="line">		background-size: 50em 100%;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>先设定好图片，样式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.bear.running&#123;</div><div class="line">animation:bear-run 0.8s steps(1) 0s infinite normal none;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再设定好动画</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">@keyframes bear-run&#123;</div><div class="line">             0%&#123;</div><div class="line">                 background-position: 0 0;</div><div class="line">            &#125;</div><div class="line">           12.5%&#123;</div><div class="line">                 background-position: -100px 0;</div><div class="line">             &#125;</div><div class="line">             25%&#123;</div><div class="line">                background-position: -200px 0 ;</div><div class="line">           &#125;</div><div class="line">           37.5%&#123;</div><div class="line">               background-position: -300px 0 ;</div><div class="line">            &#125;</div><div class="line">             50%&#123;</div><div class="line">                 background-position: -400px 0 ;</div><div class="line">            &#125;</div><div class="line">            62.5%&#123;</div><div class="line">                background-position: -500px 0 ;</div><div class="line">             &#125;</div><div class="line">            75%&#123;</div><div class="line">                 background-position: -600px 0 ;</div><div class="line">             &#125;</div><div class="line">            87.5%&#123;</div><div class="line">                 background-position: -700px 0 ;</div><div class="line">             &#125;</div><div class="line">            100%&#123;</div><div class="line">                 background-position: 0 0;</div><div class="line">             &#125;</div><div class="line">  	&#125;</div></pre></td></tr></table></figure>
+<p>最后就是帧数的操作了</p>
+<p>怎么样，你学会了css中动画的使用了吗？？？</p>
+<p><a href="http://js.jirengu.com/wohi" target="_blank" rel="external">奔跑的小熊</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/24/Jquery懒加载/" rel="next" title="Jquery懒加载">
+                <i class="fa fa-chevron-left"></i> Jquery懒加载
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Allen Lee" />
+          <p class="site-author-name" itemprop="name">Allen Lee</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是帧动画"><span class="nav-number">2.</span> <span class="nav-text">什么是帧动画</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如何使用帧动画"><span class="nav-number">3.</span> <span class="nav-text">如何使用帧动画</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#属性值的作用"><span class="nav-number">4.</span> <span class="nav-text">属性值的作用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Lee</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("MKH1pt3rgxayaweqaHwKWsH9-gzGzoHsz", "TO3q6lJDKE8bWDuT1cQzbfz4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
