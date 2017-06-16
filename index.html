@@ -247,6 +247,165 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/what is REST API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/15/what is REST API/" itemprop="url">
+                  What is a REST API
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T20:49:29+08:00">
+                2017-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/06/15/what is REST API/" class="leancloud_visitors" data-flag-title="What is a REST API">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>文章来源自：www.quora.com</p>
+<h3 id="What-is-a-REST-API"><a href="#What-is-a-REST-API" class="headerlink" title="What is a REST API ?"></a>What is a REST API ?</h3><p>REST 是一种描述网页结构与其他系统架构有何不同的方式。</p>
+<p>网页是一种信息网络存在于网络之上，通过浏览器很容易访问。在许多方面都有别于电脑上其他系统结构。</p>
+<p>REST是一种架构风格去设计类似网络这样的系统。统一接口的四个规则定义了REST最主要的框架结构。根据定义，REST的API遵循着这四个接口的规则。</p>
+<h4 id="规则1：通过资源提供入口"><a href="#规则1：通过资源提供入口" class="headerlink" title="规则1：通过资源提供入口"></a>规则1：通过资源提供入口</h4><p>在典型的电脑系统上，客户端与服务器交换指令来操作系统的行为。假设在没有RSET方法中我们想创建一个待办事项的模型，使用技术代码就会变成如下所示：<br>NOT REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/changeToDoList.php?item=<span class="number">35</span>&amp;action=changeTitle&amp;title=new_title</div></pre></td></tr></table></figure></p>
+<p>注意这确实是一个指令：改变一些事情<br>但是“changeTODOList”并不是一件事,也不是资源</p>
+<p>在REST结构风格中，服务端只提供资源。资源是一种客户端与服务端交流而产生的概念性的事物。</p>
+<p>REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/todolists/<span class="number">7</span>/items/<span class="number">35</span>/</div></pre></td></tr></table></figure></p>
+<p>上面提到的不是一个指令，而是一个资源的地址，一个东西。<br>你可以通过这个地址去使用标准运作去操作todo list，从而替代专业接口的指令。</p>
+<h4 id="规则2：资源代理"><a href="#规则2：资源代理" class="headerlink" title="规则2：资源代理"></a>规则2：资源代理</h4><p>一种资源是一个我们可以使用不同的格式去描述的事物。例如，人们想去看一个HTML版本，你的浏览器就会转变成一种可读性的排版。但是有些时候，网络上的接口也会通过机器来使用。他们需要一个不同的格式，比如JSON。</p>
+<p>在非REST方法中：不同的格式有着不同的地址</p>
+<p>NOT REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">browser:/showTodoList.php?format=html</div><div class="line">applicarion:/showTodoList.php?format=json</div></pre></td></tr></table></figure></p>
+<p>实现这种功能的方式我们称之为：<a href="https://en.wikipedia.org/wiki/Content_negotiation" target="_blank" rel="external">内容协商</a></p>
+<h4 id="规则3：交换自描述信息"><a href="#规则3：交换自描述信息" class="headerlink" title="规则3：交换自描述信息"></a>规则3：交换自描述信息</h4><p>在REST中，我们可以解读任何信息而不会看到上一个信息。</p>
+<p>想象一下下面的语句：</p>
+<p>NOT REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span>/search-results?q=todo</div><div class="line"><span class="number">2.</span>/search-results?page=<span class="number">2</span></div><div class="line"><span class="number">3.</span>/search-results?page=<span class="number">3</span></div></pre></td></tr></table></figure></p>
+<p>第一个请求会寻找到‘todo’的结果，第二个请求会找到第二个页面，现在我们只看第二个请求，你知道作为服务器是要干嘛吗？</p>
+<p>REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span>/search-results?q=to-<span class="keyword">do</span></div><div class="line"><span class="number">2.</span>/search-results?q=to-<span class="keyword">do</span>&amp;page=<span class="number">2</span></div><div class="line"><span class="number">3.</span>/search-results?q=to-<span class="keyword">do</span>&amp;page=<span class="number">3</span></div></pre></td></tr></table></figure></p>
+<p>注意每一个请求都可以被自身所解读。<br>其他方面，REST中客户端和服务端只能使用被定义的一个协议来进行标准运作。在WEB中我们称之为HTTP协议。</p>
+<h4 id="规则4：通过链接获取资源内容"><a href="#规则4：通过链接获取资源内容" class="headerlink" title="规则4：通过链接获取资源内容"></a>规则4：通过链接获取资源内容</h4><p>你怎样才能浏览一个你从见过的网站？使用链接！<br>你在使用浏览器访问一个新的页面时不必每次都要手动的去填写这个页面的地址。</p>
+<p>在机器接口中事实并非如此，加入一个应用需要请求你的todo List，他也许会是以下的表现方式：</p>
+<p>NOT REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  /todolist/<span class="number">7</span>/</div><div class="line">&#123;</div><div class="line"><span class="string">"name"</span>: <span class="string">"My to-dos"</span>,</div><div class="line"><span class="string">"items"</span>: [<span class="number">35</span>, <span class="number">36</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在你能获取到‘items’中list的内容吗？<br>好问题！我们必须去阅读其中的文档。<br>在REST中，所有的资源内容都可以通过超链接获取。</p>
+<p>REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/todolist/<span class="number">7</span>/</div><div class="line">&#123;</div><div class="line"><span class="string">"name"</span>: <span class="string">"My to-dos"</span>,</div><div class="line"><span class="string">"item"</span>: [<span class="string">"/todolists/7/items/35/"</span>, <span class="string">"/todolist/7/items/36/"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在你不必阅读手册来了解你是如何获取到list中items的内容了。你只要遵循这个链接就可以。</p>
+<p>APIs遵循的就是REST的APIs。<br>在你的接口中只要遵循这4个规则，你就拥有了一个REST的API。<br>不幸的是，很多以“REST”为标签的接口实际上是其他的东西（HTTP接口），因为他们并没有遵循这四个规则。规则2和规则4经常会被违反，但好的一方面是规则1不常常会被违反。对于这些开发者而言，REST最简单的意思是，我们没有做有关于XML相关的事情。</p>
+<p>参考第四条规则后，我们就能明白为什么遵循了这四个规则的REST接口会被经常被称之为“超媒体APIs”的原因了。</p>
+<p>翻译的水平实在是烂，希望能肤浅的理解到REST接口的定义。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/12/使用canvas和JS画出一个钟表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1479,142 +1638,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/24/深入浅出CSS动画/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Allen Lee">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李子豪的前端自习室">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/24/深入浅出CSS动画/" itemprop="url">
-                  深入浅出CSS动画
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-24T21:44:24+08:00">
-                2017-04-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/04/24/深入浅出CSS动画/" class="leancloud_visitors" data-flag-title="深入浅出CSS动画">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>转眼都2016年已经过了三个多月，我始终在前端学习的路上无法努力前行，也许是因为自知前路坎坷，望而却步，少了最初接触前端时候的热情，也许真的是性格使然，两天打鱼三天晒网，使我落后于他人却不自知，可能现在的我正在一条艰难的路上行走，这是每个人必经的道路，身后的路途我也披荆斩棘一路走来，我身边多有半途而废回头的人，可是我心有不甘，也许再付出一些，再努力一些，就能冲破桎梏，也许走过这个最艰难的时光，就能顺利踏入真正的热土，即使一无所获，我也不能在这里放弃。<br>我今后的每一步，都要脚踏实地。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/24/深入浅出CSS动画/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1664,7 +1687,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
