@@ -1,0 +1,1014 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,技术,翻译," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本篇文章选自作者angus-c的博客，博客地址
+
+JavaScript中的真或假就算你不是一个JS新手，也会被下面的语句感到迷惑吧：1234if([0])&amp;#123;	console.log([0] == true); //false	console.log(!![0]); //true&amp;#125;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="判断大揭秘">
+<meta property="og:url" content="http://yoursite.com/2017/06/17/判断大揭秘/index.html">
+<meta property="og:site_name" content="李子豪的前端自习室">
+<meta property="og:description" content="本篇文章选自作者angus-c的博客，博客地址
+
+JavaScript中的真或假就算你不是一个JS新手，也会被下面的语句感到迷惑吧：1234if([0])&amp;#123;	console.log([0] == true); //false	console.log(!![0]); //true&amp;#125;">
+<meta property="og:updated_time" content="2017-06-17T06:58:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="判断大揭秘">
+<meta name="twitter:description" content="本篇文章选自作者angus-c的博客，博客地址
+
+JavaScript中的真或假就算你不是一个JS新手，也会被下面的语句感到迷惑吧：1234if([0])&amp;#123;	console.log([0] == true); //false	console.log(!![0]); //true&amp;#125;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/17/判断大揭秘/"/>
+
+
+
+
+
+  <title> 判断大揭秘 | 李子豪的前端自习室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李子豪的前端自习室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">努力成为前端小牛</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/判断大揭秘/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                判断大揭秘
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-17T09:56:41+08:00">
+                2017-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/06/17/判断大揭秘/" class="leancloud_visitors" data-flag-title="判断大揭秘">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本篇文章选自作者angus-c的博客，<a href="https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/" target="_blank" rel="external">博客地址</a></p>
+<hr>
+<h3 id="JavaScript中的真或假"><a href="#JavaScript中的真或假" class="headerlink" title="JavaScript中的真或假"></a>JavaScript中的真或假</h3><p>就算你不是一个JS新手，也会被下面的语句感到迷惑吧：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>([<span class="number">0</span>])&#123;</div><div class="line">	<span class="built_in">console</span>.log([<span class="number">0</span>] == <span class="literal">true</span>); <span class="comment">//false</span></div><div class="line">	<span class="built_in">console</span>.log(!![<span class="number">0</span>]); <span class="comment">//true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>又或者像这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="string">"potota"</span>)&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"potato"</span> == <span class="literal">false</span>); <span class="comment">//false</span></div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"potato"</span> == <span class="literal">true</span>); <span class="comment">//false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>好消息是所有的浏览器有一个统一的标准。一些作者将会告诉你如何使用代码去解决这个让人害怕的矛盾。我希望你要相信这个矛盾会让你在学习中更上一个台阶（或者彻底的理解它），你要做的是尝试理解而不是逃避。</p>
+<p>x是’true’吗？x和y相等吗？有关于是否为真，是否相等的问题是JS三个主要领域中的核心问题。条件的声明和操作（比如if语句，三元判断法，与或非等等），等式的操作（==），和严格等式的操作（===）。让我们看看这些都会发生些那些有趣的事情呢？</p>
+<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><p>在JS中，所有的条件声明和操作都遵循着相同的强制规范，我们使用<code>if</code>声明举一个例子：<br>当我们声明了一个<code>if</code>表达式的时候，他会将返回的结果强制的变为布尔值。这是使用了一种抽象的<code>ToBoolean</code>模块，一个在ES5中所定义的一种算法</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">返回结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Undefined</td>
+<td style="text-align:left">false</td>
+</tr>
+<tr>
+<td style="text-align:left">Null</td>
+<td style="text-align:left">false</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">结果等同于你输入的值</td>
+</tr>
+<tr>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">+0，-0，和NaN的结果为false，其他数字为true</td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:left">如果字符串为空(长度为0)返回的结果为false，其他情况为true</td>
+</tr>
+<tr>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">true</td>
+</tr>
+</tbody>
+</table>
+<p>JS有一些经典的真值和假值:<br>真值(<code>true</code>,<code>&#39;potato&#39;</code>,<code>36</code>,<code>[1,2,3]</code>,<code>{a:16}</code>),假值(<code>false</code>,<code>0</code>,<code>&#39; &#39;</code>,<code>null</code>,<code>undefined</code>)</p>
+<p>现在我们就可以弄清关于开场时我们举得几个例子，<code>if([0])</code>能够运行的原因是：一个数组就是一个对象，所有的对象返回的结果都为<code>true</code>。为什么会这样呢？就是因为<code>if</code>表达式将<code>[0]</code>解析成为一个对象，所以结果就成为了<code>true</code>，这样就会运行<code>if</code>表达式后面的代码。</p>
+<p>这里有一些小例子，有些结果或许会出乎你的意料，但是他们始终坚持上述规定的简单规则：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> trutheyTester = <span class="function"><span class="keyword">function</span>(<span class="params">expr</span>) </span>&#123;</div><div class="line"> <span class="keyword">return</span> expr ? <span class="string">"truthey"</span> : <span class="string">"falsey"</span>; </div><div class="line">&#125;</div><div class="line"> </div><div class="line">trutheyTester(&#123;&#125;); <span class="comment">//truthey (对象永远输出true)</span></div><div class="line"> </div><div class="line">trutheyTester(<span class="literal">false</span>); <span class="comment">//falsey</span></div><div class="line">trutheyTester(<span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>)); <span class="comment">//truthey (一个对象!)</span></div><div class="line"> </div><div class="line">trutheyTester(<span class="string">""</span>); <span class="comment">//falsey</span></div><div class="line">trutheyTester(<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">""</span>)); <span class="comment">//truthey (一个对象!)</span></div><div class="line"> </div><div class="line">trutheyTester(<span class="literal">NaN</span>); <span class="comment">//falsey</span></div><div class="line">trutheyTester(<span class="keyword">new</span> <span class="built_in">Number</span>(<span class="literal">NaN</span>)); <span class="comment">//truthey (一个对象!)</span></div></pre></td></tr></table></figure></p>
+<h3 id="等式算法（-）"><a href="#等式算法（-）" class="headerlink" title="等式算法（==）"></a>等式算法（==）</h3><p><code>==</code>的判断并不会那么严格，两个不同类型的值也有可能相等。在进行两个不同类型的值进行判断相等运作时，这种算法会将<code>==</code>式的一边或两边暴力的转化为单一的数据类型（通常是数字）。毫无疑问，最后一个众所众知的JS权威专家建议尽量避免使用==运算符。</p>
+<p>这种回避策略使我不安的一点是因为你没有完全的明白这个语言的全部的时候，你是无法掌握这个语言的，而且一味的回避和害怕是知识的敌人。除此以外，当<code>==</code>运算符出现并且你无奈的想要理解它的时候，假装==运算符不存在也不会让你摆脱这种疑惑，因为这种暴力算法存在于JS的每一个角落。他存在于条件表达式中(向我们刚刚看到的那种)，在数组的索引中，存在于越来越多的地方。所以使用安全模式这种强制性的要求很有必要，这会让你的更加简洁，优雅并且具有可读性。</p>
+<p>无论如何，无奈的怒吼一下之后，我们还是要了解一下在EMEC的定义中<code>==</code>是怎么工作的。这并不是那么的恐怖。只要记住<code>undefined</code>和<code>null</code>两者是相等的，并且大多数其他的数据类型为了便利的进行比较将会暴力的转化为一个数字。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型x</th>
+<th style="text-align:left">数据类型y</th>
+<th style="text-align:left">比较结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">x和y是相同的类型</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">参考严格模式下的算法(===)</td>
+</tr>
+<tr>
+<td style="text-align:left">Null</td>
+<td style="text-align:left">Undefined</td>
+<td style="text-align:left">true</td>
+</tr>
+<tr>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">x == toNumber(y)</td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">toNumber(x) == y</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">(any)</td>
+<td style="text-align:left">toNumber(x) == y</td>
+</tr>
+<tr>
+<td style="text-align:left">(any)</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">x == toPrimitive(y)</td>
+</tr>
+<tr>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">String or Number</td>
+<td style="text-align:left">toPrimitive(x) == y</td>
+</tr>
+<tr>
+<td style="text-align:left">其他情况</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">false</td>
+</tr>
+</tbody>
+</table>
+<p>下面我们参考一下上面的描述进行几个小例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'1'</span>==<span class="number">1</span>) <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'s'</span>== <span class="literal">NaN</span>) <span class="comment">//false</span></div><div class="line"><span class="built_in">console</span>.log( <span class="literal">null</span> == <span class="literal">undefined</span>) <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<p>当结果是一个表示式的时候，算法将会再一次的运行，直到结果成为一个布尔值。<code>toNumber</code>和<code>toPrimitive</code>是当进行强制性的转化数据类型时隐藏在<code>==</code>运算符内部的模块，他们的转化规则如下：</p>
+<h4 id="ToNumber"><a href="#ToNumber" class="headerlink" title="ToNumber"></a>ToNumber</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">返回结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Undefined</td>
+<td style="text-align:left">NaN</td>
+</tr>
+<tr>
+<td style="text-align:left">NaN</td>
+<td style="text-align:left">+0</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">如果是true时，值为1，如果是false时，值为+0</td>
+</tr>
+<tr>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">结果等于输入的值</td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:left">取决于字符串的内容是否为数字，’abc’-&gt;NaN ‘123’-&gt;123</td>
+</tr>
+<tr>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">运行步骤：1使用<code>ToPrimitive</code>将对象转化为原始类型的值 2再将原始值使用<code>ToNumber</code>转化为数字</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ToPrimitive"><a href="#ToPrimitive" class="headerlink" title="ToPrimitive"></a>ToPrimitive</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">返回结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">(在强制的等式运算符情况下)如果<code>valueOf</code>返回值是一个原始值，返回它，其他情况如果<code>toString</code>返回值是一个原始值得，返回它。再或者的情况下会返回一个error</td>
+</tr>
+<tr>
+<td style="text-align:left">其他情况</td>
+<td style="text-align:left">值就是输入的值</td>
+</tr>
+</tbody>
+</table>
+<p>这里有一些例子，我将用伪代码来解释这些强制算法是怎么一步一步的运算的：</p>
+<h4 id="0-true"><a href="#0-true" class="headerlink" title="[0] == true;"></a>[0] == true;</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//检查是否相等...</span></div><div class="line">[<span class="number">0</span>] == <span class="literal">true</span>;</div><div class="line"></div><div class="line"><span class="comment">//如何工作</span></div><div class="line"><span class="comment">// 使用toNumber转化上面的布尔值</span></div><div class="line">[<span class="number">0</span>] == <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="comment">//使用toPrimitive转化对象</span></div><div class="line"><span class="comment">//[0].valueOf() 不是一个原始值，所以使用</span></div><div class="line"><span class="comment">//[0].toString() -&gt; '0'</span></div><div class="line"></div><div class="line"><span class="string">'0'</span> == <span class="number">1</span>;</div><div class="line"><span class="comment">//使用toNumber转化字符串</span></div><div class="line"></div><div class="line"><span class="number">0</span>==<span class="number">1</span>;<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h4 id="‘potato’-true"><a href="#‘potato’-true" class="headerlink" title="‘potato’ == true"></a>‘potato’ == true</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//检查是否相等...</span></div><div class="line"><span class="string">'potato'</span> == <span class="literal">true</span>;</div><div class="line"></div><div class="line"> <span class="comment">//如何工作</span></div><div class="line"> <span class="comment">// 使用toNumber转化上面的布尔值</span></div><div class="line"><span class="string">'potato'</span> == <span class="number">1</span>;</div><div class="line"></div><div class="line"> <span class="comment">//使用toNumber转化字符串</span></div><div class="line"></div><div class="line"> <span class="literal">NaN</span> == <span class="number">1</span>;<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h4 id="‘potato’-false"><a href="#‘potato’-false" class="headerlink" title="‘potato’ == false"></a>‘potato’ == false</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//检查是否相等...</span></div><div class="line"><span class="string">'potato'</span> == <span class="literal">false</span>;</div><div class="line"></div><div class="line"> <span class="comment">//如何工作</span></div><div class="line"> <span class="comment">// 使用toNumber转化上面的布尔值</span></div><div class="line"><span class="string">'potato'</span> == <span class="number">0</span>;</div><div class="line"></div><div class="line"> <span class="comment">//使用toNumber转化字符串</span></div><div class="line"></div><div class="line"> <span class="literal">NaN</span> == <span class="number">0</span>;<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h4 id="object-with-valueOf"><a href="#object-with-valueOf" class="headerlink" title="object with valueOf"></a>object with valueOf</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//检查是否相等...</span></div><div class="line">crazyNumeric = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>);</div><div class="line">crazyNumeric.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> <span class="string">'2'</span>&#125;;</div><div class="line">crazyNumeric == <span class="number">1</span></div><div class="line"></div><div class="line"> <span class="comment">//如何工作</span></div><div class="line"> <span class="comment">//使用toPrimitive转化对象</span></div><div class="line"> <span class="comment">//valueOf() 返回一个原始值</span></div><div class="line"><span class="number">1</span> == <span class="number">1</span>;<span class="comment">//true</span></div></pre></td></tr></table></figure>
+<h4 id="object-with-toString"><a href="#object-with-toString" class="headerlink" title="object with toString"></a>object with toString</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//检查是否相等...</span></div><div class="line"><span class="keyword">var</span> crazyObj = &#123;</div><div class="line">	<span class="attr">toString</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="string">'2'</span>&#125;</div><div class="line">&#125;</div><div class="line">crazyNumeric == <span class="number">1</span></div><div class="line"></div><div class="line"> <span class="comment">//如何工作</span></div><div class="line"> <span class="comment">//使用toPrimitive转化对象</span></div><div class="line"> <span class="comment">//valueOf() 返回一个对象 所以我们使用 toString</span></div><div class="line"></div><div class="line"><span class="string">"2"</span> == <span class="number">1</span>;</div><div class="line"> <span class="comment">//将字符串转化为数字</span></div><div class="line"> <span class="number">2</span> == <span class="number">1</span> <span class="comment">//false!</span></div></pre></td></tr></table></figure>
+<h3 id="严格相等模式"><a href="#严格相等模式" class="headerlink" title="严格相等模式(===)"></a>严格相等模式(===)</h3><p>这是很简单的一个模式了。如果运算符两边的数据类型不同，答案永远都是’false’。如果他们是相同的数据类型，我们直观的都可以判断到：两个值的引用必须来自同一个对象，数组，或者函数。字符串必须包含相同的字符格式，各个位上的字符都相等。其他原始值也必须是相等的值和长度。<code>NaN</code>,<code>null</code>和<code>undefined</code>永远不等于其他数据类型，<code>NaN</code>甚至不等于它自己。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型x</th>
+<th style="text-align:left">值</th>
+<th style="text-align:left">比较结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">x和y是不相同的类型</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">false</td>
+</tr>
+<tr>
+<td style="text-align:left">Null or Undefined</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">true</td>
+</tr>
+<tr>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">x和y相等但不是<code>NaN</code></td>
+<td style="text-align:left">true</td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:left">x和y字符格式相等，长度相等</td>
+<td style="text-align:left">true</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">x和y同时为true或false</td>
+<td style="text-align:left">true</td>
+</tr>
+<tr>
+<td style="text-align:left">Object</td>
+<td style="text-align:left">x和y引用自同一个对象</td>
+<td style="text-align:left">true</td>
+</tr>
+<tr>
+<td style="text-align:left">其他情况</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">false</td>
+</tr>
+</tbody>
+</table>
+<h4 id="常见的不宜使用严格相等的例子"><a href="#常见的不宜使用严格相等的例子" class="headerlink" title="常见的不宜使用严格相等的例子"></a>常见的不宜使用严格相等的例子</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//多余的</span></div><div class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> myVar === <span class="string">'function'</span>);</div><div class="line"></div><div class="line"><span class="comment">//推荐</span></div><div class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> myVar == <span class="string">'function'</span>);</div></pre></td></tr></table></figure>
+<p>因为<code>typeOf</code>返回的是字符串，等式两边永远是两个字符串在进行比较。所以这个==就等同于===。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//多余的</span></div><div class="line"><span class="keyword">var</span> missing = (myVar === <span class="literal">undefined</span> || myVar === <span class="literal">null</span>);</div><div class="line"></div><div class="line"><span class="comment">//推荐</span></div><div class="line"><span class="keyword">var</span> missing = (myVar == <span class="literal">null</span>);</div></pre></td></tr></table></figure>
+<p>null 和 undefined 在 == 中是相等的。</p>
+<p>注意：因为将变量定义为<code>undefined</code>会有一点点小风险，所以变量等于<code>null</code>是比较安全的做法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//多余的</span></div><div class="line"><span class="keyword">if</span> (myArray.length === <span class="number">3</span>)</div><div class="line"></div><div class="line"><span class="comment">//推荐</span></div><div class="line"><span class="keyword">if</span> (myArray.length == <span class="number">3</span>)</div></pre></td></tr></table></figure>
+<p>这个就不用说太多。科科…</p>
+<blockquote>
+<p>引用文章：<br>ECMA-262 第五版<br><a href="http://ecma262-5.com/ELS5_HTML.htm#Section_11.9.3" target="_blank" rel="external">11.9.3 The Abstract Equality Comparison Algorithm</a><br><a href="http://ecma262-5.com/ELS5_HTML.htm#Section_11.9.6" target="_blank" rel="external">11.9.6 The Strict Equality Comparison Algorithm</a><br><a href="http://ecma262-5.com/ELS5_HTML.htm#Section_9.1" target="_blank" rel="external">9.1 toPrimitive</a><br><a href="http://ecma262-5.com/ELS5_HTML.htm#Section_9.2" target="_blank" rel="external">9.2 toBoolean</a><br><a href="http://ecma262-5.com/ELS5_HTML.htm#Section_9.3" target="_blank" rel="external">9.3 toNumber</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+            <a href="/tags/翻译/" rel="tag"># 翻译</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/16/关于call、apply、bind/" rel="next" title="关于call、apply、bind">
+                <i class="fa fa-chevron-left"></i> 关于call、apply、bind
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Allen Lee" />
+          <p class="site-author-name" itemprop="name">Allen Lee</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript中的真或假"><span class="nav-number">1.</span> <span class="nav-text">JavaScript中的真或假</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件语句"><span class="nav-number">2.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#等式算法（-）"><span class="nav-number">3.</span> <span class="nav-text">等式算法（==）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ToNumber"><span class="nav-number">3.1.</span> <span class="nav-text">ToNumber</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ToPrimitive"><span class="nav-number">3.2.</span> <span class="nav-text">ToPrimitive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0-true"><span class="nav-number">3.3.</span> <span class="nav-text">[0] == true;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#‘potato’-true"><span class="nav-number">3.4.</span> <span class="nav-text">‘potato’ == true</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#‘potato’-false"><span class="nav-number">3.5.</span> <span class="nav-text">‘potato’ == false</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#object-with-valueOf"><span class="nav-number">3.6.</span> <span class="nav-text">object with valueOf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#object-with-toString"><span class="nav-number">3.7.</span> <span class="nav-text">object with toString</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#严格相等模式"><span class="nav-number">4.</span> <span class="nav-text">严格相等模式(===)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的不宜使用严格相等的例子"><span class="nav-number">4.1.</span> <span class="nav-text">常见的不宜使用严格相等的例子</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Lee</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("MKH1pt3rgxayaweqaHwKWsH9-gzGzoHsz", "TO3q6lJDKE8bWDuT1cQzbfz4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
