@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3257837-81844861c1153808.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3257837-2c6d8ebe26135b8f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3257837-e16cbb7d1a8afa14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-21T14:42:02.000Z">
+<meta property="og:updated_time" content="2017-06-23T09:42:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端基础问题答疑">
 <meta name="twitter:description" content="1.apply、call有什么作用，什么区别？call方法：语法：call([thisObj[,arg1[,arg2[,[,…argN]]]]]).定义：调用一个对象的方法，以另一个对象替换当前对象。说明：call方法可以代替一个对象调用一个方法，call方法可将一个函数的对象上下文从初始的上下文改变由thisObj指向的新对象。如果没有提供thisObj参数，那么全局对象被作为thisObj。">
@@ -336,8 +336,7 @@
       
 
       
-        <h5 id="1-apply、call有什么作用，什么区别？"><a href="#1-apply、call有什么作用，什么区别？" class="headerlink" title="1.apply、call有什么作用，什么区别？"></a>1.apply、call有什么作用，什么区别？</h5><p>call方法：<br>语法：call([thisObj[,arg1[,arg2[,[,…argN]]]]]).<br>定义：调用一个对象的方法，以另一个对象替换当前对象。<br>说明：call方法可以代替一个对象调用一个方法，call方法可将一个函数的对象上下文从初始的上下文改变由thisObj指向的新对象。<br>如果没有提供thisObj参数，那么全局对象被作为thisObj。</p>
-<p>apply方法：<br>语法：apply([thisObj[,arrArray]])<br>定义：应用某个对象的一个方法，用另一个对象替换当前对象。<br>说明：如果arrArray不是一个有效的数组或者不是arguments对象，那么将导致一个TypeError。<br>如果没有提供argArray和thisObj任何一个参数，那么全局对象将用做thisObj，并且无法被传递任何参数。</p>
+        <h5 id="1-apply、call有什么作用，什么区别？"><a href="#1-apply、call有什么作用，什么区别？" class="headerlink" title="1.apply、call有什么作用，什么区别？"></a>1.apply、call有什么作用，什么区别？</h5><p>call方法：<br>语法：call([thisObj[,arg1[,arg2[,[,…argN]]]]]).<br>定义：调用一个对象的方法，以另一个对象替换当前对象。<br>说明：call方法可以代替一个对象调用一个方法，call方法可将一个函数的对象上下文从初始的上下文改变由thisObj指向的新对象。<br>如果没有提供thisObj参数，那么全局对象被作为thisObj。<br><a id="more"></a><br>apply方法：<br>语法：apply([thisObj[,arrArray]])<br>定义：应用某个对象的一个方法，用另一个对象替换当前对象。<br>说明：如果arrArray不是一个有效的数组或者不是arguments对象，那么将导致一个TypeError。<br>如果没有提供argArray和thisObj任何一个参数，那么全局对象将用做thisObj，并且无法被传递任何参数。</p>
 <p>区别：call的第二个参数可以是任意类型，而apply的第二个参数必须是数组或者arguments。</p>
 <h5 id="2-以下代码输出什么？"><a href="#2-以下代码输出什么？" class="headerlink" title="2.以下代码输出什么？"></a>2.以下代码输出什么？</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var john = &#123; </div><div class="line">  firstName: &quot;John&quot; </div><div class="line">&#125;</div><div class="line">function func() &#123; </div><div class="line">  alert(this.firstName + &quot;: hi!&quot;)</div><div class="line">&#125;</div><div class="line">john.sayHi = func</div><div class="line">john.sayHi()</div></pre></td></tr></table></figure>
 <p>输出的结果为：John:hi!<br>上述代码可写作为：</p>
