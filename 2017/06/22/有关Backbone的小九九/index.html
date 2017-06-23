@@ -94,7 +94,8 @@
 <meta property="og:site_name" content="李子豪的前端自习室">
 <meta property="og:description" content="什么是backbone？？？？？backbone是基于javaScript开发的一种框架，在React和Vue，angular2三分天下的今天，backbone就像是行走在江湖的剑客，不与武林争宠，也许过去也有过决战华山之巅的豪情，但随着新老交替，backbone的确已经有些过时了。只能说，可能说过时有些不妥，毕竟现在还有相关的人员在去维护他，去更新他。或许某一天，维护他的人渐渐离开，他也许就真正">
 <meta property="og:image" content="http://yoursite.com/./img/backbone.png">
-<meta property="og:updated_time" content="2017-06-22T16:58:35.000Z">
+<meta property="og:image" content="http://yoursite.com/./img/backboneMVC.png">
+<meta property="og:updated_time" content="2017-06-23T03:13:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="有关Backbone的小九九">
 <meta name="twitter:description" content="什么是backbone？？？？？backbone是基于javaScript开发的一种框架，在React和Vue，angular2三分天下的今天，backbone就像是行走在江湖的剑客，不与武林争宠，也许过去也有过决战华山之巅的豪情，但随着新老交替，backbone的确已经有些过时了。只能说，可能说过时有些不妥，毕竟现在还有相关的人员在去维护他，去更新他。或许某一天，维护他的人渐渐离开，他也许就真正">
@@ -340,6 +341,17 @@
 <h3 id="说了那么多，到底什么是backbone？"><a href="#说了那么多，到底什么是backbone？" class="headerlink" title="说了那么多，到底什么是backbone？"></a>说了那么多，到底什么是backbone？</h3><p>我也说不上来什么是backbone，就在我下班和上床睡觉的时间内，我大概浏览了一下backbone是什么，它类似与一种JS接口，它能将一些我们常用的函数打包成一个语句，然后将一个个的语句打包成这个框架自身的属性，我们可以在JS中使用这些属性值。</p>
 <p>backbone.js为复杂WEB应用程序提供模型（models）、集合（collections）、视图（views）的结构。其中模型用于绑定键值数据和自定义事件；集合富有可枚举函数的丰富API；视图可以声明事件处理函数，并通过RESRful JSON接口连接到应用程序。</p>
 <p>backbone.js的主要组件:<br><img src="./img/backbone.png" alt="backbone组件"></p>
+<h4 id="Backbone是个重度依赖患者"><a href="#Backbone是个重度依赖患者" class="headerlink" title="Backbone是个重度依赖患者"></a>Backbone是个重度依赖患者</h4><p>Backbone重度依赖Underscore.js。基于RESTful（一个架构样式的网络系统）的约束，它的路由的支持依赖于Backbone.Router，DOM处理依赖于Backbone.View和Jquery的APIs，例如Lo_Dash和Zepto。</p>
+<h5 id="backbone的模块"><a href="#backbone的模块" class="headerlink" title="backbone的模块"></a>backbone的模块</h5><ol>
+<li>Event：事件驱动模式</li>
+<li>Model：数据模型</li>
+<li>Collection：模型集合器</li>
+<li>Router：路由器</li>
+<li>History：开启历史管理</li>
+<li>Sync：同步服务器行为</li>
+<li>View：视图（含事件行为和渲染页面）</li>
+</ol>
+<h5 id="MVC是什么？模块如何实现MVC呢？"><a href="#MVC是什么？模块如何实现MVC呢？" class="headerlink" title="MVC是什么？模块如何实现MVC呢？"></a>MVC是什么？模块如何实现MVC呢？</h5><p>MVC是一种框架模式：M:model(模型)，V:view(视图)，C:controller(控制器).<br>下图解释backbone的模块是如何实现MVC的：<br><img src="./img/backboneMVC.png" alt="backbone实现MVC"></p>
 
       
     </div>
@@ -514,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是backbone？？？？？"><span class="nav-number">1.</span> <span class="nav-text">什么是backbone？？？？？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说了那么多，到底什么是backbone？"><span class="nav-number">2.</span> <span class="nav-text">说了那么多，到底什么是backbone？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是backbone？？？？？"><span class="nav-number">1.</span> <span class="nav-text">什么是backbone？？？？？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说了那么多，到底什么是backbone？"><span class="nav-number">2.</span> <span class="nav-text">说了那么多，到底什么是backbone？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Backbone是个重度依赖患者"><span class="nav-number">2.1.</span> <span class="nav-text">Backbone是个重度依赖患者</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#backbone的模块"><span class="nav-number">2.1.1.</span> <span class="nav-text">backbone的模块</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MVC是什么？模块如何实现MVC呢？"><span class="nav-number">2.1.2.</span> <span class="nav-text">MVC是什么？模块如何实现MVC呢？</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
