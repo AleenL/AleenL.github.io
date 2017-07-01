@@ -1,0 +1,889 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,技术,lodash.js," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本文是准备将所有的lodash.js的相关方法用jquery去实现，目的是为了巩固自己所学知识，计划是每两天更新十个代码，如果有比较难的，会根据难易度，减少代码量。希望能帮助到正在学习前端的你。
+在没有找到工作之前，面试了一家公司，因为没有相关工作经验被拒，面试的过程中，面试官竟然当着我的面玩起了手机游戏，这对我感触很深，也许没有经验，没有能力，就会被别人瞧不起，我不愿意做一个别人瞧不起的人，我想">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用jq实现lodash的功能[1]">
+<meta property="og:url" content="http://yoursite.com/2017/07/01/用jq实现lodash的功能/index.html">
+<meta property="og:site_name" content="李子豪的前端自习室">
+<meta property="og:description" content="本文是准备将所有的lodash.js的相关方法用jquery去实现，目的是为了巩固自己所学知识，计划是每两天更新十个代码，如果有比较难的，会根据难易度，减少代码量。希望能帮助到正在学习前端的你。
+在没有找到工作之前，面试了一家公司，因为没有相关工作经验被拒，面试的过程中，面试官竟然当着我的面玩起了手机游戏，这对我感触很深，也许没有经验，没有能力，就会被别人瞧不起，我不愿意做一个别人瞧不起的人，我想">
+<meta property="og:updated_time" content="2017-07-01T15:05:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用jq实现lodash的功能[1]">
+<meta name="twitter:description" content="本文是准备将所有的lodash.js的相关方法用jquery去实现，目的是为了巩固自己所学知识，计划是每两天更新十个代码，如果有比较难的，会根据难易度，减少代码量。希望能帮助到正在学习前端的你。
+在没有找到工作之前，面试了一家公司，因为没有相关工作经验被拒，面试的过程中，面试官竟然当着我的面玩起了手机游戏，这对我感触很深，也许没有经验，没有能力，就会被别人瞧不起，我不愿意做一个别人瞧不起的人，我想">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/01/用jq实现lodash的功能/"/>
+
+
+
+
+
+  <title> 用jq实现lodash的功能[1] | 李子豪的前端自习室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李子豪的前端自习室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">努力成为前端小牛</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                用jq实现lodash的功能[1]
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-01T17:00:32+08:00">
+                2017-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/07/01/用jq实现lodash的功能/" class="leancloud_visitors" data-flag-title="用jq实现lodash的功能[1]">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文是准备将所有的lodash.js的相关方法用jquery去实现，目的是为了巩固自己所学知识，计划是每两天更新十个代码，如果有比较难的，会根据难易度，减少代码量。希望能帮助到正在学习前端的你。</p>
+<p>在没有找到工作之前，面试了一家公司，因为没有相关工作经验被拒，面试的过程中，面试官竟然当着我的面玩起了手机游戏，这对我感触很深，也许没有经验，没有能力，就会被别人瞧不起，我不愿意做一个别人瞧不起的人，我想成为一个能够努力改变现状的人，想证明自己，不比别人弱，别人能做的，我也照样能做到。</p>
+<p>以后，在饭桌上，也没有人敢在我夹菜的时候转桌子，是我最近5年的计划！！哈哈哈！</p>
+<a id="more"></a>
+<h4 id="代码一"><a href="#代码一" class="headerlink" title="代码一"></a>代码一</h4><p><code>_.chunk(array,[size=1])</code></p>
+<h5 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h5><p>将array拆分成多个size长度的快，把这些快组成一个新数组。如果array无法被分割成全部等长的快，那么最后剩余的元素将组成一个块</p>
+<h5 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h5><ol>
+<li>array(Array):需要被处理的数组</li>
+<li>[size = 1] (number):每个块的长度</li>
+</ol>
+<h5 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h5><p>数组：返回一个包含拆分块数组的新数组</p>
+<h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">_.chunk([<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>], <span class="number">2</span>)</div><div class="line"><span class="comment">// =&gt;[['a','b'],['c','d']]</span></div></pre></td></tr></table></figure>
+<h5 id="JQ实现方式"><a href="#JQ实现方式" class="headerlink" title="JQ实现方式"></a>JQ实现方式</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_chunk</span>(<span class="params">arr,idx</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> newarr = []</div><div class="line">	chunk(arr,idx)</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">chunk</span>(<span class="params">arr,idx</span>)</span>&#123;</div><div class="line">		<span class="keyword">if</span>(arr.length &gt; idx)&#123;</div><div class="line">			<span class="keyword">let</span> a = arr.slice(<span class="number">0</span>,idx)</div><div class="line">			newarr.push(a)</div><div class="line">			arr.splice(<span class="number">0</span>,idx)</div><div class="line">			chunk(arr,idx)</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			newarr.push(arr)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	 <span class="keyword">return</span> newarr</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="代码二"><a href="#代码二" class="headerlink" title="代码二"></a>代码二</h4><p><code>_.compact(array)</code></p>
+<h5 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h5><p>创建一个新数组并包含原数组中所有的非假值元素。例如 false、null、 0、””、undefined 和 NaN 都是“假值”。</p>
+<h5 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h5><ol>
+<li>array (Array): 数组参数.</li>
+</ol>
+<h5 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h5><p>(Array): 返回过滤假值后的数组.</p>
+<h5 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="literal">false</span>, <span class="number">2</span>, <span class="string">''</span>, <span class="number">3</span>]);</div><div class="line"><span class="comment">// =&gt; [1, 2, 3]</span></div></pre></td></tr></table></figure>
+<h5 id="jQ实现方式"><a href="#jQ实现方式" class="headerlink" title="jQ实现方式"></a>jQ实现方式</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">oldCompact</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> fun = []</div><div class="line">	arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">		<span class="keyword">if</span>(e.length&gt;<span class="number">0</span> || e)&#123;</div><div class="line">			fun.push(e)</div><div class="line">		&#125;</div><div class="line">	&#125;)</div><div class="line">	<span class="keyword">return</span> fun</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="代码三"><a href="#代码三" class="headerlink" title="代码三"></a>代码三</h4><p><code>_.difference(array, [values])</code></p>
+<h5 id="解释-2"><a href="#解释-2" class="headerlink" title="解释"></a>解释</h5><p>提供两个数组，第二个数组是一个过滤器，当第一个数组中有第二个数组里的值得话，就会在第一个数组中删除该值</p>
+<h5 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h5><p>array (Array): 需要过滤的数组<br>[values] (…Array): 数组需要排除掉的值</p>
+<h5 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h5><p>(Array): 返回过滤后的数组</p>
+<h5 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">_.difference([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">2</span>]);</div><div class="line"><span class="comment">// =&gt; [1, 3]</span></div><div class="line">_.difference([<span class="number">1</span>, <span class="string">'2'</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">2</span>]);</div><div class="line"><span class="comment">// =&gt; [1, "2", 3]</span></div></pre></td></tr></table></figure>
+<h5 id="JQ实现方法"><a href="#JQ实现方法" class="headerlink" title="JQ实现方法"></a>JQ实现方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_difference</span>(<span class="params">arr1,arr2</span>)</span>&#123;</div><div class="line">	<span class="keyword">let</span> num = []</div><div class="line">	arr1.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">		arr2.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</div><div class="line">			<span class="keyword">if</span>(e == i)&#123;</div><div class="line">				num.push(e)</div><div class="line">			&#125;</div><div class="line">		&#125;)</div><div class="line">	&#125;)</div><div class="line">	num.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">g</span>)</span>&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i&lt;arr1.length;i++)&#123;</div><div class="line">			<span class="keyword">if</span>(arr1[i] == g)&#123;</div><div class="line">				arr1.splice(i,<span class="number">1</span>)	</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;)</div><div class="line">	<span class="keyword">return</span> arr1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="代码四"><a href="#代码四" class="headerlink" title="代码四"></a>代码四</h4><p><code>_.difference(array, [values])</code></p>
+<h5 id="解释-3"><a href="#解释-3" class="headerlink" title="解释"></a>解释</h5><p>将 array 中的前 n 个元素去掉，然后返回剩余的部分。</p>
+<h5 id="参数-3"><a href="#参数-3" class="headerlink" title="参数"></a>参数</h5><p>array (Array): 需要操作的数组<br>[n=1] (number): 去掉的元素个数</p>
+<h5 id="返回值-3"><a href="#返回值-3" class="headerlink" title="返回值"></a>返回值</h5><p>(Array): 返回array的剩余部分</p>
+<h5 id="例子-3"><a href="#例子-3" class="headerlink" title="例子"></a>例子</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">_.drop([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</div><div class="line"><span class="comment">// =&gt; [2, 3] 默认是1开始的</span></div><div class="line"></div><div class="line">_.drop([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">2</span>);</div><div class="line"><span class="comment">// =&gt; [3]</span></div><div class="line"></div><div class="line">_.drop([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">5</span>);</div><div class="line"><span class="comment">// =&gt; []</span></div><div class="line"></div><div class="line">_.drop([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">0</span>);</div><div class="line"><span class="comment">// =&gt; [1, 2, 3]</span></div></pre></td></tr></table></figure>
+<h5 id="JQ实现方法-1"><a href="#JQ实现方法-1" class="headerlink" title="JQ实现方法"></a>JQ实现方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_drop</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">	<span class="keyword">let</span> len = arr.length</div><div class="line"> 	<span class="keyword">if</span>(!<span class="built_in">arguments</span>[<span class="number">1</span>] &amp;&amp; <span class="built_in">arguments</span>[<span class="number">1</span>] != <span class="number">0</span>)&#123;</div><div class="line"> 		<span class="keyword">let</span> newArr  = arr.splice(<span class="number">1</span>,len)</div><div class="line"> 		<span class="keyword">return</span> newArr</div><div class="line"> 	&#125;<span class="keyword">else</span>&#123;</div><div class="line"> 		newArr = arr.splice(<span class="built_in">arguments</span>[<span class="number">1</span>],len)</div><div class="line"> 		<span class="keyword">return</span> newArr</div><div class="line"> 	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="代码五"><a href="#代码五" class="headerlink" title="代码五"></a>代码五</h4><p><code>_.difference(array, [n=1])</code></p>
+<h5 id="解释-4"><a href="#解释-4" class="headerlink" title="解释"></a>解释</h5><p>将 array 中的尾部 n 个元素去掉，然后返回剩余的部分。</p>
+<h5 id="参数-4"><a href="#参数-4" class="headerlink" title="参数"></a>参数</h5><p>array (Array): 需要操作的数组<br>[n=1] (number): 去掉的元素个数</p>
+<h5 id="返回值-4"><a href="#返回值-4" class="headerlink" title="返回值"></a>返回值</h5><p>(Array): 返回array的剩余部分</p>
+<h5 id="例子-4"><a href="#例子-4" class="headerlink" title="例子"></a>例子</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">_.dropRight([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</div><div class="line"><span class="comment">// =&gt; [1, 2]</span></div><div class="line"></div><div class="line">_.dropRight([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">2</span>);</div><div class="line"><span class="comment">// =&gt; [1]</span></div><div class="line"></div><div class="line">_.dropRight([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">5</span>);</div><div class="line"><span class="comment">// =&gt; []</span></div><div class="line"></div><div class="line">_.dropRight([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">0</span>);</div><div class="line"><span class="comment">// =&gt; [1, 2, 3]</span></div></pre></td></tr></table></figure>
+<h5 id="JQ实现方法-2"><a href="#JQ实现方法-2" class="headerlink" title="JQ实现方法"></a>JQ实现方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_dropRight</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">	<span class="keyword">let</span> len = arr.length</div><div class="line"> 	<span class="keyword">if</span>(!<span class="built_in">arguments</span>[<span class="number">1</span>] &amp;&amp; <span class="built_in">arguments</span>[<span class="number">1</span>] != <span class="number">0</span>)&#123;</div><div class="line"> 		arr.splice(len<span class="number">-1</span>,len)</div><div class="line"> 		<span class="keyword">return</span> arr</div><div class="line"> 	&#125;<span class="keyword">else</span>&#123;</div><div class="line"> 		arr.splice(len-<span class="built_in">arguments</span>[<span class="number">1</span>],len)</div><div class="line"> 		<span class="keyword">return</span> arr</div><div class="line"> 	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<!--#### 代码六
+
+`_.dropRightWhile(array, [predicate=_.identity], [thisArg])`
+
+##### 解释
+从尾端查询（右数）数组 array ，第一个不满足predicate 条件的元素开始截取数组. thisArg为predicate 条件执行上下文对象绑定的参数 . 
+
+参数 predicate 提供的是一个属性名称，就通过提供的参数使用 _.property方法返回一个回调函数 
+
+如果参数thisArg提供的话，就使用 _.matchesProperty方法匹配相同的属性值，相同返回true,不同返回false 
+
+如果参数predicate提供的是一个对象，就使用 _.matches方法匹配相同的元素，相同返回true,不同返回false
+
+##### 参数
+1. array (Array): 需要查询的数组
+2. [predicate=_.identity] (Function|Object|string): 数组迭代判断条件
+3. [thisArg] (*): 对应 predicate 属性的值.
+
+##### 返回值
+(Array): 返回截取元素后的数组
+
+##### 例子
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">_.dropRightWhile([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> n &gt; <span class="number">1</span>;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// =&gt; [1]</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> users = [</div><div class="line">  &#123; <span class="string">'user'</span>: <span class="string">'barney'</span>,  <span class="string">'active'</span>: <span class="literal">true</span> &#125;,</div><div class="line">  &#123; <span class="string">'user'</span>: <span class="string">'fred'</span>,    <span class="string">'active'</span>: <span class="literal">false</span> &#125;,</div><div class="line">  &#123; <span class="string">'user'</span>: <span class="string">'pebbles'</span>, <span class="string">'active'</span>: <span class="literal">false</span> &#125;</div><div class="line">];</div><div class="line"></div><div class="line"><span class="comment">// using the `_.matches` callback shorthand</span></div><div class="line">_.pluck(_.dropRightWhile(users, &#123; <span class="string">'user'</span>: <span class="string">'pebbles'</span>, <span class="string">'active'</span>: <span class="literal">false</span> &#125;), <span class="string">'user'</span>);</div><div class="line"><span class="comment">// =&gt; ['barney', 'fred']</span></div><div class="line"></div><div class="line"><span class="comment">// using the `_.matchesProperty` callback shorthand</span></div><div class="line">_.pluck(_.dropRightWhile(users, <span class="string">'active'</span>, <span class="literal">false</span>), <span class="string">'user'</span>);</div><div class="line"><span class="comment">// =&gt; ['barney']</span></div><div class="line"></div><div class="line"><span class="comment">// using the `_.property` callback shorthand</span></div><div class="line">_.pluck(_.dropRightWhile(users, <span class="string">'active'</span>), <span class="string">'user'</span>);</div><div class="line"><span class="comment">// =&gt; ['barney', 'fred', 'pebbles']</span></div></pre></td></tr></table></figure>
+<h5 id="JQ实现方法-3"><a href="#JQ实现方法-3" class="headerlink" title="JQ实现方法"></a>JQ实现方法</h5><p><code>javascript
+function _dropRight(arr){
+    let len = arr.length
+     if(!arguments[1] &amp;&amp; arguments[1] != 0){
+         arr.splice(len-1,len)
+         return arr
+     }else{
+         arr.splice(len-arguments[1],len)
+         return arr
+     }
+}</code>–&gt;</p>
+-->
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+            <a href="/tags/lodash-js/" rel="tag"># lodash.js</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/30/如何使用setTimeout去调用Redux的action/" rel="next" title="如何使用setTimeout去调用Redux的action">
+                <i class="fa fa-chevron-left"></i> 如何使用setTimeout去调用Redux的action
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Allen Lee" />
+          <p class="site-author-name" itemprop="name">Allen Lee</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码一"><span class="nav-number">1.</span> <span class="nav-text">代码一</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解释"><span class="nav-number">1.1.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参数"><span class="nav-number">1.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#返回值"><span class="nav-number">1.3.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#例子"><span class="nav-number">1.4.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JQ实现方式"><span class="nav-number">1.5.</span> <span class="nav-text">JQ实现方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码二"><span class="nav-number">2.</span> <span class="nav-text">代码二</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解释-1"><span class="nav-number">2.1.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参数-1"><span class="nav-number">2.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#返回值-1"><span class="nav-number">2.3.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#例子-1"><span class="nav-number">2.4.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#jQ实现方式"><span class="nav-number">2.5.</span> <span class="nav-text">jQ实现方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码三"><span class="nav-number">3.</span> <span class="nav-text">代码三</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解释-2"><span class="nav-number">3.1.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参数-2"><span class="nav-number">3.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#返回值-2"><span class="nav-number">3.3.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#例子-2"><span class="nav-number">3.4.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JQ实现方法"><span class="nav-number">3.5.</span> <span class="nav-text">JQ实现方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码四"><span class="nav-number">4.</span> <span class="nav-text">代码四</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解释-3"><span class="nav-number">4.1.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参数-3"><span class="nav-number">4.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#返回值-3"><span class="nav-number">4.3.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#例子-3"><span class="nav-number">4.4.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JQ实现方法-1"><span class="nav-number">4.5.</span> <span class="nav-text">JQ实现方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码五"><span class="nav-number">5.</span> <span class="nav-text">代码五</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解释-4"><span class="nav-number">5.1.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参数-4"><span class="nav-number">5.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#返回值-4"><span class="nav-number">5.3.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#例子-4"><span class="nav-number">5.4.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JQ实现方法-2"><span class="nav-number">5.5.</span> <span class="nav-text">JQ实现方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Lee</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("MKH1pt3rgxayaweqaHwKWsH9-gzGzoHsz", "TO3q6lJDKE8bWDuT1cQzbfz4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
