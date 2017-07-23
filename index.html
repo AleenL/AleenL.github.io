@@ -475,28 +475,18 @@
 
       
         
-          
-            <h5 id="1-OOP指什么？有哪些特性？"><a href="#1-OOP指什么？有哪些特性？" class="headerlink" title="1:OOP指什么？有哪些特性？"></a>1:OOP指什么？有哪些特性？</h5><p>OOP是Object Oriented Programming的简称，即面向对象设计。<br>特性：</p>
+          <h5 id="1-OOP指什么？有哪些特性？"><a href="#1-OOP指什么？有哪些特性？" class="headerlink" title="1:OOP指什么？有哪些特性？"></a>1:OOP指什么？有哪些特性？</h5><p>OOP是Object Oriented Programming的简称，即面向对象设计。<br>特性：</p>
 <ol>
 <li>封装<br>能够把一个实体的信息、功能、响应都装入一个单独的对象中的特性。<ul>
 <li>封装允许使用者不必关心类的工作机理就可以使用它。</li>
-<li>所有对数据的访问和操作都必须通过特定的方法，否则无法使用，从而达到数据隐藏的目的。<br>2 继承<br>继承的方法允许在不该都源程序的基础上对其进行扩充，这样使得原功能得以保存，也是新功能得以扩展。提高程序的复用率。<br>3  多态性<br>同一操作作用于不同的类的实例，将产生不同的执行结果，不同类的对象接收到相同的信息时，得到不同的结果。就比如同一个人，如果他的信息为上班，我们可以定义<br>为上班族，如果他的信息为上学，我们可以定义为学生。<br>.<h5 id="2-如何通过构造函数的方式建造一个拥有属性和方法的对象。"><a href="#2-如何通过构造函数的方式建造一个拥有属性和方法的对象。" class="headerlink" title="2:如何通过构造函数的方式建造一个拥有属性和方法的对象。"></a>2:如何通过构造函数的方式建造一个拥有属性和方法的对象。</h5>通过构造函数，使用new+函数名后就可以建造一个对象</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function Peo(name)&#123;</div><div class="line">  this.nick=name;</div><div class="line">  this.getN=function()&#123;</div><div class="line">  console.log(this.nick)</div><div class="line">&#125;</div><div class="line">var p1=new  peo(&quot;Jacc&quot;)</div></pre></td></tr></table></figure>
-<h5 id="3-prototype是什么？有什么特性？"><a href="#3-prototype是什么？有什么特性？" class="headerlink" title="3:prototype是什么？有什么特性？"></a>3:prototype是什么？有什么特性？</h5><p>prototypes属性是我们有能力向对象添加属性和方法。每个函数就是一个对象，函数对象都有一个子对象，prototype对象，类是以函数的形式来定义的，prototype表示该函数的原型，也表示一个类的成员的集合。<br>特性：</p>
-<ol>
-<li>任何一个函数都有prototype这个属性，对应的值是一个对象，叫做原型对象。</li>
-<li>对于任何一个函数来说，都有一个prototype对象，当使用构造函数生成一个对象的时候，这个对象就拥有一个<strong>proto</strong>属性。<h5 id="4-画出如下代码的原型图"><a href="#4-画出如下代码的原型图" class="headerlink" title="4.画出如下代码的原型图"></a>4.画出如下代码的原型图</h5></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function People (name)&#123;</div><div class="line">  this.name = name;</div><div class="line">  this.sayName = function()&#123;</div><div class="line">    console.log(&apos;my name is:&apos; + this.name);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">People.prototype.walk = function()&#123;</div><div class="line">  console.log(this.name + &apos; is walking&apos;);  </div><div class="line">&#125;</div><div class="line">var p1 = new People(&apos;饥人谷&apos;);</div><div class="line">var p2 = new People(&apos;前端&apos;);</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/3257837-884d029bb62d5fb7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="无标题.jpg"></p>
-<h5 id="5-创建一个Car对象，拥有属性name、color、status；拥有方法run、stop、getStatus。"><a href="#5-创建一个Car对象，拥有属性name、color、status；拥有方法run、stop、getStatus。" class="headerlink" title="5.创建一个Car对象，拥有属性name、color、status；拥有方法run、stop、getStatus。"></a>5.创建一个Car对象，拥有属性name、color、status；拥有方法run、stop、getStatus。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	function Car(name,color,status)&#123;</div><div class="line">		this.name=name;</div><div class="line">		this.color=color;</div><div class="line">		this.status=status;</div><div class="line">	&#125;</div><div class="line">	Car.prototype.run = function()&#123;</div><div class="line">		console.log(this.status)</div><div class="line">		&#125;;</div><div class="line">	Car.prototype.stop=function()&#123;</div><div class="line">		console.log(this.status)</div><div class="line">		&#125;;</div><div class="line">	Car.prototype.getStatus=function()&#123;</div><div class="line">		console.log(this.status)</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	var p1 = new Car(&quot;hunger&quot;,&quot;red&quot;,30);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<h5 id="6-创建一个GoTop对象，当new一个GoTop对象则会在页面创建一个回到顶部的元素，点击页面滚动到底部。又有一下属性和方法。"><a href="#6-创建一个GoTop对象，当new一个GoTop对象则会在页面创建一个回到顶部的元素，点击页面滚动到底部。又有一下属性和方法。" class="headerlink" title="6:创建一个GoTop对象，当new一个GoTop对象则会在页面创建一个回到顶部的元素，点击页面滚动到底部。又有一下属性和方法。"></a>6:创建一个GoTop对象，当new一个GoTop对象则会在页面创建一个回到顶部的元素，点击页面滚动到底部。又有一下属性和方法。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1. `ct`属性，GoTop 对应的 DOM 元素的容器</div><div class="line">2.  `target`属性， GoTop 对应的 DOM 元素</div><div class="line">3.  `bindEvent` 方法， 用于绑定事件</div><div class="line">4 `createNode` 方法， 用于在容器内创建节点</div></pre></td></tr></table></figure>
-<p><a href="http://js.jirengu.com/kuxa/1/edit?html" target="_blank" rel="external">代码</a><br><a href="http://js.jirengu.com/kuxa/1/edit?output" target="_blank" rel="external">预览</a></p>
-
-          
+<li>所有对数据的访问和操作都必须通过特定的方法，否则无法使用，从而达到数据隐藏的目的。<br>2 继承<br>继承的方法允许在不该都源程序的基础上对其进行扩充，这样使得原功能得以保存，也是新功能得以扩展。提高程序的复用率。<br>3  多态性<br>同一操作作用于不同的类的实例，将产生不同的执行结果，不同类的对象接收到相同的信息时，得到不同的结果。就比如同一个人，如果他的信息为上班，我们可以定义<br>为上班族，如果他的信息为上学，我们可以定义为学生。<br>.
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/23/原型/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
