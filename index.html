@@ -410,6 +410,147 @@
             
               
                 
+                <a class="post-title-link" href="/2017/07/23/原型/" itemprop="url">
+                  原型
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-23T22:56:25+08:00">
+                2017-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/07/23/原型/" class="leancloud_visitors" data-flag-title="原型">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="1-OOP指什么？有哪些特性？"><a href="#1-OOP指什么？有哪些特性？" class="headerlink" title="1:OOP指什么？有哪些特性？"></a>1:OOP指什么？有哪些特性？</h5><p>OOP是Object Oriented Programming的简称，即面向对象设计。<br>特性：</p>
+<ol>
+<li>封装<br>能够把一个实体的信息、功能、响应都装入一个单独的对象中的特性。<ul>
+<li>封装允许使用者不必关心类的工作机理就可以使用它。</li>
+<li>所有对数据的访问和操作都必须通过特定的方法，否则无法使用，从而达到数据隐藏的目的。<br>2 继承<br>继承的方法允许在不该都源程序的基础上对其进行扩充，这样使得原功能得以保存，也是新功能得以扩展。提高程序的复用率。<br>3  多态性<br>同一操作作用于不同的类的实例，将产生不同的执行结果，不同类的对象接收到相同的信息时，得到不同的结果。就比如同一个人，如果他的信息为上班，我们可以定义<br>为上班族，如果他的信息为上学，我们可以定义为学生。<br>.<h5 id="2-如何通过构造函数的方式建造一个拥有属性和方法的对象。"><a href="#2-如何通过构造函数的方式建造一个拥有属性和方法的对象。" class="headerlink" title="2:如何通过构造函数的方式建造一个拥有属性和方法的对象。"></a>2:如何通过构造函数的方式建造一个拥有属性和方法的对象。</h5>通过构造函数，使用new+函数名后就可以建造一个对象</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function Peo(name)&#123;</div><div class="line">  this.nick=name;</div><div class="line">  this.getN=function()&#123;</div><div class="line">  console.log(this.nick)</div><div class="line">&#125;</div><div class="line">var p1=new  peo(&quot;Jacc&quot;)</div></pre></td></tr></table></figure>
+<h5 id="3-prototype是什么？有什么特性？"><a href="#3-prototype是什么？有什么特性？" class="headerlink" title="3:prototype是什么？有什么特性？"></a>3:prototype是什么？有什么特性？</h5><p>prototypes属性是我们有能力向对象添加属性和方法。每个函数就是一个对象，函数对象都有一个子对象，prototype对象，类是以函数的形式来定义的，prototype表示该函数的原型，也表示一个类的成员的集合。<br>特性：</p>
+<ol>
+<li>任何一个函数都有prototype这个属性，对应的值是一个对象，叫做原型对象。</li>
+<li>对于任何一个函数来说，都有一个prototype对象，当使用构造函数生成一个对象的时候，这个对象就拥有一个<strong>proto</strong>属性。<h5 id="4-画出如下代码的原型图"><a href="#4-画出如下代码的原型图" class="headerlink" title="4.画出如下代码的原型图"></a>4.画出如下代码的原型图</h5></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function People (name)&#123;</div><div class="line">  this.name = name;</div><div class="line">  this.sayName = function()&#123;</div><div class="line">    console.log(&apos;my name is:&apos; + this.name);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">People.prototype.walk = function()&#123;</div><div class="line">  console.log(this.name + &apos; is walking&apos;);  </div><div class="line">&#125;</div><div class="line">var p1 = new People(&apos;饥人谷&apos;);</div><div class="line">var p2 = new People(&apos;前端&apos;);</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/3257837-884d029bb62d5fb7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="无标题.jpg"></p>
+<h5 id="5-创建一个Car对象，拥有属性name、color、status；拥有方法run、stop、getStatus。"><a href="#5-创建一个Car对象，拥有属性name、color、status；拥有方法run、stop、getStatus。" class="headerlink" title="5.创建一个Car对象，拥有属性name、color、status；拥有方法run、stop、getStatus。"></a>5.创建一个Car对象，拥有属性name、color、status；拥有方法run、stop、getStatus。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	function Car(name,color,status)&#123;</div><div class="line">		this.name=name;</div><div class="line">		this.color=color;</div><div class="line">		this.status=status;</div><div class="line">	&#125;</div><div class="line">	Car.prototype.run = function()&#123;</div><div class="line">		console.log(this.status)</div><div class="line">		&#125;;</div><div class="line">	Car.prototype.stop=function()&#123;</div><div class="line">		console.log(this.status)</div><div class="line">		&#125;;</div><div class="line">	Car.prototype.getStatus=function()&#123;</div><div class="line">		console.log(this.status)</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	var p1 = new Car(&quot;hunger&quot;,&quot;red&quot;,30);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h5 id="6-创建一个GoTop对象，当new一个GoTop对象则会在页面创建一个回到顶部的元素，点击页面滚动到底部。又有一下属性和方法。"><a href="#6-创建一个GoTop对象，当new一个GoTop对象则会在页面创建一个回到顶部的元素，点击页面滚动到底部。又有一下属性和方法。" class="headerlink" title="6:创建一个GoTop对象，当new一个GoTop对象则会在页面创建一个回到顶部的元素，点击页面滚动到底部。又有一下属性和方法。"></a>6:创建一个GoTop对象，当new一个GoTop对象则会在页面创建一个回到顶部的元素，点击页面滚动到底部。又有一下属性和方法。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1. `ct`属性，GoTop 对应的 DOM 元素的容器</div><div class="line">2.  `target`属性， GoTop 对应的 DOM 元素</div><div class="line">3.  `bindEvent` 方法， 用于绑定事件</div><div class="line">4 `createNode` 方法， 用于在容器内创建节点</div></pre></td></tr></table></figure>
+<p><a href="http://js.jirengu.com/kuxa/1/edit?html" target="_blank" rel="external">代码</a><br><a href="http://js.jirengu.com/kuxa/1/edit?output" target="_blank" rel="external">预览</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/07/02/为什么说Redux超过了Facebook-Flux？/" itemprop="url">
                   为什么说Redux超过了Facebook Flux？
                 </a>
@@ -1569,143 +1710,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-      <meta itemprop="name" content="李子豪的前端自习室">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/21/闭包到底是如何工作的？/" itemprop="url">
-                  闭包到底是如何工作的？
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-21T20:42:49+08:00">
-                2017-06-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/06/21/闭包到底是如何工作的？/" class="leancloud_visitors" data-flag-title="闭包到底是如何工作的？">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="闭包到底是如何工作的？"><a href="#闭包到底是如何工作的？" class="headerlink" title="闭包到底是如何工作的？"></a>闭包到底是如何工作的？</h4><p>文章来源自Stack Overflow网站上，Aaron Hall提问的问题，这里重点讲的是回答中得票数最高的一个人的答案，希望能够帮助大家更好的了解到闭包的作用，当然，有些语法和翻译上会有些错误，可以向我指出。<br>本人的邮箱:aleenli1992@gmail.com</p>
-<h4 id="原问题："><a href="#原问题：" class="headerlink" title="原问题："></a>原问题：</h4><p>你怎么给一个有一些JS基础的，知道一点闭包概念的包括（函数，变量，诸如此类）的人，去解释JS中的闭包这个概念呢？</p>
-<p>我也看过一些维基百科中的例子，但是很不幸，那一点用处也没有。</p>
-<h4 id="回答者：flying-sheep"><a href="#回答者：flying-sheep" class="headerlink" title="回答者：flying sheep"></a>回答者：flying sheep</h4><h5 id="闭包并不神奇"><a href="#闭包并不神奇" class="headerlink" title="闭包并不神奇"></a>闭包并不神奇</h5><p>这篇文章是使用JS的代码去解释闭包以便程序员去理解他，并不是针对于一些大师和专业的开发者。</p>
-<p>一旦你挖掘了核心概念的话，闭包会很容易理解。无论如何，如果你想要通过一些专业的论文，或者是学术性质的文章去理解他的话，我只能说那是不可能的。</p>
-<p>这篇文章适合有主流编程语言经验的程序员，那种呢？就是看的懂下面这行代码的那种：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">name</span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> text = <span class="string">'hello'</span> + name</div><div class="line"> <span class="keyword">var</span> say = <span class="function"><span class="keyword">function</span> </span>&#123; <span class="built_in">console</span>.log(text) &#125;</div><div class="line"> say()</div><div class="line">&#125;</div><div class="line">sayHello(<span class="string">'joe'</span>)</div></pre></td></tr></table></figure>
-<h5 id="一个闭包的例子："><a href="#一个闭包的例子：" class="headerlink" title="一个闭包的例子："></a>一个闭包的例子：</h5><p> 两句话总结：</p>
-<ol>
-<li>闭包是支持一级函数的一种方式，他是一个表达式，可以引用该作用域内的变量（当它被首次声明时），将它分配给一个变量，或者传递成一个函数的参数，或者作为一个函数结果返回。</li>
-<li>当一个函数开始执行的时候，闭包是一个被分配的栈帧，并且函数的返回值不会被限制。栈帧的意思是指一个函数调用单独分配的那部分栈空间。（就好像一个栈帧被分配在堆中，并不是在栈中）.</li>
-</ol>
-<p>下面代码返回的是一个函数的引用</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">sayHello2</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> text = <span class="string">'Hello '</span> + name; <span class="comment">// 局部变量</span></div><div class="line">  <span class="keyword">var</span> say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(text); &#125;</div><div class="line">  <span class="keyword">return</span> say;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> say2 = sayHello2(<span class="string">'Bob'</span>);</div><div class="line">say2(); <span class="comment">// logs "Hello Bob"</span></div></pre></td></tr></table></figure>
-<p>大部分的JS程序员都明白上面的代码里，如何将对函数的应用返回到变量（say2）上。如果你不明白的话，你最好搞懂这个再来学习闭包。如果一个程序员使用C语言的话，他会思考函数的返回值是指向这个函数的，并且变量say和say2都是执行同一个函数。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1755,7 +1759,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
