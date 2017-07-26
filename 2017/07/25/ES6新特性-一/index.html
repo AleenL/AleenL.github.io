@@ -91,9 +91,7 @@
 let的变量提升let不会发生变量提升现象，所以，变量一定要在声明之后使用，否则报错。
 
 什么是变量提升？
-在JavaScript中，把定义在后面的变量提升到代码的顶部去定义，变量提升只是提升变量的声明，并不会把赋值也提升上来。
-
-12345(function()&amp;#123; var a">
+在JavaScript中，把定义在后面的变量提升到代码的顶部去定义，变量提升只是提升变量的声明，并不会把赋值也提升上来。//在最新的前端大佬中也有人说let可以引起变量提升，MDN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第一章：let 和 const 命令">
 <meta property="og:url" content="http://yoursite.com/2017/07/25/ES6新特性-一/index.html">
@@ -102,19 +100,15 @@ let的变量提升let不会发生变量提升现象，所以，变量一定要�
 let的变量提升let不会发生变量提升现象，所以，变量一定要在声明之后使用，否则报错。
 
 什么是变量提升？
-在JavaScript中，把定义在后面的变量提升到代码的顶部去定义，变量提升只是提升变量的声明，并不会把赋值也提升上来。
-
-12345(function()&amp;#123; var a">
-<meta property="og:updated_time" content="2017-07-25T11:53:49.000Z">
+在JavaScript中，把定义在后面的变量提升到代码的顶部去定义，变量提升只是提升变量的声明，并不会把赋值也提升上来。//在最新的前端大佬中也有人说let可以引起变量提升，MDN">
+<meta property="og:updated_time" content="2017-07-26T14:48:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一章：let 和 const 命令">
 <meta name="twitter:description" content="第一章：let 和 const 命令let命令含义用于生命变量，所声明的变量只能在let命令所在的代码块内有效
 let的变量提升let不会发生变量提升现象，所以，变量一定要在声明之后使用，否则报错。
 
 什么是变量提升？
-在JavaScript中，把定义在后面的变量提升到代码的顶部去定义，变量提升只是提升变量的声明，并不会把赋值也提升上来。
-
-12345(function()&amp;#123; var a">
+在JavaScript中，把定义在后面的变量提升到代码的顶部去定义，变量提升只是提升变量的声明，并不会把赋值也提升上来。//在最新的前端大佬中也有人说let可以引起变量提升，MDN">
 
 
 
@@ -495,7 +489,7 @@ let的变量提升let不会发生变量提升现象，所以，变量一定要�
 <h5 id="let的变量提升"><a href="#let的变量提升" class="headerlink" title="let的变量提升"></a>let的变量提升</h5><p>let不会发生变量提升现象，所以，变量一定要在声明之后使用，否则报错。</p>
 <ul>
 <li>什么是变量提升？</li>
-<li>在JavaScript中，把定义在后面的变量提升到代码的顶部去定义，变量提升只是提升变量的声明，并不会把赋值也提升上来。</li>
+<li>在JavaScript中，把定义在后面的变量提升到代码的顶部去定义，变量提升只是提升变量的声明，并不会把赋值也提升上来。<br>//在最新的前端大佬中也有人说let可以引起变量提升，MDN也说明let可以引起变量提升，关于这个问题，也有很多很多的解释，不知道谁对谁错，而且我发现了一个奇妙的问题，就是let x = x；之后，x既不能赋值也不能重新let，好像x变成了一个bug，所以关于let是否能引起变量提升还是持保留意见。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> a = <span class="number">1</span>,</div><div class="line">   b = <span class="number">2</span>,</div><div class="line">   c = <span class="number">3</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
 <p>其实实际的效果<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> a,b,c</div><div class="line">   a = <span class="number">1</span>;</div><div class="line">   b = <span class="number">2</span>;</div><div class="line">   c = <span class="number">3</span>;</div><div class="line">&#125;)()</div></pre></td></tr></table></figure></p>
@@ -602,6 +596,10 @@ let的变量提升let不会发生变量提升现象，所以，变量一定要�
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/07/26/es6入门指南/" rel="prev" title="第二章：解构赋值">
+                第二章：解构赋值 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -672,7 +670,7 @@ let的变量提升let不会发生变量提升现象，所以，变量一定要�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

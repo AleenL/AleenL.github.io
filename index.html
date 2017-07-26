@@ -410,6 +410,133 @@
             
               
                 
+                <a class="post-title-link" href="/2017/07/26/es6入门指南/" itemprop="url">
+                  第二章：解构赋值
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-26T22:27:26+08:00">
+                2017-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/07/26/es6入门指南/" class="leancloud_visitors" data-flag-title="第二章：解构赋值">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="http://iartdao.com/upload/20150716/20150716113310_577.jpg" alt="拾穗者"><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/26/es6入门指南/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/07/25/ES6新特性-一/" itemprop="url">
                   第一章：let 和 const 命令
                 </a>
@@ -479,7 +606,7 @@
 <h5 id="let的变量提升"><a href="#let的变量提升" class="headerlink" title="let的变量提升"></a>let的变量提升</h5><p>let不会发生变量提升现象，所以，变量一定要在声明之后使用，否则报错。</p>
 <ul>
 <li>什么是变量提升？</li>
-<li>在JavaScript中，把定义在后面的变量提升到代码的顶部去定义，变量提升只是提升变量的声明，并不会把赋值也提升上来。</li>
+<li>在JavaScript中，把定义在后面的变量提升到代码的顶部去定义，变量提升只是提升变量的声明，并不会把赋值也提升上来。<br>//在最新的前端大佬中也有人说let可以引起变量提升，MDN也说明let可以引起变量提升，关于这个问题，也有很多很多的解释，不知道谁对谁错，而且我发现了一个奇妙的问题，就是let x = x；之后，x既不能赋值也不能重新let，好像x变成了一个bug，所以关于let是否能引起变量提升还是持保留意见。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> a = <span class="number">1</span>,</div><div class="line">   b = <span class="number">2</span>,</div><div class="line">   c = <span class="number">3</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
 <p>其实实际的效果<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> a,b,c</div><div class="line">   a = <span class="number">1</span>;</div><div class="line">   b = <span class="number">2</span>;</div><div class="line">   c = <span class="number">3</span>;</div><div class="line">&#125;)()</div></pre></td></tr></table></figure></p>
@@ -1571,133 +1698,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-      <meta itemprop="name" content="李子豪的前端自习室">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/23/lodash-js和underscore-js有什么区别呢？/" itemprop="url">
-                  lodash.js和underscore.js有什么区别呢？
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T22:49:44+08:00">
-                2017-06-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/06/23/lodash-js和underscore-js有什么区别呢？/" class="leancloud_visitors" data-flag-title="lodash.js和underscore.js有什么区别呢？">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>文章来源自stack overflow，Brian M.Hunt提出的问题，问题的内容是比较lodash.js和underscore.js的区别。本文节选了得票数最高的回答者（也就是发明Lo-Dash本人）进行翻译，希望能帮助你了解这两个组件的差别。<br>如果有任何侵权行为，请告知我：aleenli1992@gmail.com<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/23/lodash-js和underscore-js有什么区别呢？/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1747,7 +1747,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
