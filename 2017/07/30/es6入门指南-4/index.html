@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,技术," />
+  <meta name="keywords" content="前端,技术,ES6," />
 
 
 
@@ -87,15 +87,16 @@
 
 
 
+<meta name="description" content="下面是一个Promise的实例123456789function timeout(ms)&amp;#123; return new Promise((resolve,reject) =&amp;gt; &amp;#123;  setTimeout(resolve,ms,&apos;done&apos;) &amp;#125;)&amp;#125;timeout(100),then((value) =&amp;gt; &amp;#123; console.log(value">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第二章：解构赋值">
-<meta property="og:url" content="http://yoursite.com/2017/07/26/es6入门指南/index.html">
+<meta property="og:title" content="第六章：Promise的应用">
+<meta property="og:url" content="http://yoursite.com/2017/07/30/es6入门指南-4/index.html">
 <meta property="og:site_name" content="李子豪的前端自习室">
-<meta property="og:image" content="http://iartdao.com/upload/20150716/20150716113310_577.jpg">
-<meta property="og:updated_time" content="2017-07-26T15:57:20.000Z">
+<meta property="og:description" content="下面是一个Promise的实例123456789function timeout(ms)&amp;#123; return new Promise((resolve,reject) =&amp;gt; &amp;#123;  setTimeout(resolve,ms,&apos;done&apos;) &amp;#125;)&amp;#125;timeout(100),then((value) =&amp;gt; &amp;#123; console.log(value">
+<meta property="og:updated_time" content="2017-07-30T14:36:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第二章：解构赋值">
-<meta name="twitter:image" content="http://iartdao.com/upload/20150716/20150716113310_577.jpg">
+<meta name="twitter:title" content="第六章：Promise的应用">
+<meta name="twitter:description" content="下面是一个Promise的实例123456789function timeout(ms)&amp;#123; return new Promise((resolve,reject) =&amp;gt; &amp;#123;  setTimeout(resolve,ms,&apos;done&apos;) &amp;#125;)&amp;#125;timeout(100),then((value) =&amp;gt; &amp;#123; console.log(value">
 
 
 
@@ -123,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/26/es6入门指南/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/30/es6入门指南-4/"/>
 
 
 
 
 
-  <title> 第二章：解构赋值 | 李子豪的前端自习室 </title>
+  <title> 第六章：Promise的应用 | 李子豪的前端自习室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -410,7 +411,7 @@
             
             
               
-                第二章：解构赋值
+                第六章：Promise的应用
               
             
           </h1>
@@ -425,8 +426,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-26T22:27:26+08:00">
-                2017-07-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-30T22:05:20+08:00">
+                2017-07-30
               </time>
             
 
@@ -443,7 +444,7 @@
 
           
           
-             <span id="/2017/07/26/es6入门指南/" class="leancloud_visitors" data-flag-title="第二章：解构赋值">
+             <span id="/2017/07/30/es6入门指南-4/" class="leancloud_visitors" data-flag-title="第六章：Promise的应用">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -472,49 +473,23 @@
       
 
       
-        <p><img src="http://iartdao.com/upload/20150716/20150716113310_577.jpg" alt="拾穗者"><br><a id="more"></a></p>
-<h3 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [a,b,c]=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="comment">//a=1</span></div><div class="line"><span class="comment">//b=2</span></div><div class="line"><span class="comment">//c=3</span></div></pre></td></tr></table></figure>
-<p>上面的代码表示，可以从数组中提取值，按照位置的对应关系对变量赋值，本质上，这种写法属于“模式匹配”，只要等号两边的模式相同，左边的变量就会被赋予对应的值。</p>
-<h4 id="嵌套结构赋值"><a href="#嵌套结构赋值" class="headerlink" title="嵌套结构赋值"></a>嵌套结构赋值</h4><p>结构赋值也可以进行嵌套，只要左右两边能够找到相互对应的值，就可以了.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [foo,[[bar],baz]] = [<span class="number">1</span>,[[<span class="number">2</span>],<span class="number">3</span>]]</div><div class="line"><span class="comment">//foo=1</span></div><div class="line"><span class="comment">//bar=2</span></div><div class="line"><span class="comment">//baz=3</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [ , ,third] = [<span class="string">'foo'</span>,<span class="string">'bar'</span>,<span class="string">'baz'</span>]</div><div class="line"><span class="comment">//third='baz'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [head,...tail] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line"><span class="comment">//head=1</span></div><div class="line"><span class="comment">//tail=[2,3,4,5]</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [x,y,...z] = [<span class="string">'a'</span>]</div><div class="line"><span class="comment">//x='a'</span></div><div class="line"><span class="comment">//y=undefined</span></div><div class="line"><span class="comment">//z=[]</span></div></pre></td></tr></table></figure></p>
-<h3 id="解构赋值规则"><a href="#解构赋值规则" class="headerlink" title="解构赋值规则"></a>解构赋值规则</h3><ul>
-<li><p>如果解构不成功，变量的值就等于 undefined</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [foo]=[]<span class="comment">//foo=undefined</span></div><div class="line"><span class="keyword">var</span> [bar,foo]=[<span class="number">1</span>]</div><div class="line"><span class="comment">//bar=1</span></div><div class="line"><span class="comment">//foo=undefined</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>当出现不完全解构时，即等号左边的模式只匹配等号右边数组的一部分，这种情况下，解构依然可以成功</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [x,y] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"><span class="comment">//x=1</span></div><div class="line"><span class="comment">//y=2</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [a,[b],c]=[<span class="number">1</span>,[<span class="number">2</span>,<span class="number">3</span>],<span class="number">4</span>]</div><div class="line"><span class="comment">//a=1</span></div><div class="line"><span class="comment">//b=2</span></div><div class="line"><span class="comment">//c=3</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>如果等号的右边不是数组(或者不可遍历对象)，那么将会报错</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [foo] = <span class="number">1</span></div><div class="line"> <span class="comment">//报错</span></div><div class="line"><span class="keyword">let</span> [foo] = <span class="literal">false</span></div><div class="line"><span class="comment">//报错</span></div><div class="line"><span class="keyword">let</span> [foo] =&#123;&#125;</div><div class="line"><span class="comment">//报错</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>解构赋值不仅适用于var命令，也适用于let和const命令</p>
-</li>
-<li><p>对于Set结构，也可以使用数组的解构赋值<br>什么是Set结构？<br>说起Set结构，就要提到Iterator的概念。<br>Iterator(遍历器)就是一种需要统一的接口机制来处理所有不同的数据结构，他是一种接口，为各种不同的数据结构提供统一的访问机制，任何数据结构只要部署Iterator接口，就可以完成便利操作（即依次处理该数据结构的所有成员)<br>Set结构原生具有Iterator接口，可以直接使用for..of循环</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var engines = new Set([1,2,3,4,4])</div><div class="line">for(var e of engines)&#123;</div><div class="line">	console.log(e)</div><div class="line">&#125;</div><div class="line">//1</div><div class="line">//2</div><div class="line">//3</div><div class="line">//4</div></pre></td></tr></table></figure>
-<p>上面的代码就是遍历了Set结构的方法，由此可见，Set结构也可以进行去重<br>使用Set结构遍历时返回的是一个值</p>
-</li>
-<li><p>事实上，只要某种数据结构具有Iterator接口，都可以采用数组形式的解构赋值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span>* <span class="title">fibs</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> 	<span class="keyword">var</span> a = <span class="number">0</span></div><div class="line"> 	<span class="keyword">var</span> b = <span class="number">1</span></div><div class="line"> 	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</div><div class="line"> 	  <span class="keyword">yield</span> a;</div><div class="line"> 	  [a,b] = [b,a+b]</div><div class="line"> 	&#125;</div><div class="line"> &#125;</div><div class="line"><span class="keyword">var</span> [a,b,c,d,e,f] = fibs()</div><div class="line"><span class="comment">//f=5</span></div></pre></td></tr></table></figure>
-<p>fibs是一个Generator函数，什么是Generator函数呢？<br>此知识点仅为了解，以后会具体解释Generator的意义：Generator是ES6提供的一种异步编程解决方案，从语法上，可以理解成一个状态机，封装了很多内不状态，执行Generator函数会返回一个遍历器对象，现在我们只要了解这个函数可以遍历即可</p>
-</li>
-</ul>
-<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><ul>
-<li><p>结构赋值允许指定默认值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [foo=<span class="literal">true</span>] = []</div><div class="line"><span class="comment">//foo = true</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> [x,y=b] = [<span class="string">'a'</span>]</div><div class="line"><span class="comment">//x='a'</span></div><div class="line"><span class="comment">//y='b'</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>ES6内部使用严格相等运算符（===）来判断一个位置是否有值，，所以如果数组成员不严格等于undefi的话，默认值是不会生效的</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [x=<span class="number">1</span>] =[<span class="literal">undefined</span>]</div><div class="line"><span class="comment">//x=1</span></div><div class="line"><span class="keyword">var</span> [x=<span class="number">1</span>] = [<span class="literal">null</span>]</div><div class="line"><span class="comment">//x=null(由于null和undefined在严格模式下是不相等的，所以默认值并没有生效)</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>如果默认值是一个表达式，那么这个表达式是惰性求值得，即只有再用到的时候才会求职</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'aaa'</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> [x=f()]=[<span class="number">1</span>]</div><div class="line"><span class="comment">//1</span></div></pre></td></tr></table></figure>
-<p>由于x能取到值，所以函数f根本不会执行，所以代码可以等价于下面代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> x;</div><div class="line"><span class="keyword">if</span>([<span class="number">1</span>][<span class="number">0</span>]===<span class="literal">undefined</span>)<span class="comment">//判断结构右边的值是否等于undefined</span></div><div class="line"> x = f() <span class="comment">//是的话，就将x赋值为默认值</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line"> x = [<span class="number">1</span>][<span class="number">0</span>]<span class="comment">//不是的话，就将x赋值为等号右边的值</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>默认值可以引用解构函数赋值的其他变量，但该变量必须已经声明</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [x=<span class="number">1</span>,y=x] = []</div><div class="line"><span class="comment">//x=1</span></div><div class="line"><span class="comment">//y=1</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [x=<span class="number">1</span>,y=x] = [<span class="number">2</span>]</div><div class="line"><span class="comment">//x=2</span></div><div class="line"><span class="comment">//y=2</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [x=<span class="number">1</span>,y=x] = [<span class="number">1</span>,<span class="number">2</span>]</div><div class="line"><span class="comment">//x=1</span></div><div class="line"><span class="comment">//y=2</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [x=y,y=<span class="number">1</span>] = []<span class="comment">//ReferenceError</span></div></pre></td></tr></table></figure>
-<p>最后一个表达式之所以会报错，是因为x用到默认值y是还没有声明</p>
-</li>
-</ul>
+        <h4 id="下面是一个Promise的实例"><a href="#下面是一个Promise的实例" class="headerlink" title="下面是一个Promise的实例"></a>下面是一个Promise的实例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">ms</span>)</span>&#123;</div><div class="line"> <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123;</div><div class="line">  setTimeout(resolve,ms,<span class="string">'done'</span>)</div><div class="line"> &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">timeout(<span class="number">100</span>),then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</div><div class="line"> <span class="built_in">console</span>.log(value)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>上面的代码中，timeout方法返回一个promise实例，表示一段时间以后才会发生的结果。过了指定的时间（ms参数）以后，Promise实例的状态变为reslove，就会触发then方法绑定的回调函数。</p>
+<h4 id="异步加载图片"><a href="#异步加载图片" class="headerlink" title="异步加载图片"></a>异步加载图片</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadImageAsync</span>(<span class="params">url</span>)</span>&#123;</div><div class="line"> <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">reslove,reject</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> image = <span class="keyword">new</span> Image()</div><div class="line">   image.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> resolve(image)</div><div class="line">&#125;</div><div class="line"></div><div class="line">image.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'could not find image at'</span> + url))</div><div class="line">&#125;</div><div class="line"></div><div class="line">image.src = url</div><div class="line"> &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="使用Promise实现AjAX操作"><a href="#使用Promise实现AjAX操作" class="headerlink" title="使用Promise实现AjAX操作"></a>使用Promise实现AjAX操作</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> getJson = <span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> client = <span class="keyword">new</span> XMLHttpRequest()</div><div class="line">      client.open(<span class="string">'GET'</span>,url)</div><div class="line">      client.onreadystatechange = handler</div><div class="line">      client.responseType = <span class="string">'json'</span></div><div class="line">      client.setRequestHeader(<span class="string">'Accept'</span>,<span class="string">'application/json'</span>)</div><div class="line">      client.send()</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handler</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="keyword">if</span>(<span class="keyword">this</span>.readyState !== <span class="number">4</span>)&#123;</div><div class="line">    <span class="keyword">return</span> </div><div class="line">   &#125;</div><div class="line">   <span class="keyword">if</span>(<span class="keyword">this</span>.status == <span class="number">200</span>)&#123;</div><div class="line">    resolve(<span class="keyword">this</span>.response)</div><div class="line">   &#125;<span class="keyword">else</span>&#123;</div><div class="line">    reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="keyword">this</span>.statusText))</div><div class="line">   &#125;</div><div class="line">  &#125;</div><div class="line"> &#125;)</div><div class="line">  <span class="keyword">return</span> promise  </div><div class="line">&#125;</div><div class="line"></div><div class="line">getJson(<span class="string">'/posts.json'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'Contents'</span> + json)</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.Error(<span class="string">'出错，error'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="参数的不确定"><a href="#参数的不确定" class="headerlink" title="参数的不确定"></a>参数的不确定</h4><p>如果调用resolve函数和reject时带有参数，那么这些参数挥别传递给回调函数，reject函数的参数通常是Error对象的实例，表示抛出的错误。resolve函数除了正常的值意外，还有可能是另一个promise实例，表示异步操作的结果有可能是一个值，也有可能是另一个异步操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;&#125;)</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line"> resolve(p1)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>p1和p2都是promise的实例，但是p2的resolve方法将p1作为参数，即一个异步操作的结果是返回另一个异步操作</p>
+<p>p1的状态改变了p2的状态，如果p1的状态是pending，那么p2的回调函数就会等待p1的状态改变，如果p1的状态已经是resolve或reject，那么p2的回调函数将会立即执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">	setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'fail'</span>)),<span class="number">3000</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">	setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> resolve(p1),<span class="number">1000</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">p2.then(<span class="function"><span class="params">result</span> =&gt;</span> <span class="built_in">console</span>.log(result))</div><div class="line">p2.catch(<span class="function"><span class="params">error</span> =&gt;</span> <span class="built_in">console</span>.log(result))</div><div class="line"></div><div class="line"><span class="comment">//Error:fail</span></div></pre></td></tr></table></figure>
+<p>*注意~</p>
+<ol>
+<li>p1是一个Promise，三秒之后变为Reject</li>
+<li>p2的状态由p1决定，一秒之后，p2调用resolve方法</li>
+<li>此时p1的状态还没有改变，p2的状态也不会变</li>
+<li>两秒之后，p1变为Rejected，p2也跟着变为Rejected</li>
+</ol>
 
       
     </div>
@@ -548,6 +523,8 @@
           
             <a href="/tags/技术/" rel="tag"># 技术</a>
           
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
+          
         </div>
       
 
@@ -559,8 +536,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/25/ES6新特性-一/" rel="next" title="第一章：let 和 const 命令">
-                <i class="fa fa-chevron-left"></i> 第一章：let 和 const 命令
+              <a href="/2017/07/29/es6入门指南-3/" rel="next" title="第五章：关于Promise？">
+                <i class="fa fa-chevron-left"></i> 第五章：关于Promise？
               </a>
             
           </div>
@@ -568,10 +545,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/27/es6入门指南-1/" rel="prev" title="第三章：对象的解构赋值">
-                第三章：对象的解构赋值 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -691,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量的解构赋值"><span class="nav-number">1.</span> <span class="nav-text">变量的解构赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本用法"><span class="nav-number">1.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套结构赋值"><span class="nav-number">1.2.</span> <span class="nav-text">嵌套结构赋值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解构赋值规则"><span class="nav-number">2.</span> <span class="nav-text">解构赋值规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认值"><span class="nav-number">3.</span> <span class="nav-text">默认值</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#下面是一个Promise的实例"><span class="nav-number">1.</span> <span class="nav-text">下面是一个Promise的实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步加载图片"><span class="nav-number">2.</span> <span class="nav-text">异步加载图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Promise实现AjAX操作"><span class="nav-number">3.</span> <span class="nav-text">使用Promise实现AjAX操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数的不确定"><span class="nav-number">4.</span> <span class="nav-text">参数的不确定</span></a></li></ol></div>
             
 
           </div>
