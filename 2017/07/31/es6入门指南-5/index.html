@@ -527,7 +527,7 @@
 </li>
 </ul>
 </li>
-<li><p>提取Json数据<br>解构赋值对提取Json対值中的数据尤其有用。</p>
+<li style='color:orange'><p>提取Json数据<br>解构赋值对提取Json対值中的数据尤其有用。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> jsonData = &#123;</div><div class="line"> <span class="attr">id</span>: <span class="number">42</span>,</div><div class="line"> <span class="attr">status</span>: <span class="string">'ok'</span>,</div><div class="line"> <span class="attr">data</span>: [<span class="number">867</span>,<span class="number">5309</span>]</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> &#123;id,status,<span class="attr">data</span>:number&#125; = jsonData</div><div class="line"><span class="built_in">console</span>.log(id,status,number)</div><div class="line"><span class="comment">//42,'ok',[867,5309]</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>函数参数的默认值</p>
