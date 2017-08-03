@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,Jquery," />
+  <meta name="keywords" content="前端,ES6,技术," />
 
 
 
@@ -87,25 +87,25 @@
 
 
 
-<meta name="description" content="前言在我们浏览网页的时候，有没有发现有的时候当我们翻动鼠标的时候，页面才会给你显示出你要的内容，当我们不将鼠标下拉的时候，这些内容就不会显示出来。
-就好比我们吃饭的时候，当我们吃完一份菜的时候，发现不是很饱，就再要一份，当我们吃饱了的时候，就不会再继续上菜了。
-如果去吃饭的话，餐厅把所有的才做一遍，然后给你，一方面当所有菜做完了，你也饿的差不多晕了，另一方面，所有菜做下来既浪费金钱，吃不完又浪费粮">
+<meta name="description" content="数值的扩展二进制和八进制的表示法
+ES6提供了八进制和二进制数值的新鞋发，分别用前缀0b和0o表示。
+ES6进一步明确，八进制不在允许使用前缀0表示，要使用0o表示。
+要将八进制和二进制转化为十进制的话，请使用Number方法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jquery懒加载">
-<meta property="og:url" content="http://yoursite.com/2017/04/24/Jquery懒加载/index.html">
+<meta property="og:title" content="第八章：有关于数值">
+<meta property="og:url" content="http://yoursite.com/2017/08/03/ES6入门指南-0/index.html">
 <meta property="og:site_name" content="李子豪的前端自习室">
-<meta property="og:description" content="前言在我们浏览网页的时候，有没有发现有的时候当我们翻动鼠标的时候，页面才会给你显示出你要的内容，当我们不将鼠标下拉的时候，这些内容就不会显示出来。
-就好比我们吃饭的时候，当我们吃完一份菜的时候，发现不是很饱，就再要一份，当我们吃饱了的时候，就不会再继续上菜了。
-如果去吃饭的话，餐厅把所有的才做一遍，然后给你，一方面当所有菜做完了，你也饿的差不多晕了，另一方面，所有菜做下来既浪费金钱，吃不完又浪费粮">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3257837-930a07f8cb2ac89a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3257837-f163c69c800c3ba9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-04-24T13:33:49.000Z">
+<meta property="og:description" content="数值的扩展二进制和八进制的表示法
+ES6提供了八进制和二进制数值的新鞋发，分别用前缀0b和0o表示。
+ES6进一步明确，八进制不在允许使用前缀0表示，要使用0o表示。
+要将八进制和二进制转化为十进制的话，请使用Number方法。">
+<meta property="og:updated_time" content="2017-08-03T15:18:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jquery懒加载">
-<meta name="twitter:description" content="前言在我们浏览网页的时候，有没有发现有的时候当我们翻动鼠标的时候，页面才会给你显示出你要的内容，当我们不将鼠标下拉的时候，这些内容就不会显示出来。
-就好比我们吃饭的时候，当我们吃完一份菜的时候，发现不是很饱，就再要一份，当我们吃饱了的时候，就不会再继续上菜了。
-如果去吃饭的话，餐厅把所有的才做一遍，然后给你，一方面当所有菜做完了，你也饿的差不多晕了，另一方面，所有菜做下来既浪费金钱，吃不完又浪费粮">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3257837-930a07f8cb2ac89a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="第八章：有关于数值">
+<meta name="twitter:description" content="数值的扩展二进制和八进制的表示法
+ES6提供了八进制和二进制数值的新鞋发，分别用前缀0b和0o表示。
+ES6进一步明确，八进制不在允许使用前缀0表示，要使用0o表示。
+要将八进制和二进制转化为十进制的话，请使用Number方法。">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/24/Jquery懒加载/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/03/ES6入门指南-0/"/>
 
 
 
 
 
-  <title> Jquery懒加载 | 李子豪的前端自习室 </title>
+  <title> 第八章：有关于数值 | 李子豪的前端自习室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -420,7 +420,7 @@
             
             
               
-                Jquery懒加载
+                第八章：有关于数值
               
             
           </h1>
@@ -435,8 +435,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-24T21:30:25+08:00">
-                2017-04-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-03T22:53:37+08:00">
+                2017-08-03
               </time>
             
 
@@ -453,7 +453,7 @@
 
           
           
-             <span id="/2017/04/24/Jquery懒加载/" class="leancloud_visitors" data-flag-title="Jquery懒加载">
+             <span id="/2017/08/03/ES6入门指南-0/" class="leancloud_visitors" data-flag-title="第八章：有关于数值">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -482,39 +482,23 @@
       
 
       
-        <h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>在我们浏览网页的时候，有没有发现有的时候当我们翻动鼠标的时候，页面才会给你显示出你要的内容，当我们不将鼠标下拉的时候，这些内容就不会显示出来。</p>
-<p>就好比我们吃饭的时候，当我们吃完一份菜的时候，发现不是很饱，就再要一份，当我们吃饱了的时候，就不会再继续上菜了。</p>
-<p>如果去吃饭的话，餐厅把所有的才做一遍，然后给你，一方面当所有菜做完了，你也饿的差不多晕了，另一方面，所有菜做下来既浪费金钱，吃不完又浪费粮食。<br><a id="more"></a><br>懒加载就是这样，他会先给你显示一部分页面的内容，当你想要继续向下浏览的时候，他再继续给你显示一部分的内容，知道整个页面全部浏览完成的时候，你才能看到这个页面的所有内容。这个过程就叫做，页面的懒加载。</p>
-<p>这样做的好处就是节省浏览器加载所需要的时间，如果浏览器全部加载的话，就会需要大量的时间进行渲染，而使用懒加载，就可以节省时间，优化浏览器的性能。</p>
-<h5 id="懒加载的原理"><a href="#懒加载的原理" class="headerlink" title="懒加载的原理"></a>懒加载的原理</h5><p>懒加载的原理就是将一部分的内容浏览器先不进行加载，当用户需要的时候，浏览器再进行加载。</p>
-<h5 id="如何实现懒加载"><a href="#如何实现懒加载" class="headerlink" title="如何实现懒加载"></a>如何实现懒加载</h5><p>如果我们需要懒加载的时候，我们首先要确定几个问题；</p>
-<ul>
-<li>如何加载图片</li>
-<li>浏览器什么时候加载图片</li>
-</ul>
-<h5 id="如何加载图片"><a href="#如何加载图片" class="headerlink" title="如何加载图片"></a>如何加载图片</h5><p><code>![](xxxx.jpg)</code></p>
-<p>当完成上述代码的时候，浏览器就会对这个图片进行解析，加载图片<br>如果我们不想要浏览器加载这个图片的话，可以将src中的内容清空，只保留了img的标签，但不会对图片进行加载</p>
-<p><code>![]( )</code></p>
-<p>上述的代码表示，保留了img标签，但是不加载图片，如果我们在某个时间需要这个img标签加载图片的话，就可以将自定义的标签属性中的内容放入img标签的src中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function showImg($imgs)&#123;</div><div class="line">		$imgs.each(function()&#123;</div><div class="line">		var imgUrl=$(this).attr(&quot;data-src&quot;);</div><div class="line">		$(this).attr(&quot;src&quot;,imgUrl)</div><div class="line">		&#125;)</div><div class="line">		</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
-<p>这样图片就会加载出来了。</p>
-<p>#####浏览器什么时候加载图片<br>确定浏览器什么时候加载图片，我们就必须要确认几个问题</p>
-<ul>
-<li>确定节点在浏览器中的位置<br>只有确定了节点在浏览器的位置，我们才能能确定浏览器是否要加载，如何确定一个节点在浏览器上的位置呢？</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/3257837-930a07f8cb2ac89a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="懒加载.jpg"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/3257837-f163c69c800c3ba9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片懒加载2.png"><br><em>windowHeight表示浏览器的高度；<br>scrollTop表示页面的滚动的距离；<br>offsetTop表示节点距离最顶端的距离；<br>nodeHeight表示节点自身的高度</em></p>
-<p>所以如何确定节点是否显示在浏览器上必须同时满足两个条件：</p>
-<h6 id="1-windowHeight-浏览器的高度-scrollTop-页面的滚动的距离-gt-offsetTop-节点距离最顶端的距离"><a href="#1-windowHeight-浏览器的高度-scrollTop-页面的滚动的距离-gt-offsetTop-节点距离最顶端的距离" class="headerlink" title="1. windowHeight(浏览器的高度)+scrollTop(页面的滚动的距离)&gt;offsetTop(节点距离最顶端的距离)"></a>1. windowHeight(浏览器的高度)+scrollTop(页面的滚动的距离)&gt;offsetTop(节点距离最顶端的距离)</h6><h6 id="2-offsetTop-节点距离最顶端的距离-nodeHeight-节点自身的高度-gt-scrollTop-页面的滚动的距离"><a href="#2-offsetTop-节点距离最顶端的距离-nodeHeight-节点自身的高度-gt-scrollTop-页面的滚动的距离" class="headerlink" title="2. offsetTop(节点距离最顶端的距离)+nodeHeight(节点自身的高度)&gt;scrollTop(页面的滚动的距离)"></a>2. offsetTop(节点距离最顶端的距离)+nodeHeight(节点自身的高度)&gt;scrollTop(页面的滚动的距离)</h6><p>将它转化为代码表示为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function isShow($node)&#123;</div><div class="line">		var windowHeight=$(window).height(),</div><div class="line">			scrollTop=$(window).scrollTop(),</div><div class="line">			offsetTop=$node.offset().top,</div><div class="line">			nodeHeight=$node.height();</div><div class="line"></div><div class="line">		if(windowHeight+scrollTop&gt;offsetTop &amp;&amp; scrollTop&lt;offsetTop+nodeHeight)&#123;</div><div class="line">			return true</div><div class="line">		&#125;else&#123;</div><div class="line">			return false</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li>确定加载图片时间</li>
-</ul>
-<p>这个问题和第一个问题是紧密相连的，其实当确定节点只要显示在浏览器上，就可以确定加载图片的时间，代码展示为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(window).on(&quot;scroll&quot;,function()&#123;</div><div class="line">		$(&quot;.list img&quot;).each(function()&#123;</div><div class="line">			if(isShow($(this)))&#123;</div><div class="line">				showImg($(this))</div><div class="line">			&#125;</div><div class="line">		&#125;)</div><div class="line">	&#125;)</div></pre></td></tr></table></figure></p>
-<p>这样就完成了图片的懒加载<br><a href="http://js.jirengu.com/xixi/1/edit?output" target="_blank" rel="external">图片懒加载</a></p>
-<p>这个demo在每次进行滚动的时候都会监听所有的图片，这样导致大量无意义的工作，所以我们要优化一下，我们可以在每一个加载完成的图片上添加一个class名，当滚动的时候会跳过这些带有class名的图片，这样就大大简化了浏览器的工作量</p>
-<p>这个就需要自己动手完成了</p>
-<p>当然我们可以扩展成为一个新闻的懒加载：</p>
-<p><a href="http://js.jirengu.com/xiwu/1/" target="_blank" rel="external">新闻懒加载</a><br><a href="http://js.jirengu.com/xiwu/1/edit?html,js" target="_blank" rel="external">新闻懒加载代码</a></p>
-<h5 id="结语："><a href="#结语：" class="headerlink" title="结语："></a>结语：</h5><p>懒加载说简单也仅仅是简单的几行代码，可是里面所牵扯的数字问题对于我来说，还是有一定的复杂度在里面，努力的学习就是进步，为自己加油！！！</p>
+        <h2 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h2><h3 id="二进制和八进制的表示法"><a href="#二进制和八进制的表示法" class="headerlink" title="二进制和八进制的表示法"></a>二进制和八进制的表示法</h3><ol>
+<li>ES6提供了八进制和二进制数值的新鞋发，分别用前缀0b和0o表示。</li>
+<li>ES6进一步明确，八进制不在允许使用前缀0表示，要使用0o表示。</li>
+<li><p>要将八进制和二进制转化为十进制的话，请使用Number方法。</p>
+<a id="more"></a>
+<h3 id="Number-isFinite-Number-isNaN"><a href="#Number-isFinite-Number-isNaN" class="headerlink" title="Number.isFinite,Number.isNaN()"></a>Number.isFinite,Number.isNaN()</h3><p>####Number.isFinite<br>此方法是用来检测这个值是否非无穷</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Number.isFinite(15)//true</div><div class="line">Number.isFinite(Infinity)//false</div></pre></td></tr></table></figure>
+<h4 id="Number-isNaN用来检测这个值是否为NaN"><a href="#Number-isNaN用来检测这个值是否为NaN" class="headerlink" title="Number.isNaN用来检测这个值是否为NaN"></a>Number.isNaN用来检测这个值是否为NaN</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Number.isNaN(NaN)//true</div><div class="line">Number.isNaN(13)//false</div><div class="line">Number.isNaN(9/NaN)//true</div></pre></td></tr></table></figure>
+<p>这两个新方法与传统的全局方法isFinite()和isNaN()区别在于，传统方法需要先调用Nimber()将非数值转化为数值，在进行判断，而新方法只对数值有效，对于非数值一律返回false。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">isFinite(25)//true</div><div class="line">isFinite(&apos;25&apos;)//true</div><div class="line">Number.isFinite(25)//true</div><div class="line">Number.isFinite(&apos;25&apos;)//false</div><div class="line"></div><div class="line">isNaN(NaN)//true</div><div class="line">isNaN(&apos;NaN&apos;)//true</div><div class="line">Number.isNaN(NaN)//true</div><div class="line">Number.isNaN(&apos;NaN&apos;)//false</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Number-isInterger"><a href="#Number-isInterger" class="headerlink" title="Number.isInterger"></a>Number.isInterger</h3><p>这个方法用来判断一个值是否为整数。需要注意，在Javascript内部，整数和浮点数使用同样的储存方式，所以3和3.0是同一个值。</p>
+<h3 id="Number-EPSILON"><a href="#Number-EPSILON" class="headerlink" title="Number.EPSILON"></a>Number.EPSILON</h3><p>这个方法是为Number对象上添加了一个极小的常量。引入一个极小的常量是用来浮点数计算中设置一个误差范围，我们知道浮点数计算是不正确的。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">0.1+0.2</div><div class="line">//0.3000000000000004</div><div class="line"></div><div class="line">0.1 + 0.2 - 0.3</div><div class="line">//5.551115123125783e-17</div><div class="line"></div><div class="line">console.log(5.551115123125783-17 &lt; Number.EPSILON)</div><div class="line">//true</div></pre></td></tr></table></figure></p>
+<p> 因此，Number.EPSILON的实质是一个可以接受的误差范围。</p>
+<h3 id="安全整数和Number-isSafeInteger"><a href="#安全整数和Number-isSafeInteger" class="headerlink" title="安全整数和Number.isSafeInteger()"></a>安全整数和Number.isSafeInteger()</h3><p>javaScript能够准确的表示的整数范围在-2^{53}到2^{53}之间（不含两个端点）,超过这个范围就无法精确表示。<br>ES6引入了Number.MAX_SAFE_INTEGER和Number.MIN_SAFE_INTEGER两个常量，用来表示这个范围的上下限。<br>Number.isSafeInteger()则用来判断一个整数是否落在这个范围内<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Number.isSafeInteger(NaN)//false</div><div class="line">Number.isSafeInteger(1.2)//false</div><div class="line">Number.isSafeInteger(Number_MAX_SAFE_INTEGER)//true</div></pre></td></tr></table></figure></p>
+<p>注意，验证运算结果是否落在安全整数的范围内，不要只验证运算结果，而要同时验证参与运算的每一个值。</p>
 
       
     </div>
@@ -546,7 +530,9 @@
           
             <a href="/tags/前端/" rel="tag"># 前端</a>
           
-            <a href="/tags/Jquery/" rel="tag"># Jquery</a>
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
           
         </div>
       
@@ -559,8 +545,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/20/React入门指南2/" rel="next" title="React入门指南2">
-                <i class="fa fa-chevron-left"></i> React入门指南2
+              <a href="/2017/08/02/React的组件渲染/" rel="next" title="React的组件渲染">
+                <i class="fa fa-chevron-left"></i> React的组件渲染
               </a>
             
           </div>
@@ -568,10 +554,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/24/深入浅出CSS动画/" rel="prev" title="深入浅出CSS动画">
-                深入浅出CSS动画 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -691,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#懒加载的原理"><span class="nav-number">2.</span> <span class="nav-text">懒加载的原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如何实现懒加载"><span class="nav-number">3.</span> <span class="nav-text">如何实现懒加载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如何加载图片"><span class="nav-number">4.</span> <span class="nav-text">如何加载图片</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-windowHeight-浏览器的高度-scrollTop-页面的滚动的距离-gt-offsetTop-节点距离最顶端的距离"><span class="nav-number">4.1.</span> <span class="nav-text">1. windowHeight(浏览器的高度)+scrollTop(页面的滚动的距离)>offsetTop(节点距离最顶端的距离)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-offsetTop-节点距离最顶端的距离-nodeHeight-节点自身的高度-gt-scrollTop-页面的滚动的距离"><span class="nav-number">4.2.</span> <span class="nav-text">2. offsetTop(节点距离最顶端的距离)+nodeHeight(节点自身的高度)>scrollTop(页面的滚动的距离)</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结语："><span class="nav-number">5.</span> <span class="nav-text">结语：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数值的扩展"><span class="nav-number">1.</span> <span class="nav-text">数值的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二进制和八进制的表示法"><span class="nav-number">1.1.</span> <span class="nav-text">二进制和八进制的表示法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-isFinite-Number-isNaN"><span class="nav-number">1.2.</span> <span class="nav-text">Number.isFinite,Number.isNaN()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Number-isNaN用来检测这个值是否为NaN"><span class="nav-number">1.2.1.</span> <span class="nav-text">Number.isNaN用来检测这个值是否为NaN</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-isInterger"><span class="nav-number">1.3.</span> <span class="nav-text">Number.isInterger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-EPSILON"><span class="nav-number">1.4.</span> <span class="nav-text">Number.EPSILON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全整数和Number-isSafeInteger"><span class="nav-number">1.5.</span> <span class="nav-text">安全整数和Number.isSafeInteger()</span></a></li></ol></li></ol></div>
             
 
           </div>
