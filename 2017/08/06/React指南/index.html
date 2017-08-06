@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,技术,翻译," />
+  <meta name="keywords" content="前端,ES6,技术,React," />
 
 
 
@@ -87,19 +87,31 @@
 
 
 
-<meta name="description" content="闭包到底是如何工作的？文章来源自Stack Overflow网站上，Aaron Hall提问的问题，这里重点讲的是回答中得票数最高的一个人的答案，希望能够帮助大家更好的了解到闭包的作用，当然，有些语法和翻译上会有些错误，可以向我指出。本人的邮箱:aleenli1992@gmail.com
-原问题：你怎么给一个有一些JS基础的，知道一点闭包概念的包括（函数，变量，诸如此类）的人，去解释JS中的闭包这">
+<meta name="description" content="事件处理
+React元素的事件处理和DOM元素很相似，但是有一点语法上的不同。
+React事件绑定的命名一般采用驼峰式写法，而不是小写。
+如果采用JSX的语法，需要传入一个函数作为事件处理函数，而不是一个字符串，DOM元素的写法。
+
+代码：123&amp;lt;button onClick = &amp;#123;activateLasers&amp;#125;&amp;gt;	Actirate Lasers&amp;lt;/butto">
 <meta property="og:type" content="article">
-<meta property="og:title" content="闭包到底是如何工作的？">
-<meta property="og:url" content="http://yoursite.com/2017/06/21/闭包到底是如何工作的？/index.html">
+<meta property="og:title" content="React的事件处理">
+<meta property="og:url" content="http://yoursite.com/2017/08/06/React指南/index.html">
 <meta property="og:site_name" content="李子豪的前端自习室">
-<meta property="og:description" content="闭包到底是如何工作的？文章来源自Stack Overflow网站上，Aaron Hall提问的问题，这里重点讲的是回答中得票数最高的一个人的答案，希望能够帮助大家更好的了解到闭包的作用，当然，有些语法和翻译上会有些错误，可以向我指出。本人的邮箱:aleenli1992@gmail.com
-原问题：你怎么给一个有一些JS基础的，知道一点闭包概念的包括（函数，变量，诸如此类）的人，去解释JS中的闭包这">
-<meta property="og:updated_time" content="2017-06-21T14:17:33.000Z">
+<meta property="og:description" content="事件处理
+React元素的事件处理和DOM元素很相似，但是有一点语法上的不同。
+React事件绑定的命名一般采用驼峰式写法，而不是小写。
+如果采用JSX的语法，需要传入一个函数作为事件处理函数，而不是一个字符串，DOM元素的写法。
+
+代码：123&amp;lt;button onClick = &amp;#123;activateLasers&amp;#125;&amp;gt;	Actirate Lasers&amp;lt;/butto">
+<meta property="og:updated_time" content="2017-08-06T15:22:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="闭包到底是如何工作的？">
-<meta name="twitter:description" content="闭包到底是如何工作的？文章来源自Stack Overflow网站上，Aaron Hall提问的问题，这里重点讲的是回答中得票数最高的一个人的答案，希望能够帮助大家更好的了解到闭包的作用，当然，有些语法和翻译上会有些错误，可以向我指出。本人的邮箱:aleenli1992@gmail.com
-原问题：你怎么给一个有一些JS基础的，知道一点闭包概念的包括（函数，变量，诸如此类）的人，去解释JS中的闭包这">
+<meta name="twitter:title" content="React的事件处理">
+<meta name="twitter:description" content="事件处理
+React元素的事件处理和DOM元素很相似，但是有一点语法上的不同。
+React事件绑定的命名一般采用驼峰式写法，而不是小写。
+如果采用JSX的语法，需要传入一个函数作为事件处理函数，而不是一个字符串，DOM元素的写法。
+
+代码：123&amp;lt;button onClick = &amp;#123;activateLasers&amp;#125;&amp;gt;	Actirate Lasers&amp;lt;/butto">
 
 
 
@@ -127,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/21/闭包到底是如何工作的？/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/06/React指南/"/>
 
 
 
 
 
-  <title> 闭包到底是如何工作的？ | 李子豪的前端自习室 </title>
+  <title> React的事件处理 | 李子豪的前端自习室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -414,7 +426,7 @@
             
             
               
-                闭包到底是如何工作的？
+                React的事件处理
               
             
           </h1>
@@ -429,8 +441,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-21T20:42:49+08:00">
-                2017-06-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-06T22:58:18+08:00">
+                2017-08-06
               </time>
             
 
@@ -447,7 +459,7 @@
 
           
           
-             <span id="/2017/06/21/闭包到底是如何工作的？/" class="leancloud_visitors" data-flag-title="闭包到底是如何工作的？">
+             <span id="/2017/08/06/React指南/" class="leancloud_visitors" data-flag-title="React的事件处理">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -476,22 +488,22 @@
       
 
       
-        <h4 id="闭包到底是如何工作的？"><a href="#闭包到底是如何工作的？" class="headerlink" title="闭包到底是如何工作的？"></a>闭包到底是如何工作的？</h4><p>文章来源自Stack Overflow网站上，Aaron Hall提问的问题，这里重点讲的是回答中得票数最高的一个人的答案，希望能够帮助大家更好的了解到闭包的作用，当然，有些语法和翻译上会有些错误，可以向我指出。<br>本人的邮箱:aleenli1992@gmail.com</p>
-<h4 id="原问题："><a href="#原问题：" class="headerlink" title="原问题："></a>原问题：</h4><p>你怎么给一个有一些JS基础的，知道一点闭包概念的包括（函数，变量，诸如此类）的人，去解释JS中的闭包这个概念呢？</p>
-<p>我也看过一些维基百科中的例子，但是很不幸，那一点用处也没有。</p>
-<h4 id="回答者：flying-sheep"><a href="#回答者：flying-sheep" class="headerlink" title="回答者：flying sheep"></a>回答者：flying sheep</h4><h5 id="闭包并不神奇"><a href="#闭包并不神奇" class="headerlink" title="闭包并不神奇"></a>闭包并不神奇</h5><p>这篇文章是使用JS的代码去解释闭包以便程序员去理解他，并不是针对于一些大师和专业的开发者。</p>
-<p>一旦你挖掘了核心概念的话，闭包会很容易理解。无论如何，如果你想要通过一些专业的论文，或者是学术性质的文章去理解他的话，我只能说那是不可能的。</p>
-<p>这篇文章适合有主流编程语言经验的程序员，那种呢？就是看的懂下面这行代码的那种：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">name</span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> text = <span class="string">'hello'</span> + name</div><div class="line"> <span class="keyword">var</span> say = <span class="function"><span class="keyword">function</span> </span>&#123; <span class="built_in">console</span>.log(text) &#125;</div><div class="line"> say()</div><div class="line">&#125;</div><div class="line">sayHello(<span class="string">'joe'</span>)</div></pre></td></tr></table></figure>
-<h5 id="一个闭包的例子："><a href="#一个闭包的例子：" class="headerlink" title="一个闭包的例子："></a>一个闭包的例子：</h5><p> 两句话总结：</p>
-<ol>
-<li>闭包是支持一级函数的一种方式，他是一个表达式，可以引用该作用域内的变量（当它被首次声明时），将它分配给一个变量，或者传递成一个函数的参数，或者作为一个函数结果返回。</li>
-<li>当一个函数开始执行的时候，闭包是一个被分配的栈帧，并且函数的返回值不会被限制。栈帧的意思是指一个函数调用单独分配的那部分栈空间。（就好像一个栈帧被分配在堆中，并不是在栈中）.</li>
-</ol>
-<p>下面代码返回的是一个函数的引用</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">sayHello2</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> text = <span class="string">'Hello '</span> + name; <span class="comment">// 局部变量</span></div><div class="line">  <span class="keyword">var</span> say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(text); &#125;</div><div class="line">  <span class="keyword">return</span> say;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> say2 = sayHello2(<span class="string">'Bob'</span>);</div><div class="line">say2(); <span class="comment">// logs "Hello Bob"</span></div></pre></td></tr></table></figure>
-<p>大部分的JS程序员都明白上面的代码里，如何将对函数的应用返回到变量（say2）上。如果你不明白的话，你最好搞懂这个再来学习闭包。如果一个程序员使用C语言的话，他会思考函数的返回值是指向这个函数的，并且变量say和say2都是执行同一个函数。</p>
-
+        <h3 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h3><ul>
+<li>React元素的事件处理和DOM元素很相似，但是有一点语法上的不同。</li>
+<li>React事件绑定的命名一般采用驼峰式写法，而不是小写。</li>
+<li>如果采用JSX的语法，需要传入一个函数作为事件处理函数，而不是一个字符串，DOM元素的写法。</li>
+</ul>
+<p>代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;button onClick = &#123;activateLasers&#125;&gt;</div><div class="line">	Actirate Lasers</div><div class="line">&lt;/button&gt;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>在React中，另一个不同是你能使用false的方式阻止默认行为，你必须明确使用preventDefault，例如，传统HTML中阻止案件默认打开一个新页面。<br>代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ActionLink</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">  e.preventDefault()</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'the Link was click'</span>)</div><div class="line"> &#125;</div><div class="line">  <span class="keyword">return</span> (</div><div class="line"> &lt;a href="#" onClick=&#123;handleClcik&#125;&gt;</div><div class="line"> 	ClickMe</div><div class="line"> &lt;/a&gt;</div><div class="line">  	)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用React的时候通常不需要使用addEventListener，为一个已创建的DOM元素添加监听器，你仅仅需要在这个元素出事渲染的时候添加一个监听器。</p>
+<p>一个Toggle组件渲染一个让用户切换开关状态的按钮。</p>
+<p>你必须谨慎对待，JSX回调函数中的this类的方法默认是不会绑定this的，如果你忘记绑定this.handleClick，并把它传入onClick中，当你调用这个函数的时候this值是undefined。</p>
+<p>这是函数如何在JS运行的一部分，通常情况下，如果你没在方法后面添加()，例如，onClick={this.handleClick}，你应该为这个方法绑定this。</p>
+<h3 id="事件渲染"><a href="#事件渲染" class="headerlink" title="事件渲染"></a>事件渲染</h3><p>在React，你可以创建不同的组件来封装各种你你需要的行为，然后根据应用的状态变化只渲染其中的一部分。</p>
+<p>React条件渲染也是用JS操作符，或是条件操作符。<br>先来看两个组件：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">UserGreeting</span>(<span class="params">props</span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> &lt;h1&gt;Welcome&lt;/h1&gt;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">GuestGreeting</span>(<span class="params">props</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> &lt;h1&gt;Please sign up &lt;/h1&gt;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们将创建一个Greeting组件，他会根据用户是否登录显示其中之一。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Greeting</span>(<span class="params">props</span>)</span>&#123;</div><div class="line">	<span class="keyword">const</span> isLoggedIn = props.isLoggedIn</div><div class="line">	<span class="keyword">if</span>(isLoggedIn)&#123;</div><div class="line">		<span class="keyword">return</span> &lt;UserGreeting /&gt;</div><div class="line">	&#125;else&#123;</div><div class="line">		return &lt;GuestGreeting /&gt;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -522,9 +534,11 @@
           
             <a href="/tags/前端/" rel="tag"># 前端</a>
           
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
+          
             <a href="/tags/技术/" rel="tag"># 技术</a>
           
-            <a href="/tags/翻译/" rel="tag"># 翻译</a>
+            <a href="/tags/React/" rel="tag"># React</a>
           
         </div>
       
@@ -537,8 +551,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/20/关于array的计算，全在这里/" rel="next" title="关于array的计算，全在这里">
-                <i class="fa fa-chevron-left"></i> 关于array的计算，全在这里
+              <a href="/2017/08/03/ES6入门指南-0/" rel="next" title="第八章：有关于数值">
+                <i class="fa fa-chevron-left"></i> 第八章：有关于数值
               </a>
             
           </div>
@@ -546,10 +560,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/21/如何从异步调用ajax的返回值问题？/" rel="prev" title="如何从异步调用ajax的返回值问题？">
-                如何从异步调用ajax的返回值问题？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -669,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包到底是如何工作的？"><span class="nav-number">1.</span> <span class="nav-text">闭包到底是如何工作的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原问题："><span class="nav-number">2.</span> <span class="nav-text">原问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回答者：flying-sheep"><span class="nav-number">3.</span> <span class="nav-text">回答者：flying sheep</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#闭包并不神奇"><span class="nav-number">3.1.</span> <span class="nav-text">闭包并不神奇</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一个闭包的例子："><span class="nav-number">3.2.</span> <span class="nav-text">一个闭包的例子：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件处理"><span class="nav-number">1.</span> <span class="nav-text">事件处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件渲染"><span class="nav-number">2.</span> <span class="nav-text">事件渲染</span></a></li></ol></div>
             
 
           </div>
