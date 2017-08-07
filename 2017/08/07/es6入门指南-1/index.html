@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="前端,ES6,技术," />
 
 
 
@@ -87,12 +87,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="李子豪的前端自习室">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta name="description" content="什么是Object.assign()?Object.assign()方法是用来将原对象（source）的所有课枚举属性复制到目标对象(target)。它至少有两个对象作为参数，第一个参数是目标对象，后面的参数都是原对象。只要有一个参数不是对象，就会抛出TypeError错误。如果目标对象与源对象有同名属性，或多个源对象有同名属性的话，则后面的属性就会覆盖前面的属性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第九章：Object.assign()是什么？">
+<meta property="og:url" content="http://yoursite.com/2017/08/07/es6入门指南-1/index.html">
 <meta property="og:site_name" content="李子豪的前端自习室">
+<meta property="og:description" content="什么是Object.assign()?Object.assign()方法是用来将原对象（source）的所有课枚举属性复制到目标对象(target)。它至少有两个对象作为参数，第一个参数是目标对象，后面的参数都是原对象。只要有一个参数不是对象，就会抛出TypeError错误。如果目标对象与源对象有同名属性，或多个源对象有同名属性的话，则后面的属性就会覆盖前面的属性。">
+<meta property="og:updated_time" content="2017-08-07T15:53:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李子豪的前端自习室">
+<meta name="twitter:title" content="第九章：Object.assign()是什么？">
+<meta name="twitter:description" content="什么是Object.assign()?Object.assign()方法是用来将原对象（source）的所有课枚举属性复制到目标对象(target)。它至少有两个对象作为参数，第一个参数是目标对象，后面的参数都是原对象。只要有一个参数不是对象，就会抛出TypeError错误。如果目标对象与源对象有同名属性，或多个源对象有同名属性的话，则后面的属性就会覆盖前面的属性。">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/07/es6入门指南-1/"/>
 
 
 
 
 
-  <title> 归档 | 李子豪的前端自习室 </title>
+  <title> 第九章：Object.assign()是什么？ | 李子豪的前端自习室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -151,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -385,402 +389,165 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-    <span class="archive-page-counter">
-      
-      
-       
-      
-      OK! 目前共计 47 篇日志。 继续努力。
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+      <meta itemprop="name" content="李子豪的前端自习室">
     </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                第九章：Object.assign()是什么？
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T23:38:02+08:00">
+                2017-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/07/es6入门指南-1/" class="leancloud_visitors" data-flag-title="第九章：Object.assign()是什么？">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
-      
 
+      
+        <h3 id="什么是Object-assign"><a href="#什么是Object-assign" class="headerlink" title="什么是Object.assign()?"></a>什么是Object.assign()?</h3><p>Object.assign()方法是用来将原对象（source）的所有课枚举属性复制到目标对象(target)。它至少有两个对象作为参数，第一个参数是目标对象，后面的参数都是原对象。只要有一个参数不是对象，就会抛出TypeError错误。<br>如果目标对象与源对象有同名属性，或多个源对象有同名属性的话，则后面的属性就会覆盖前面的属性。<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> target=&#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;</div><div class="line"><span class="keyword">var</span> source1 = &#123;<span class="attr">b</span>:<span class="number">2</span>,<span class="attr">c</span>:<span class="number">2</span>&#125;</div><div class="line"><span class="keyword">var</span> source2 = &#123;<span class="attr">c</span>:<span class="number">3</span>&#125;</div><div class="line"></div><div class="line">object.assign(target,source1,source2)</div><div class="line">target<span class="comment">//&#123;a:1,b:2,c:3&#125;</span></div></pre></td></tr></table></figure></p>
+<p>object.assign()支付至自身属性，不可枚举的对象(emumerable=false)和继承的属性不会被复制。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">object.assign(&#123;<span class="attr">b</span>:c&#125;,</div><div class="line"> object.defineProperty(&#123;&#125;,<span class="string">'invisible'</span>,&#123;</div><div class="line"> 	<span class="attr">value</span>:<span class="string">'hello'</span></div><div class="line"> &#125;)</div><div class="line">)</div><div class="line"><span class="comment">//&#123;b:c&#125;</span></div></pre></td></tr></table></figure></p>
+<p>上述代码中，Object.assign要复制的对象只有一个不可枚举的invisible，这个属性并没有复制进去。当属性名为Symbol值得属性，也会被Object.assign()复制。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.assign(&#123;<span class="attr">a</span>:<span class="string">'b'</span>&#125;,&#123;[<span class="built_in">Symbol</span>(<span class="string">'c'</span>)]:<span class="string">'d'</span>&#125;)</div><div class="line"><span class="comment">//&#123;a:'b',Symbol(c):'d'&#125;</span></div></pre></td></tr></table></figure></p>
+<h4 id="关于嵌套的对象"><a href="#关于嵌套的对象" class="headerlink" title="关于嵌套的对象"></a>关于嵌套的对象</h4><p>关于嵌套的对象，Object.assign的处理方式是替换，而不是叠加。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> target =&#123;<span class="attr">a</span>:&#123;<span class="attr">b</span>:<span class="string">'c'</span>,<span class="attr">d</span>:e&#125;&#125;</div><div class="line"><span class="keyword">var</span> soucce = &#123;<span class="attr">a</span>:&#123;<span class="attr">b</span>:<span class="string">'hello'</span>&#125;&#125;</div><div class="line">object.assign(target,soucce)</div><div class="line"><span class="comment">//&#123;a:&#123;b:'hello'&#125;&#125;</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
       
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
         </div>
       
+
+      
+        
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/06/React指南/" rel="next" title="React的事件处理">
+                <i class="fa fa-chevron-left"></i> React的事件处理
+              </a>
+            
+          </div>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          <span class="post-nav-divider"></span>
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/07/es6入门指南-1/" itemprop="url">
-              
-                <span itemprop="name">第九章：Object.assign()是什么？</span>
-              
-            </a>
-        
-      </h1>
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-07T23:38:02+08:00"
-              content="2017-08-07" >
-          08-07
-        </time>
-      </div>
-
-    </header>
+      
+      
+    </footer>
   </article>
 
 
 
-    
-
+    <div class="post-spread">
       
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/06/React指南/" itemprop="url">
-              
-                <span itemprop="name">React的事件处理</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-06T22:58:18+08:00"
-              content="2017-08-06" >
-          08-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/03/ES6入门指南-0/" itemprop="url">
-              
-                <span itemprop="name">第八章：有关于数值</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-03T22:53:37+08:00"
-              content="2017-08-03" >
-          08-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/02/React的组件渲染/" itemprop="url">
-              
-                <span itemprop="name">React的组件渲染</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-02T23:14:52+08:00"
-              content="2017-08-02" >
-          08-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/01/React笔记/" itemprop="url">
-              
-                <span itemprop="name">React中的JSX不完全解析</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-01T22:08:39+08:00"
-              content="2017-08-01" >
-          08-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/31/es6入门指南-5/" itemprop="url">
-              
-                <span itemprop="name">第七章：关于解构赋值其他方面</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-31T22:30:11+08:00"
-              content="2017-07-31" >
-          07-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/30/es6入门指南-4/" itemprop="url">
-              
-                <span itemprop="name">第六章：Promise的应用</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-30T22:05:20+08:00"
-              content="2017-07-30" >
-          07-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/29/es6入门指南-3/" itemprop="url">
-              
-                <span itemprop="name">第五章：关于Promise？</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-29T11:23:28+08:00"
-              content="2017-07-29" >
-          07-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/28/es6入门指南-2/" itemprop="url">
-              
-                <span itemprop="name">第四章：模板字符串</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-28T23:06:56+08:00"
-              content="2017-07-28" >
-          07-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/26/es6入门指南/" itemprop="url">
-              
-                <span itemprop="name">第二章：解构赋值</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-26T22:27:26+08:00"
-              content="2017-07-26" >
-          07-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
+    </div>
+  </div>
 
 
           </div>
@@ -788,6 +555,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -807,8 +578,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -861,6 +641,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Object-assign"><span class="nav-number">1.</span> <span class="nav-text">什么是Object.assign()?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于嵌套的对象"><span class="nav-number">1.1.</span> <span class="nav-text">关于嵌套的对象</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -969,11 +765,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
 
 
   
