@@ -410,8 +410,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/08/07/es6入门指南-1/" itemprop="url">
-                  第九章：Object.assign()是什么？
+                <a class="post-title-link" href="/2017/08/08/es6入门指南-1/" itemprop="url">
+                  第十章：Object.assign的用法
                 </a>
               
             
@@ -427,8 +427,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T23:38:02+08:00">
-                2017-08-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-08T22:54:43+08:00">
+                2017-08-08
               </time>
             
 
@@ -445,7 +445,7 @@
 
           
           
-             <span id="/2017/08/07/es6入门指南-1/" class="leancloud_visitors" data-flag-title="第九章：Object.assign()是什么？">
+             <span id="/2017/08/08/es6入门指南-1/" class="leancloud_visitors" data-flag-title="第十章：Object.assign的用法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -475,14 +475,24 @@
 
       
         
-          <h3 id="什么是Object-assign"><a href="#什么是Object-assign" class="headerlink" title="什么是Object.assign()?"></a>什么是Object.assign()?</h3><p>Object.assign()方法是用来将原对象（source）的所有课枚举属性复制到目标对象(target)。它至少有两个对象作为参数，第一个参数是目标对象，后面的参数都是原对象。只要有一个参数不是对象，就会抛出TypeError错误。<br>如果目标对象与源对象有同名属性，或多个源对象有同名属性的话，则后面的属性就会覆盖前面的属性。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/07/es6入门指南-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>object.assign方法的用处</p>
+<h4 id="为对象添加属性"><a href="#为对象添加属性" class="headerlink" title="为对象添加属性"></a>为对象添加属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span></span>&#123;</div><div class="line">	consturctor(x,y)&#123;</div><div class="line">		object.assign(<span class="keyword">this</span>,&#123;x,y&#125;)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个方法通过assign方法将x属性和y属性天爱到了Point类的对象实例。</p>
+<h4 id="为对象添加方法"><a href="#为对象添加方法" class="headerlink" title="为对象添加方法"></a>为对象添加方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.assign(SomeClass.prototype,&#123;</div><div class="line">	someMethod()&#123;</div><div class="line">		...</div><div class="line">	&#125;,</div><div class="line">	anotherMethod()&#123;</div><div class="line">		...</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>等同于：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">someClass.prototype.someMethod = <span class="function"><span class="keyword">function</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	...</div><div class="line">&#125;;</div><div class="line">someClass.prototype.antherMethod = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	...</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>上面的代码使用了对象属性的简洁表示法，直接将两个函数放在大括号中，再使用assign方法添加到someClass.prototype中。</p>
+<h4 id="克隆对象"><a href="#克隆对象" class="headerlink" title="克隆对象"></a>克隆对象</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params">origin</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;, origin)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码是将原始对象复制到一个空对象，就得到了原始对象的克隆。<br>不过采用这种方法克隆，只能克隆院士对象自身的值，不能克隆他继承的值。如果想要保持继承链，可以采用下面的代码。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params">origin</span>)</span>&#123;</div><div class="line">	<span class="keyword">let</span> originProto = <span class="built_in">Object</span>.getPrototypeOf(origin);</div><div class="line">	<span class="keyword">return</span> <span class="built_in">Object</span>.assign(<span class="built_in">Object</span>.create(originProto),origin)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="合并多个对象"><a href="#合并多个对象" class="headerlink" title="合并多个对象"></a>合并多个对象</h4><p>将多个对象合并到某个对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> merge = </div><div class="line">	<span class="function">(<span class="params">target,...sourcrs</span>) =&gt;</span> <span class="built_in">Object</span>.assign(target,...suorces)</div></pre></td></tr></table></figure>
+<p>如果希望合并后返回一个新对象，可以改写上面的函数，对一个空对象合并。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> merge = </div><div class="line">	<span class="function">(<span class="params">...sources</span>) =&gt;</span> <span class="built_in">Object</span>.assign(&#123;&#125;,...sources)</div></pre></td></tr></table></figure>
+<h4 id="为属性指定默认值"><a href="#为属性指定默认值" class="headerlink" title="为属性指定默认值"></a>为属性指定默认值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> DEFAULTS = &#123;</div><div class="line">	<span class="attr">logLevel</span>:<span class="number">0</span>,</div><div class="line">	<span class="attr">outputFormat</span>: <span class="string">'html'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">processContent</span>(<span class="params">options</span>)</span>&#123;</div><div class="line">	<span class="keyword">let</span> options = <span class="built_in">Object</span>.assign(&#123;&#125;,DEFAULTS,options)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码制定DEFAULTS是一个默认的对象，options对像是用户提供的参数，Object.assign方法将DEFAULTS和options合并成一个新对象，如果两者有同名属性，那么option的属性就会覆盖掉DEFAUTLTS的属性值</p>
+<p>值得注意的是，由于存在深拷贝的问题，DEFAULTS对象和options对象所有的属性的值只能是简单类型，而不是指向另一个对象，佛泽，将导致DEFAULTS对象的该属性不起作用。</p>
+
+          
         
       
     </div>
