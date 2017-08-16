@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="前端,技术,React," />
 
 
 
@@ -87,13 +87,28 @@
 
 
 
+<meta name="description" content="React-Router-v4(简称RR4)早已经正式发布，他遵循着React的设计理念，即万物皆组件,RR4只是提供了一大堆的导航功能的组件，具有声明式，可组合性的特点，RR4本次采用了单代码仓库模型架构，这意味着有若干个相互独立的包。他们分别是
+
+React-router RR4核心
+React-router-dom 用于DOM绑定的React Router
+React-router-nati">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React-Router-v4">
 <meta property="og:url" content="http://yoursite.com/2017/08/16/React-Router-v4/index.html">
 <meta property="og:site_name" content="李子豪的前端自习室">
-<meta property="og:updated_time" content="2017-08-16T15:32:32.000Z">
+<meta property="og:description" content="React-Router-v4(简称RR4)早已经正式发布，他遵循着React的设计理念，即万物皆组件,RR4只是提供了一大堆的导航功能的组件，具有声明式，可组合性的特点，RR4本次采用了单代码仓库模型架构，这意味着有若干个相互独立的包。他们分别是
+
+React-router RR4核心
+React-router-dom 用于DOM绑定的React Router
+React-router-nati">
+<meta property="og:updated_time" content="2017-08-16T15:41:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React-Router-v4">
+<meta name="twitter:description" content="React-Router-v4(简称RR4)早已经正式发布，他遵循着React的设计理念，即万物皆组件,RR4只是提供了一大堆的导航功能的组件，具有声明式，可组合性的特点，RR4本次采用了单代码仓库模型架构，这意味着有若干个相互独立的包。他们分别是
+
+React-router RR4核心
+React-router-dom 用于DOM绑定的React Router
+React-router-nati">
 
 
 
@@ -470,7 +485,17 @@
       
 
       
-        
+        <p>React-Router-v4(简称RR4)早已经正式发布，他遵循着React的设计理念，即万物皆组件,RR4只是提供了一大堆的导航功能的组件，具有声明式，可组合性的特点，RR4本次采用了单代码仓库模型架构，这意味着有若干个相互独立的包。<br>他们分别是</p>
+<ul>
+<li>React-router RR4核心</li>
+<li>React-router-dom 用于DOM绑定的React Router</li>
+<li>React-router-native 用于React Native 的Router</li>
+<li>React-router-redux React Router和Redux的集成</li>
+<li>React-router-config 静态路由配置助手<a id="more"></a>
+</li>
+</ul>
+<p><b>一般我们只需要引用react-router-dom这个包就行了，当然，如果要搭配redux，你就需要使用react-router-redux</b></p>
+<h4 id="React-router一些重要的API"><a href="#React-router一些重要的API" class="headerlink" title="React-router一些重要的API"></a>React-router一些重要的API</h4>
       
     </div>
 
@@ -496,6 +521,16 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+        </div>
       
 
       
@@ -561,8 +596,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -615,6 +659,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#React-router一些重要的API"><span class="nav-number">1.</span> <span class="nav-text">React-router一些重要的API</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
