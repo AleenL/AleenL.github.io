@@ -410,6 +410,142 @@
             
               
                 
+                <a class="post-title-link" href="/2017/08/18/React-Route-v4的一些API-2/" itemprop="url">
+                  React-Route-v4的一些API(2)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-18T23:30:17+08:00">
+                2017-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/18/React-Route-v4的一些API-2/" class="leancloud_visitors" data-flag-title="React-Route-v4的一些API(2)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>昨天我们已经讲了RR4最重要的组件<route>，今天我们将接触到一个也很重要的组件，<link></route></p>
+<h3 id=""><a href="#" class="headerlink" title=""></a><link></h3><p>为你的应用提供声明式，无障碍导航。</p>
+<h4 id="to"><a href="#to" class="headerlink" title="to"></a>to</h4><ul>
+<li>to:string<br>作用：跳转到指定路径<br>使用场景：如果只是单纯的就直接用字符串形式的路径<br><code>&lt;Link to=&#39;/courser&#39; /&gt;</code></li>
+<li>to:object<br>作用：携带参数跳转指定路径<br>使用场景：比如你点击的这个链接将要跳转的页面需要展示此链接对应的内容，又比如这是个支付跳转，需要把商品价格等信息传递过去。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;Link to=&#123;&#123;</div><div class="line">	<span class="attr">pathname</span>:<span class="string">'/course'</span>,</div><div class="line">	<span class="attr">search</span>:<span class="string">'?sort=name'</span>,</div><div class="line">	<span class="attr">state</span>:&#123;<span class="attr">price</span>:<span class="number">18</span>&#125;</div><div class="line">&#125;&#125;/&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="replace-bool"><a href="#replace-bool" class="headerlink" title="replace:bool"></a>replace:bool</h4><p>当replace为true的时候，点击链接后将使用新地址替换掉上一次访问的地址，如果我们一次访问’/one’,’/two’,’/three’,’/four’这四个地址，如果回退，将一次回退至’/three’,’/two’,’/one’，这符合我们的预期，加入我们把链接’/three’中的replace设置为true时，依次点击后再回退，就会依次回退至’/three’,’/one’</p>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a><navlink></navlink></h3><p>这是为导航栏准备的，因为导航需要有’激活状态’</p>
+<h4 id="activeClassName-string"><a href="#activeClassName-string" class="headerlink" title="activeClassName:string"></a>activeClassName:string</h4><p>导航栏选中激活时应用的样式名，默认为active<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;NavLink</div><div class="line"> to=<span class="string">'/about'</span></div><div class="line"> activeClassName=<span class="string">'selected'</span>&gt;</div><div class="line"> MyBlog</div><div class="line">&lt;<span class="regexp">/NavLink&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="activeStyle-object"><a href="#activeStyle-object" class="headerlink" title="activeStyle:object"></a>activeStyle:object</h4><p>可以直接定义激活后的样式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;NavLink</div><div class="line"> to=<span class="string">'/about'</span></div><div class="line"> activeStyle=&#123;&#123;<span class="attr">color</span>:<span class="string">'red'</span>,<span class="attr">fontWeight</span>:<span class="string">'blod'</span>&#125;&#125;&gt;</div><div class="line"> MyBlog</div><div class="line">&lt;<span class="regexp">/NavLink&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="exact-bool"><a href="#exact-bool" class="headerlink" title="exact:bool"></a>exact:bool</h4><p>若为true只有当访问地址严格匹配时激活样式才能应用</p>
+<h4 id="strict-bool"><a href="#strict-bool" class="headerlink" title="strict:bool"></a>strict:bool</h4><p>若为true，只有当访问地址后缀斜杠严格匹配时（有活无）时激活才能应用。</p>
+<h4 id="isActive：func"><a href="#isActive：func" class="headerlink" title="isActive：func"></a>isActive：func</h4><p>确定导航是否激活，或是在导航激活时做点别的事情，不管怎样，他不能决定对页面是否可以渲染</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/08/17/React-Router-v4中的一些重要API/" itemprop="url">
                   React-Router-v4中的一些重要API
                 </a>
@@ -1562,133 +1698,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-      <meta itemprop="name" content="李子豪的前端自习室">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/01/React笔记/" itemprop="url">
-                  React中的JSX不完全解析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T22:08:39+08:00">
-                2017-08-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/08/01/React笔记/" class="leancloud_visitors" data-flag-title="React中的JSX不完全解析">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://www.linuxdiyf.com/linux/uploads/allimg/161003/2-16100309252M91.JPG" alt="React"><br>由于今天没有带阮一峰老师的ES6书及所记得笔记，所以就先开辟一篇关于React的知识吧，都是些很很基础的知识，但是有些也是容易遗漏的知识哦。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/01/React笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1738,7 +1747,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
