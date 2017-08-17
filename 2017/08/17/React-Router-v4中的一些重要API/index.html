@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="前端,技术,React," />
 
 
 
@@ -87,12 +87,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="李子豪的前端自习室">
-<meta property="og:url" content="http://yoursite.com/tags/小说/index.html">
+<meta name="description" content="上一章我们了解了一个RR4很重要的组件，今天还会介绍另外一个很重要的组件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-Router-v4中的一些重要API">
+<meta property="og:url" content="http://yoursite.com/2017/08/17/React-Router-v4中的一些重要API/index.html">
 <meta property="og:site_name" content="李子豪的前端自习室">
+<meta property="og:description" content="上一章我们了解了一个RR4很重要的组件，今天还会介绍另外一个很重要的组件">
+<meta property="og:updated_time" content="2017-08-17T15:27:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李子豪的前端自习室">
+<meta name="twitter:title" content="React-Router-v4中的一些重要API">
+<meta name="twitter:description" content="上一章我们了解了一个RR4很重要的组件，今天还会介绍另外一个很重要的组件">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/小说/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/17/React-Router-v4中的一些重要API/"/>
 
 
 
 
 
-  <title> 标签: 小说 | 李子豪的前端自习室 </title>
+  <title> React-Router-v4中的一些重要API | 李子豪的前端自习室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -151,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -385,158 +389,181 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        小说
-        <small>标签</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/05/北城-5/" itemprop="url">
-              
-                <span itemprop="name">北城(5)</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-05T23:23:48+08:00"
-              content="2017-06-05" >
-          06-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/04/北城-4/" itemprop="url">
-              
-                <span itemprop="name">北城(4)</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-04T20:12:26+08:00"
-              content="2017-06-04" >
-          06-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/01/北城-3/" itemprop="url">
-              
-                <span itemprop="name">北城(3)</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-01T22:31:44+08:00"
-              content="2017-06-01" >
-          06-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/27/北城-2/" itemprop="url">
-              
-                <span itemprop="name">北城(2)</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-27T19:39:30+08:00"
-              content="2017-05-27" >
-          05-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/23/北城-1/" itemprop="url">
-              
-                <span itemprop="name">北城(1)</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-23T11:35:12+08:00"
-              content="2017-05-23" >
-          05-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </div>
 
   
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                React-Router-v4中的一些重要API
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T22:47:22+08:00">
+                2017-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/17/React-Router-v4中的一些重要API/" class="leancloud_visitors" data-flag-title="React-Router-v4中的一些重要API">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>上一章我们了解了一个RR4很重要的组件，今天还会介绍另外一个很重要的组件<route><br><a id="more"></a></route></p>
+<h3 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h3><p>Router是RR4中最重要的组件，必须理解，学会使用，他最基本的职责是当页面的访问地址与Route的path匹配时，就渲染出相对应的UI界面。</p>
+<p><route>自带三个render method和三个props。</route></p>
+<h4 id="三个render-method"><a href="#三个render-method" class="headerlink" title="三个render method"></a>三个render method</h4><p>每种render mothod都有不同的应用场景，同一个<route>应该只有一种render method，大部分情况下你讲使用component。</route></p>
+<ul>
+<li><route component=""></route></li>
+<li><route render=""></route></li>
+<li><route children=""><h4 id="三个props"><a href="#三个props" class="headerlink" title="三个props"></a>三个props</h4>所有的render mothod都将传入这些props</route></li>
+<li>match</li>
+<li>location</li>
+<li>history</li>
+</ul>
+<h4 id="component"><a href="#component" class="headerlink" title="component"></a>component</h4><p>只有当访问地址和路由匹配时，一个React component才会被渲染，此时组件接受router props(match,location,history)<br>当使用component时，router将使用React.createElement，根据给定的component创建一个全新的React，这意味着如果你使用内联(linefunction)传值给component将会产生不必要的重复装载，对于内联渲染(inline rendering)建议使用render prop。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">'/user/:username'</span> component=&#123;user&#125;/&gt;</div><div class="line">	<span class="keyword">const</span> user = <span class="function">(<span class="params">&#123;macth&#125;</span>) =&gt;</span> &#123;</div><div class="line">		<span class="keyword">return</span> &lt;h1&gt;hello &#123;match.params.username&#125;!&lt;/h1&gt;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="render-func"><a href="#render-func" class="headerlink" title="render:func"></a>render:func</h4><p>此方法适用于内联渲染，而且不会产生上文说的重复装载。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//内联渲染</span></div><div class="line">&lt;Route path=<span class="string">'/home'</span> render=&#123;()=&gt;&lt;h1&gt;Home&lt;/h1&gt;&#125;/&gt;</div><div class="line"><span class="comment">//包装组合</span></div><div class="line"><span class="keyword">const</span> FaddingRoute = <span class="function">(<span class="params">&#123;component:component,...rest&#125;</span>) =&gt;</span> (</div><div class="line"> &lt;Route &#123;...rest&#125;  render=&#123; props =&gt; (</div><div class="line">  &lt;FadeIn&gt;</div><div class="line">  	&lt;Component &#123;...prop&#125; /&gt;</div><div class="line">  &lt;/FadeIn&gt;</div><div class="line"> )&#125;/&gt;</div><div class="line">)</div><div class="line">&lt;FadingRoute path='/cool' component=&#123;something&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="children-func"><a href="#children-func" class="headerlink" title="children:func"></a>children:func</h4><p>有时候你可能只想知道访问地址是否被匹配，然后改变下别的东西，而不仅仅是对应的页面<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line"> &lt;listItemLink to='/somewhere' /&gt;</div><div class="line"> &lt;listItemLink to='/somewhere-ele'/&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line">const linkItemLink = (&#123;to,...rest&#125;) =&gt; (</div><div class="line"> &lt;Route path=&#123;to&#125; children=&#123;&#123;match&#125; =&gt; (</div><div class="line">  &lt;li className=&#123;match?'active':''&#125;&gt;</div><div class="line">  	&lt;Link to=&#123;to&#125; &#123;...rest&#125;/&gt;</div><div class="line">  &lt;/li&gt;</div><div class="line"> )&#125;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<h4 id="path-string"><a href="#path-string" class="headerlink" title="path:string"></a>path:string</h4><p>任何可以被path-to-regexp解析的有效URL路径。<br><code>&lt;Route path=&#39;/users/:id&#39; component={User} /&gt;</code><br>如果不给path那么路由将总是匹配</p>
+<ul>
+<li>exact:bool<br>如果为true，path为’/one’的路由将不能匹配’/one/two’，反之亦然。</li>
+<li>strict:bool<br>表示对路径末尾斜杠的匹配，如果为true，path为’/one/‘将不能匹配’/one’，但可以匹配’/one/two’<br>如果要确保路由没有末尾斜杠，那么strict和ecact都必须同时为true。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/16/React-Router-v4/" rel="next" title="React-Router-v4">
+                <i class="fa fa-chevron-left"></i> React-Router-v4
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -544,6 +571,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -563,8 +594,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -617,6 +657,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Router"><span class="nav-number">1.</span> <span class="nav-text">Router</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三个render-method"><span class="nav-number">1.1.</span> <span class="nav-text">三个render method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三个props"><span class="nav-number">1.2.</span> <span class="nav-text">三个props</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#component"><span class="nav-number">1.3.</span> <span class="nav-text">component</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#render-func"><span class="nav-number">1.4.</span> <span class="nav-text">render:func</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#children-func"><span class="nav-number">1.5.</span> <span class="nav-text">children:func</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#path-string"><span class="nav-number">1.6.</span> <span class="nav-text">path:string</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -725,6 +781,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
