@@ -101,7 +101,7 @@ React-router-nati">
 React-router RR4核心
 React-router-dom 用于DOM绑定的React Router
 React-router-nati">
-<meta property="og:updated_time" content="2017-08-16T15:41:14.000Z">
+<meta property="og:updated_time" content="2017-08-17T14:46:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React-Router-v4">
 <meta name="twitter:description" content="React-Router-v4(简称RR4)早已经正式发布，他遵循着React的设计理念，即万物皆组件,RR4只是提供了一大堆的导航功能的组件，具有声明式，可组合性的特点，RR4本次采用了单代码仓库模型架构，这意味着有若干个相互独立的包。他们分别是
@@ -495,7 +495,13 @@ React-router-nati">
 </li>
 </ul>
 <p><b>一般我们只需要引用react-router-dom这个包就行了，当然，如果要搭配redux，你就需要使用react-router-redux</b></p>
-<h4 id="React-router一些重要的API"><a href="#React-router一些重要的API" class="headerlink" title="React-router一些重要的API"></a>React-router一些重要的API</h4>
+<h3 id="React-router一些重要的API"><a href="#React-router一些重要的API" class="headerlink" title="React-router一些重要的API"></a>React-router一些重要的API</h3><h4 id="BrowerRouter"><a href="#BrowerRouter" class="headerlink" title="BrowerRouter"></a>BrowerRouter</h4><p>一个使用了HTML5的History API的高阶路由器组件，保证你的UI界面和URL保持同步，拥有的是属性。</p>
+<h5 id="basename：string"><a href="#basename：string" class="headerlink" title="basename：string"></a>basename：string</h5><p>作用：为所有位置添加一个基准URL<br>使用场景：假如你需要把页面部署到服务器的二级目录，你可以使用basename设置此目录<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;BrowserRouter basename=<span class="string">'/minoo'</span>/&gt;</div><div class="line">&lt;Link to='/react' /&gt;</div><div class="line">//最终渲染为&lt;a href='/minoo/react'&gt;</div></pre></td></tr></table></figure></p>
+<h5 id="getUser-Configmation-func"><a href="#getUser-Configmation-func" class="headerlink" title="getUser Configmation:func"></a>getUser Configmation:func</h5><p> 作用：导航到页面前执行的函数，默认使用window.confim<br> 使用场景：当需要用户进入页面前执行什么操作时可用，一般用的不多<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> getConfirmation = <span class="function">(<span class="params">message,callback</span>) =&gt;</span> &#123;</div><div class="line">	<span class="keyword">const</span> allowTransition = <span class="built_in">window</span>.confim(message)</div><div class="line">	callback(allowTransition)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="forceRefresh-bool"><a href="#forceRefresh-bool" class="headerlink" title="forceRefresh:bool"></a>forceRefresh:bool</h5><p> 作用：当浏览器不支持HTML5的History API时强制使用刷新页面<br> 使用场景：同上<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> supportsHistory = <span class="string">'pushState'</span> <span class="keyword">in</span> <span class="built_in">window</span>.history</div><div class="line">&lt;BrowerRouter forceRefresh = &#123;!supportsHistory&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="KeyLength-number"><a href="#KeyLength-number" class="headerlink" title="KeyLength:number"></a>KeyLength:number</h5><p> 作用：设置它里面路由的History.key的长度，默认值是6，（key的作用点击同一个链接时，每次该路由下的location.key都会改变，可以通过key的变化来刷新页面）</p>
+<h5 id="children-node"><a href="#children-node" class="headerlink" title="children:node"></a>children:node</h5><p> 作用：渲染唯一子元素<br> 使用场景：作为一个React组件，天生自带children属性。</p>
+
       
     </div>
 
@@ -669,7 +675,7 @@ React-router-nati">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#React-router一些重要的API"><span class="nav-number">1.</span> <span class="nav-text">React-router一些重要的API</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#React-router一些重要的API"><span class="nav-number">1.</span> <span class="nav-text">React-router一些重要的API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BrowerRouter"><span class="nav-number">1.1.</span> <span class="nav-text">BrowerRouter</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#basename：string"><span class="nav-number">1.1.1.</span> <span class="nav-text">basename：string</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#getUser-Configmation-func"><span class="nav-number">1.1.2.</span> <span class="nav-text">getUser Configmation:func</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#forceRefresh-bool"><span class="nav-number">1.1.3.</span> <span class="nav-text">forceRefresh:bool</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#KeyLength-number"><span class="nav-number">1.1.4.</span> <span class="nav-text">KeyLength:number</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#children-node"><span class="nav-number">1.1.5.</span> <span class="nav-text">children:node</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
