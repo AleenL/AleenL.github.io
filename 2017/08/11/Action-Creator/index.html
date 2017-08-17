@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,Redux,技术," />
+  <meta name="keywords" content="前端,技术,Redux," />
 
 
 
@@ -87,19 +87,16 @@
 
 
 
-<meta name="description" content="上一章节我们讲了Action，讲了Store和State，我们了解到一个页面应用只能有一个Store，也了解了Redux中，一个State对应一个View，只要是State相同View就相同，知道State就知道View。还有如果想要改变State就要使用Action，只有通过Action他才能吧数据运送到Store中去。
-Action CreatorView要发送多少种消息就会有多少种Actio">
+<meta name="description" content="上一章节我们讲了Action，讲了Store和State，我们了解到一个页面应用只能有一个Store，也了解了Redux中，一个State对应一个View，只要是State相同View就相同，知道State就知道View。还有如果想要改变State就要使用Action，只有通过Action他才能吧数据运送到Store中去。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Action Creator">
 <meta property="og:url" content="http://yoursite.com/2017/08/11/Action-Creator/index.html">
 <meta property="og:site_name" content="李子豪的前端自习室">
-<meta property="og:description" content="上一章节我们讲了Action，讲了Store和State，我们了解到一个页面应用只能有一个Store，也了解了Redux中，一个State对应一个View，只要是State相同View就相同，知道State就知道View。还有如果想要改变State就要使用Action，只有通过Action他才能吧数据运送到Store中去。
-Action CreatorView要发送多少种消息就会有多少种Actio">
-<meta property="og:updated_time" content="2017-08-12T00:56:47.000Z">
+<meta property="og:description" content="上一章节我们讲了Action，讲了Store和State，我们了解到一个页面应用只能有一个Store，也了解了Redux中，一个State对应一个View，只要是State相同View就相同，知道State就知道View。还有如果想要改变State就要使用Action，只有通过Action他才能吧数据运送到Store中去。">
+<meta property="og:updated_time" content="2017-08-17T15:53:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Action Creator">
-<meta name="twitter:description" content="上一章节我们讲了Action，讲了Store和State，我们了解到一个页面应用只能有一个Store，也了解了Redux中，一个State对应一个View，只要是State相同View就相同，知道State就知道View。还有如果想要改变State就要使用Action，只有通过Action他才能吧数据运送到Store中去。
-Action CreatorView要发送多少种消息就会有多少种Actio">
+<meta name="twitter:description" content="上一章节我们讲了Action，讲了Store和State，我们了解到一个页面应用只能有一个Store，也了解了Redux中，一个State对应一个View，只要是State相同View就相同，知道State就知道View。还有如果想要改变State就要使用Action，只有通过Action他才能吧数据运送到Store中去。">
 
 
 
@@ -476,7 +473,7 @@ Action CreatorView要发送多少种消息就会有多少种Actio">
       
 
       
-        <p>上一章节我们讲了Action，讲了Store和State，我们了解到一个页面应用只能有一个Store，也了解了Redux中，一个State对应一个View，只要是State相同View就相同，知道State就知道View。还有如果想要改变State就要使用Action，只有通过Action他才能吧数据运送到Store中去。</p>
+        <p>上一章节我们讲了Action，讲了Store和State，我们了解到一个页面应用只能有一个Store，也了解了Redux中，一个State对应一个View，只要是State相同View就相同，知道State就知道View。还有如果想要改变State就要使用Action，只有通过Action他才能吧数据运送到Store中去。<br><a id="more"></a></p>
 <h3 id="Action-Creator"><a href="#Action-Creator" class="headerlink" title="Action Creator"></a>Action Creator</h3><p>View要发送多少种消息就会有多少种Action，我们会定义一个Action来储存Action的行为，这个函数就叫做Action Creator。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ADD_TODO = <span class="string">'添加Todo'</span></div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">addTodo</span>(<span class="params">text</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">   <span class="attr">type</span>: ADD_TODO,</div><div class="line">   text</div><div class="line">  &#125;</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">const</span> action = addTodo(<span class="string">'Learn Redux'</span>)</div></pre></td></tr></table></figure></p>
 <p>函数addTodo就是一个Action Creator</p>
 <h4 id="Store-dispatch"><a href="#Store-dispatch" class="headerlink" title="Store.dispatch"></a>Store.dispatch</h4><p>store.dispatch()是view发出Action的唯一方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import &#123; createStore &#125; from &apos;redux&apos;</div><div class="line"></div><div class="line"> const store = createStore(fn)</div><div class="line"> store.dispatch(&#123;</div><div class="line">  type:&apos;ADD_TODO&apos;,</div><div class="line">  payload: &apos;Learn Redux&apos;</div><div class="line">  &#125;)</div></pre></td></tr></table></figure></p>
@@ -517,9 +514,9 @@ Action CreatorView要发送多少种消息就会有多少种Actio">
           
             <a href="/tags/前端/" rel="tag"># 前端</a>
           
-            <a href="/tags/Redux/" rel="tag"># Redux</a>
-          
             <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
           
         </div>
       
