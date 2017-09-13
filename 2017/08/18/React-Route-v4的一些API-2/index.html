@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,React,技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="昨天我们已经讲了RR4最重要的组件，今天我们将接触到一个也很重要的组件，">
+<meta name="keywords" content="前端,React,技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-Route-v4的一些API(2)">
+<meta property="og:url" content="https://Aleenl.github.io/2017/08/18/React-Route-v4的一些API-2/index.html">
+<meta property="og:site_name" content="李子豪的前端自习室">
+<meta property="og:description" content="昨天我们已经讲了RR4最重要的组件，今天我们将接触到一个也很重要的组件，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-17T15:52:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React-Route-v4的一些API(2)">
+<meta name="twitter:description" content="昨天我们已经讲了RR4最重要的组件，今天我们将接触到一个也很重要的组件，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://Aleenl.github.io/2017/08/18/React-Route-v4的一些API-2/"/>
+
+
+
+
+
+  <title>React-Route-v4的一些API(2) | 李子豪的前端自习室</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李子豪的前端自习室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Aleenl.github.io/2017/08/18/React-Route-v4的一些API-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aleen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React-Route-v4的一些API(2)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-18T23:30:17+08:00">
+                2017-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>昨天我们已经讲了RR4最重要的组件<route>，今天我们将接触到一个也很重要的组件，<link><br><a id="more"></a></route></p>
+<h3 id=""><a href="#" class="headerlink" title=""></a><link></h3><p>为你的应用提供声明式，无障碍导航。</p>
+<h4 id="to"><a href="#to" class="headerlink" title="to"></a>to</h4><ul>
+<li>to:string<br>作用：跳转到指定路径<br>使用场景：如果只是单纯的就直接用字符串形式的路径<br><code>&lt;Link to=&#39;/courser&#39; /&gt;</code></li>
+<li>to:object<br>作用：携带参数跳转指定路径<br>使用场景：比如你点击的这个链接将要跳转的页面需要展示此链接对应的内容，又比如这是个支付跳转，需要把商品价格等信息传递过去。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;Link to=&#123;&#123;</div><div class="line">	pathname:<span class="string">'/course'</span>,</div><div class="line">	search:<span class="string">'?sort=name'</span>,</div><div class="line">	state:&#123;<span class="attr">price</span>:<span class="number">18</span>&#125;</div><div class="line">&#125;&#125;/&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="replace-bool"><a href="#replace-bool" class="headerlink" title="replace:bool"></a>replace:bool</h4><p>当replace为true的时候，点击链接后将使用新地址替换掉上一次访问的地址，如果我们一次访问’/one’,’/two’,’/three’,’/four’这四个地址，如果回退，将一次回退至’/three’,’/two’,’/one’，这符合我们的预期，加入我们把链接’/three’中的replace设置为true时，依次点击后再回退，就会依次回退至’/three’,’/one’</p>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a><navlink></navlink></h3><p>这是为导航栏准备的，因为导航需要有’激活状态’</p>
+<h4 id="activeClassName-string"><a href="#activeClassName-string" class="headerlink" title="activeClassName:string"></a>activeClassName:string</h4><p>导航栏选中激活时应用的样式名，默认为active<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;NavLink</div><div class="line"> to=<span class="string">'/about'</span></div><div class="line"> activeClassName=<span class="string">'selected'</span>&gt;</div><div class="line"> MyBlog</div><div class="line">&lt;<span class="regexp">/NavLink&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="activeStyle-object"><a href="#activeStyle-object" class="headerlink" title="activeStyle:object"></a>activeStyle:object</h4><p>可以直接定义激活后的样式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;NavLink</div><div class="line"> to=<span class="string">'/about'</span></div><div class="line"> activeStyle=&#123;&#123;<span class="attr">color</span>:<span class="string">'red'</span>,<span class="attr">fontWeight</span>:<span class="string">'blod'</span>&#125;&#125;&gt;</div><div class="line"> MyBlog</div><div class="line">&lt;<span class="regexp">/NavLink&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="exact-bool"><a href="#exact-bool" class="headerlink" title="exact:bool"></a>exact:bool</h4><p>若为true只有当访问地址严格匹配时激活样式才能应用</p>
+<h4 id="strict-bool"><a href="#strict-bool" class="headerlink" title="strict:bool"></a>strict:bool</h4><p>若为true，只有当访问地址后缀斜杠严格匹配时（有活无）时激活才能应用。</p>
+<h4 id="isActive：func"><a href="#isActive：func" class="headerlink" title="isActive：func"></a>isActive：func</h4><p>确定导航是否激活，或是在导航激活时做点别的事情，不管怎样，他不能决定对页面是否可以渲染</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/17/React-Router-v4中的一些重要API/" rel="next" title="React-Router-v4中的一些重要API">
+                <i class="fa fa-chevron-left"></i> React-Router-v4中的一些重要API
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/09/理解Redux/" rel="prev" title="理解Redux">
+                理解Redux <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Aleen" />
+          <p class="site-author-name" itemprop="name">Aleen</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#to"><span class="nav-number">1.1.</span> <span class="nav-text">to</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#replace-bool"><span class="nav-number">1.2.</span> <span class="nav-text">replace:bool</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-1"><span class="nav-number">2.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#activeClassName-string"><span class="nav-number">2.1.</span> <span class="nav-text">activeClassName:string</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#activeStyle-object"><span class="nav-number">2.2.</span> <span class="nav-text">activeStyle:object</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exact-bool"><span class="nav-number">2.3.</span> <span class="nav-text">exact:bool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strict-bool"><span class="nav-number">2.4.</span> <span class="nav-text">strict:bool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isActive：func"><span class="nav-number">2.5.</span> <span class="nav-text">isActive：func</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aleen</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

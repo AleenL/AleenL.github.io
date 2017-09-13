@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,React,技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="昨天花了很久的时间，终于有些理解Redux了。根据官方的文档也做出了一个例子而且运用到我的项目中去。 关于Redux对于我了理解其实Redux就是一个能整合所有数据的大的State，它方便了组件之间的数据交流，一般的组件数据都是自上而下的通过props进行传递，而这样做的后果就是造成，对于一个嵌套了很多层的组件来讲，这样的实现方式就会显得相当麻烦，最顶层的组件不得不通过一层层的props来去和目标">
+<meta name="keywords" content="前端,React,技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解Redux">
+<meta property="og:url" content="https://Aleenl.github.io/2017/09/09/理解Redux/index.html">
+<meta property="og:site_name" content="李子豪的前端自习室">
+<meta property="og:description" content="昨天花了很久的时间，终于有些理解Redux了。根据官方的文档也做出了一个例子而且运用到我的项目中去。 关于Redux对于我了理解其实Redux就是一个能整合所有数据的大的State，它方便了组件之间的数据交流，一般的组件数据都是自上而下的通过props进行传递，而这样做的后果就是造成，对于一个嵌套了很多层的组件来讲，这样的实现方式就会显得相当麻烦，最顶层的组件不得不通过一层层的props来去和目标">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-11T06:41:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解Redux">
+<meta name="twitter:description" content="昨天花了很久的时间，终于有些理解Redux了。根据官方的文档也做出了一个例子而且运用到我的项目中去。 关于Redux对于我了理解其实Redux就是一个能整合所有数据的大的State，它方便了组件之间的数据交流，一般的组件数据都是自上而下的通过props进行传递，而这样做的后果就是造成，对于一个嵌套了很多层的组件来讲，这样的实现方式就会显得相当麻烦，最顶层的组件不得不通过一层层的props来去和目标">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://Aleenl.github.io/2017/09/09/理解Redux/"/>
+
+
+
+
+
+  <title>理解Redux | 李子豪的前端自习室</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李子豪的前端自习室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Aleenl.github.io/2017/09/09/理解Redux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aleen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">理解Redux</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-09T10:53:10+08:00">
+                2017-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>昨天花了很久的时间，终于有些理解Redux了。根据官方的文档也做出了一个例子而且运用到我的项目中去。</p>
+<h3 id="关于Redux"><a href="#关于Redux" class="headerlink" title="关于Redux"></a>关于Redux</h3><p>对于我了理解其实Redux就是一个能整合所有数据的大的State，它方便了组件之间的数据交流，一般的组件数据都是自上而下的通过props进行传递，而这样做的后果就是造成，对于一个嵌套了很多层的组件来讲，这样的实现方式就会显得相当麻烦，最顶层的组件不得不通过一层层的props来去和目标组件进行数据交换，这样产生的后果是造成了大量了性能缺失。而且如果两个组件拥有各自的state，但是需要进行数据交流的话，通过props进行交流这种方法就不能实现了。<br><a id="more"></a><br>早期FaceBook通过Flux来解决这一个问题，React内部也有一个context的API来解决这种问题，直到后来Redux出现了，它基于Flux的设计理念，即Vevw层不允许直接修改应用状态，只能触发Action，应用的状态必须独立出来放到store里面统一管理，通过监听Action来执行具体的状态操作。<br>即View-&gt;Action-&gt;Store-&gt;View，这样视图组件的功能只是展示，Action用来分发事件，dispatcher接受Action来处理事件改变Store，Store的改变又是的View层重新渲染。<br>单向数据流是Redux的核心理念，所有的状态变化都可以被记录，跟踪，组件的数据只有唯一的出口及入口，这样程序显得更加直观，通俗的讲，找起Bug来比较容易(手动滑稽).</p>
+<h3 id="Redux的实现流程"><a href="#Redux的实现流程" class="headerlink" title="Redux的实现流程"></a>Redux的实现流程</h3><p>再不考虑异步的情况下，Redux的实现方式十分简单，其实异步也不难。</p>
+<h4 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h4><p>一般的流程首先是先创建Action，Action一般是一个对象，对象必须包含一组键值对，type属性，type的值必须是字符串，这并不代表type的值必须是字符串属性的，只要是输出的为字符串就行，比如字符串赋值的变量，一个函数的返回值为字符串也行，Action中也可以包含其他的值，一般都有什么值呢？请移步我之前的一篇博客<a href="https://aleenl.github.io/2017/08/09/%E6%9C%89%E5%85%B3%E4%BA%8ERedux%E2%80%A6%E2%80%A6/#more">关于Redux</a>中的有关于Action的社区内规范。</p>
+<p>Action的种类取决于你的组件内需要交互的种类有多少，一般在一个组件内，Action的种类应该相当繁杂，你可以写在一个Action.js中，当然你也可以写在你的各个组件内的action.js内，每个组件掌管自己的action，我们一般使用一个函数来生产Action，毕竟一个一个的写比较麻烦。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Switch</span>(<span class="params">index</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> &#123;</div><div class="line">		type:<span class="string">'Switch'</span>,</div><div class="line">		index</div><div class="line">	&#125;</div><div class="line">&#125;<span class="comment">//这就是一个生产Switch的组件啦</span></div></pre></td></tr></table></figure></p>
+<p>上面的函数就是一个生产Action的组件，其中index是一个简写的方式，相当于<code>{index:index}</code></p>
+<h4 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h4><p>Store相当于是一个应用中最顶层的state的身份，它包含了一个应用内所有的数据，通过createStore()函数可以返回一个Store，通常一个应用内只能使用一个Store，所有的应用数据都在这个Store中，每个组件通过’connect’这个Redux中的API来获取Store中的一些数据，connect类似于筛选器这么一个功能，他接受一个函数，这个函数一般用来返回Store的数据所用的，你可以在这个函数内选取自己需要的的数据值，举个例子吧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//假设Store的数据长着个样子</div><div class="line">Store = &#123;text:&apos;hello&apos;,name:&apos;world&apos;&#125;//不是真实的Store哈</div><div class="line"></div><div class="line">function select(state)&#123;</div><div class="line">	return &#123;</div><div class="line">		hello:state.hello</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">connect(select)//这样组件就会拿到这个Store的一个hello属性的值，并将它返回给组件</div></pre></td></tr></table></figure>
+<h4 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h4><p>Reducer类似于加工厂的身份，他接受两个参数，一个是Store，一个是action，Store是我们通过createStore()这个API得来的，reducer将获取的两个参数进行加工，然后就会返回一个新的Store。reducer会通过比对Action中的type值来返回不同的结果，所以这就是为什么我们需要给Action加type键值对的根本原因。下面就是一个有关于reducer的流程演示(不代表真是代码)的伪代码.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//假设我们的store长成这样</span></div><div class="line"></div><div class="line">Store = [<span class="string">'校长'</span>,<span class="string">'班主任'</span>,<span class="string">'班长'</span>,<span class="string">'同学'</span>]</div><div class="line">action = &#123;<span class="attr">type</span>:<span class="string">'Switch'</span>,<span class="attr">index</span>:<span class="number">1</span>&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Reducer</span>(<span class="params">state=Store,action</span>)</span>&#123;</div><div class="line">	<span class="keyword">switch</span>(action.type)&#123;<span class="comment">//开始比对action.type</span></div><div class="line">		<span class="keyword">case</span>:<span class="string">'Switch'</span>:</div><div class="line">			<span class="keyword">return</span> state:<span class="built_in">Object</span>.assign([],state,state[atcion.index]=<span class="string">'大王'</span>)<span class="comment">//返回一个新的state</span></div><div class="line">	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Reducer函数有点类似于React中的setState，它不允许你直接修改Store的数值，他只能让你返回一个新的Store，所以尽量避免直接在Reducer函数内直接修改Store这样的操作，如果Store是一个数组，那么我们就使用slice这样的方式增删改查，如果Store是一个对象，我们可以使用Object.assign()来进行操作，当然我们也可是使用immuatble.js来进行Store的修改，只要记住一点，Reducer不能直接修改Store的属性就好。</p>
+<p>这是因为Redux自身的diff算法造成的，如果我们直接修改Store，就会使得Redux自身监听不到Store的修改，从而无法让整个组件重新渲染。<br>还有Reducer是一个纯函数，关于什么是纯函数，请移步阮一峰的Redux教程。</p>
+<h4 id="store-dispatch"><a href="#store-dispatch" class="headerlink" title="store.dispatch()"></a>store.dispatch()</h4><p>store.dispatch()是View组件唯一能发出Action的方法，前面讲的Reducer接受一个Action不是吗？所以如何将我们所需要的Action发射出去呢，这就需要我们使用store.dispatch()来发送给Reducer了，比如点击一个页面元素，我们就必须把这个dispatch()绑定在这个元素上。看如下一个伪代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">const</span> action = &#123;<span class="attr">type</span>:<span class="string">'Switch'</span>,<span class="attr">index</span>:<span class="number">1</span>&#125; <span class="comment">//action.js</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">Reducer</span>(<span class="params">state=Store,action</span>)</span>&#123;</div><div class="line">	<span class="keyword">switch</span>(action.type)&#123;<span class="comment">//开始比对action.type</span></div><div class="line">		<span class="keyword">case</span>:<span class="string">'Switch'</span>:</div><div class="line">			<span class="keyword">return</span> state:<span class="built_in">Object</span>.assign([],state,state[atcion.index]=<span class="string">'大王'</span>)<span class="comment">//返回一个新的state</span></div><div class="line">	&#125; </div><div class="line">&#125; <span class="comment">//reducer.js</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> Store = createStore([<span class="string">'校长'</span>,<span class="string">'班主任'</span>,<span class="string">'班长'</span>,<span class="string">'同学'</span>]) <span class="comment">//Store.js</span></div><div class="line"></div><div class="line">&lt;h onClick = &#123;store.dispatch(action)&#125;&gt;点击我&lt;<span class="regexp">/h&gt; /</span><span class="regexp">/component.js</span></div></pre></td></tr></table></figure>
+<p>上面的代码就是整个改写的过程，但是实际操作肯定比这个要复杂的多，你可以在网上找相关的资料来看，这个文章只是告诉你，Redux的大体流程，在脑海中有个相关的概念，之后在理解Redux就没那么困难了</p>
+<h2 style="{color:red}">BYE BYE</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/18/React-Route-v4的一些API-2/" rel="next" title="React-Route-v4的一些API(2)">
+                <i class="fa fa-chevron-left"></i> React-Route-v4的一些API(2)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Aleen" />
+          <p class="site-author-name" itemprop="name">Aleen</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于Redux"><span class="nav-number">1.</span> <span class="nav-text">关于Redux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redux的实现流程"><span class="nav-number">2.</span> <span class="nav-text">Redux的实现流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Action"><span class="nav-number">2.1.</span> <span class="nav-text">Action</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Store"><span class="nav-number">2.2.</span> <span class="nav-text">Store</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reducer"><span class="nav-number">2.3.</span> <span class="nav-text">Reducer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#store-dispatch"><span class="nav-number">2.4.</span> <span class="nav-text">store.dispatch()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">BYE BYE</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aleen</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

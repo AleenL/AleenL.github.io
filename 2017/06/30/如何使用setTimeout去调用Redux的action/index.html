@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,React,翻译," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="本问题选自Stack overflow中llja提出的一个问题，由于本人翻译水平有限，所以有些不明白的地方，可以直接访问这个问题的网址，原地址有涉及到侵权的问题，请告知我，我会第一时间删除本篇文章，本人的邮箱：aleenli1992@gmail.com 原问题：如何使用setTimeout去调用Redux的action 我有个更新我的APP通知状态的动作。通常通知的种类是一个错误或者信息。我需要五">
+<meta name="keywords" content="前端,React,翻译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何使用setTimeout去调用Redux的action">
+<meta property="og:url" content="https://Aleenl.github.io/2017/06/30/如何使用setTimeout去调用Redux的action/index.html">
+<meta property="og:site_name" content="李子豪的前端自习室">
+<meta property="og:description" content="本问题选自Stack overflow中llja提出的一个问题，由于本人翻译水平有限，所以有些不明白的地方，可以直接访问这个问题的网址，原地址有涉及到侵权的问题，请告知我，我会第一时间删除本篇文章，本人的邮箱：aleenli1992@gmail.com 原问题：如何使用setTimeout去调用Redux的action 我有个更新我的APP通知状态的动作。通常通知的种类是一个错误或者信息。我需要五">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-07-01T05:28:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何使用setTimeout去调用Redux的action">
+<meta name="twitter:description" content="本问题选自Stack overflow中llja提出的一个问题，由于本人翻译水平有限，所以有些不明白的地方，可以直接访问这个问题的网址，原地址有涉及到侵权的问题，请告知我，我会第一时间删除本篇文章，本人的邮箱：aleenli1992@gmail.com 原问题：如何使用setTimeout去调用Redux的action 我有个更新我的APP通知状态的动作。通常通知的种类是一个错误或者信息。我需要五">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://Aleenl.github.io/2017/06/30/如何使用setTimeout去调用Redux的action/"/>
+
+
+
+
+
+  <title>如何使用setTimeout去调用Redux的action | 李子豪的前端自习室</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李子豪的前端自习室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Aleenl.github.io/2017/06/30/如何使用setTimeout去调用Redux的action/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aleen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">如何使用setTimeout去调用Redux的action</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-30T23:52:23+08:00">
+                2017-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本问题选自Stack overflow中llja提出的一个问题，由于本人翻译水平有限，所以有些不明白的地方，可以直接访问这个问题的网址，<a href="https://stackoverflow.com/questions/35411423/how-to-dispatch-a-redux-action-with-a-timeout/35415559#35415559" target="_blank" rel="external">原地址</a><br>有涉及到侵权的问题，请告知我，我会第一时间删除本篇文章，本人的邮箱：aleenli1992@gmail.com</p>
+<h4 id="原问题："><a href="#原问题：" class="headerlink" title="原问题："></a>原问题：</h4><p>如何使用setTimeout去调用Redux的action</p>
+<p>我有个更新我的APP通知状态的动作。通常通知的种类是一个错误或者信息。我需要五秒后发送一个动作，之后通知状态返回最初的样式,但是没有通知。最主要的实现是提供一个功能，一个可以在5秒之后通知自动消失的功能。</p>
+<p>在使用setTimeout的时候，正在返回其他动作但是无法找到谁在线上完成了。所以希望大家给点建议。<br><a id="more"></a></p>
+<h4 id="原答案："><a href="#原答案：" class="headerlink" title="原答案："></a>原答案：</h4><p>不要掉进一个库应该能够作任何事情的陷阱里，如果你想在JS中使用一个计时器，你就需要使用setTimeout。没什么理由证明Redux和其他库的不一样。</p>
+<p>Redux确实提供了一些解决异步操作的替用方法，但是你只能用在当你意识到你复制了太多代码的时候。除非你有这个问题，使用自带的语言是最简单的解决方案。</p>
+<h5 id="在线写异步代码"><a href="#在线写异步代码" class="headerlink" title="在线写异步代码"></a>在线写异步代码</h5><p>只是迄今为止最简单的方法，并且没什么特别的Redux代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">store.dispatch(&#123; <span class="attr">type</span>: <span class="string">'SHOW_NOTIFIACTION'</span>. text: <span class="string">'You logged in.'</span>&#125;)</div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">	store.dispatch(&#123; <span class="attr">type</span>: <span class="string">'HIDE_NOTIFIACTION '</span>&#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>同样，一个连接组件的内部：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.props.dispatch(&#123;<span class="attr">type</span>: <span class="string">'SHOW_NOTIFIACTION'</span>. text: <span class="string">'You logged in.'</span>&#125;)</div><div class="line">setTimemout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">	<span class="keyword">this</span>.props.dispatch(&#123; <span class="attr">type</span>: <span class="string">'HIDE_NOTIFICATION'</span> &#125;)</div><div class="line">&#125;,<span class="number">5000</span>)</div></pre></td></tr></table></figure>
+<p>这个连接组件的唯一区别是你通常无法访问储存本身，而是将任意一种<code>dispatch()</code>或者特定的操作创建者去引入为props，无论怎样，这对与我们没有任何区别。</p>
+<p>如果你不喜欢当你想在不同的组件完成相同的操作时有错误的话，你可能需要将操作的组件提取出来，而不是将需要调遣的对象写在函数中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">showNotification</span>(<span class="params">id ,text</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> &#123; <span class="attr">type</span>: <span class="string">'SHOW_NOTIFICATION'</span>, id, text &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hideNotification</span>(<span class="params">id</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> &#123;<span class="attr">type</span>: <span class="string">'HIDE_NOTICATION'</span> ,id&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> nextNotificicationId = <span class="number">0</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">showNotficationWithTimeout</span>(<span class="params"> dispatch, text</span>)</span>&#123;</div><div class="line">	<span class="comment">// 分配IDS去通知 允许reducer忽视HIDE_NOTIFICATION</span></div><div class="line">	<span class="comment">// 给通知定义一个不是当前的变量</span></div><div class="line">	<span class="comment">// 或者我们可以储存一个间隔的ID去调用</span></div><div class="line">	<span class="comment">// clearInterval()，但是我们可以在这个单独的空间里操作</span></div><div class="line"></div><div class="line">	conts id = nextNotificationId++</div><div class="line">	dispatch(showNotification(id, text))</div><div class="line"></div><div class="line">	setTiomeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">		dispatch(hideNotfication(id))</div><div class="line">	&#125;,<span class="number">5000</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在组件就可以使用<code>showNotficationWithTimeout</code>,而不用复制这个逻辑或者有不同的通知在这个时间轴上。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//component.js</span></div><div class="line">showNotificationWithTimeout(<span class="keyword">this</span>.props.dispatch, <span class="string">'You just logged in.'</span>)</div><div class="line"></div><div class="line"><span class="comment">//otherComponent.js</span></div><div class="line">showNotificationWithTimeout(<span class="keyword">this</span>.props.dispath, <span class="string">'You just logged out.'</span>)</div></pre></td></tr></table></figure>
+<p>为什么<code>showNotificationWithTimeout</code>接受<code>dispath</code>作为第一个参数呢？这是因为他需要通过dispatch的操作去储存。通常一个组件有一个入口去<code>dispatch</code>，但是如果我们想要外部函数来去控制这个dispatch，我们就需要对这个dispatch进行控制。</p>
+<p>如果你的一些模块有一个独立的储存空间，你只要进入它并且直接替代<code>dispatch</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//store.js</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> createStore(reducer)</div><div class="line"></div><div class="line"><span class="comment">//actions.js</span></div><div class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'./store'</span></div><div class="line"></div><div class="line"><span class="comment">//...</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> nextNotificationId = <span class="number">0</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">showNotficationWithTimeout</span>(<span class="params">text</span>)</span>&#123;</div><div class="line">	<span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">showNotificationWithTimeout</span>(<span class="params">text</span>)</span>&#123;</div><div class="line">	<span class="keyword">const</span> id = notNotificationId++</div><div class="line">	store.dispacth(showNotification(id,tetx))</div><div class="line"></div><div class="line">	setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">		store.dispatch(hideNotification(id))</div><div class="line">		&#125;,<span class="number">5000</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// component.js</span></div><div class="line">showNotificationWithTimeout(<span class="string">'You just logged in.'</span>)</div><div class="line"></div><div class="line"><span class="comment">// otherComponent.js</span></div><div class="line">showNotificationWithTimeout(<span class="string">'You just logged out.'</span>)</div></pre></td></tr></table></figure>
+<p>这样看起来比较简洁但是我们们并不推荐这样的处理。主要原因是我们不喜欢这个，因为它被迫的是储存区域变成了一个独立区。因为这样使得sever rendeing执行起来非常困难。在服务器中，你希望每个请求都有自己的储存区，从而使不同的用户获得不同的预加载数据。</p>
+<p>一个独立的储存区也让测试变得困难。你不能长时间的去mock一个储存区当你测试运行的时候，因为他们在一个特定的模块中应用了特定的真是储存区。你不能每一次都从外部调整它的state。</p>
+<p>虽然在技术上你可以从一个模块中提取出一个独立的储存区，但是我们很失望。不要这样做，除非你确定你的app将永远不会添加服务器的rendering。</p>
+<p>回到先前这个版本：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// actions.js</span></div><div class="line"></div><div class="line"><span class="comment">// ...</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> nextNotificationId = <span class="number">0</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">showNotificationWithTimeout</span>(<span class="params">dispatch, text</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> id = nextNotificationId++</div><div class="line">  dispatch(showNotification(id, text))</div><div class="line"></div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    dispatch(hideNotification(id))</div><div class="line">  &#125;, <span class="number">5000</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// component.js</span></div><div class="line">showNotificationWithTimeout(<span class="keyword">this</span>.props.dispatch, <span class="string">'You just logged in.'</span>)</div><div class="line"></div><div class="line"><span class="comment">// otherComponent.js</span></div><div class="line">showNotificationWithTimeout(<span class="keyword">this</span>.props.dispatch, <span class="string">'You just logged out.'</span>)</div></pre></td></tr></table></figure></p>
+<p>这样解决了问题，在时间轴上既符合逻辑也保存了我们需要的数据。</p>
+<h5 id="Thunk-Middleware"><a href="#Thunk-Middleware" class="headerlink" title="Thunk Middleware"></a>Thunk Middleware</h5><p>一个简单的app，交互应该足够。如果你乐意使用middleware就不要担心它。</p>
+<p>大多数的app，无论如何，你都会发现有很多不足之处。</p>
+<p>举一个例子，我们需要通过<code>dispatch</code>时，他看起来很悲催。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+            <a href="/tags/翻译/" rel="tag"># 翻译</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/29/backbone-js到底有什么作用？/" rel="next" title="backbone.js到底有什么作用？">
+                <i class="fa fa-chevron-left"></i> backbone.js到底有什么作用？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/01/用jq实现lodash的功能/" rel="prev" title="用jq实现lodash的功能[1]">
+                用jq实现lodash的功能[1] <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Aleen" />
+          <p class="site-author-name" itemprop="name">Aleen</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#原问题："><span class="nav-number">1.</span> <span class="nav-text">原问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原答案："><span class="nav-number">2.</span> <span class="nav-text">原答案：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在线写异步代码"><span class="nav-number">2.1.</span> <span class="nav-text">在线写异步代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Thunk-Middleware"><span class="nav-number">2.2.</span> <span class="nav-text">Thunk Middleware</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aleen</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,React,技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="React-Router-v4(简称RR4)早已经正式发布，他遵循着React的设计理念，即万物皆组件,RR4只是提供了一大堆的导航功能的组件，具有声明式，可组合性的特点，RR4本次采用了单代码仓库模型架构，这意味着有若干个相互独立的包。他们分别是  React-router RR4核心 React-router-dom 用于DOM绑定的React Router React-router-nati">
+<meta name="keywords" content="前端,React,技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-Router-v4">
+<meta property="og:url" content="https://Aleenl.github.io/2017/08/16/React-Router-v4/index.html">
+<meta property="og:site_name" content="李子豪的前端自习室">
+<meta property="og:description" content="React-Router-v4(简称RR4)早已经正式发布，他遵循着React的设计理念，即万物皆组件,RR4只是提供了一大堆的导航功能的组件，具有声明式，可组合性的特点，RR4本次采用了单代码仓库模型架构，这意味着有若干个相互独立的包。他们分别是  React-router RR4核心 React-router-dom 用于DOM绑定的React Router React-router-nati">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-17T14:46:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React-Router-v4">
+<meta name="twitter:description" content="React-Router-v4(简称RR4)早已经正式发布，他遵循着React的设计理念，即万物皆组件,RR4只是提供了一大堆的导航功能的组件，具有声明式，可组合性的特点，RR4本次采用了单代码仓库模型架构，这意味着有若干个相互独立的包。他们分别是  React-router RR4核心 React-router-dom 用于DOM绑定的React Router React-router-nati">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://Aleenl.github.io/2017/08/16/React-Router-v4/"/>
+
+
+
+
+
+  <title>React-Router-v4 | 李子豪的前端自习室</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李子豪的前端自习室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Aleenl.github.io/2017/08/16/React-Router-v4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aleen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React-Router-v4</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-16T23:32:32+08:00">
+                2017-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>React-Router-v4(简称RR4)早已经正式发布，他遵循着React的设计理念，即万物皆组件,RR4只是提供了一大堆的导航功能的组件，具有声明式，可组合性的特点，RR4本次采用了单代码仓库模型架构，这意味着有若干个相互独立的包。<br>他们分别是</p>
+<ul>
+<li>React-router RR4核心</li>
+<li>React-router-dom 用于DOM绑定的React Router</li>
+<li>React-router-native 用于React Native 的Router</li>
+<li>React-router-redux React Router和Redux的集成</li>
+<li>React-router-config 静态路由配置助手<a id="more"></a>
+</li>
+</ul>
+<p><b>一般我们只需要引用react-router-dom这个包就行了，当然，如果要搭配redux，你就需要使用react-router-redux</b></p>
+<h3 id="React-router一些重要的API"><a href="#React-router一些重要的API" class="headerlink" title="React-router一些重要的API"></a>React-router一些重要的API</h3><h4 id="BrowerRouter"><a href="#BrowerRouter" class="headerlink" title="BrowerRouter"></a>BrowerRouter</h4><p>一个使用了HTML5的History API的高阶路由器组件，保证你的UI界面和URL保持同步，拥有的是属性。</p>
+<h5 id="basename：string"><a href="#basename：string" class="headerlink" title="basename：string"></a>basename：string</h5><p>作用：为所有位置添加一个基准URL<br>使用场景：假如你需要把页面部署到服务器的二级目录，你可以使用basename设置此目录<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;BrowserRouter basename=<span class="string">'/minoo'</span>/&gt;</div><div class="line">&lt;Link to=<span class="string">'/react'</span> /&gt;</div><div class="line"><span class="comment">//最终渲染为&lt;a href='/minoo/react'&gt;</span></div></pre></td></tr></table></figure></p>
+<h5 id="getUser-Configmation-func"><a href="#getUser-Configmation-func" class="headerlink" title="getUser Configmation:func"></a>getUser Configmation:func</h5><p> 作用：导航到页面前执行的函数，默认使用window.confim<br> 使用场景：当需要用户进入页面前执行什么操作时可用，一般用的不多<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> getConfirmation = <span class="function">(<span class="params">message,callback</span>) =&gt;</span> &#123;</div><div class="line">	<span class="keyword">const</span> allowTransition = <span class="built_in">window</span>.confim(message)</div><div class="line">	callback(allowTransition)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="forceRefresh-bool"><a href="#forceRefresh-bool" class="headerlink" title="forceRefresh:bool"></a>forceRefresh:bool</h5><p> 作用：当浏览器不支持HTML5的History API时强制使用刷新页面<br> 使用场景：同上<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> supportsHistory = <span class="string">'pushState'</span> <span class="keyword">in</span> <span class="built_in">window</span>.history</div><div class="line">&lt;BrowerRouter forceRefresh = &#123;!supportsHistory&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="KeyLength-number"><a href="#KeyLength-number" class="headerlink" title="KeyLength:number"></a>KeyLength:number</h5><p> 作用：设置它里面路由的History.key的长度，默认值是6，（key的作用点击同一个链接时，每次该路由下的location.key都会改变，可以通过key的变化来刷新页面）</p>
+<h5 id="children-node"><a href="#children-node" class="headerlink" title="children:node"></a>children:node</h5><p> 作用：渲染唯一子元素<br> 使用场景：作为一个React组件，天生自带children属性。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/11/Action-Creator/" rel="next" title="Action Creator">
+                <i class="fa fa-chevron-left"></i> Action Creator
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/17/React-Router-v4中的一些重要API/" rel="prev" title="React-Router-v4中的一些重要API">
+                React-Router-v4中的一些重要API <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Aleen" />
+          <p class="site-author-name" itemprop="name">Aleen</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#React-router一些重要的API"><span class="nav-number">1.</span> <span class="nav-text">React-router一些重要的API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BrowerRouter"><span class="nav-number">1.1.</span> <span class="nav-text">BrowerRouter</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#basename：string"><span class="nav-number">1.1.1.</span> <span class="nav-text">basename：string</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#getUser-Configmation-func"><span class="nav-number">1.1.2.</span> <span class="nav-text">getUser Configmation:func</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#forceRefresh-bool"><span class="nav-number">1.1.3.</span> <span class="nav-text">forceRefresh:bool</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#KeyLength-number"><span class="nav-number">1.1.4.</span> <span class="nav-text">KeyLength:number</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#children-node"><span class="nav-number">1.1.5.</span> <span class="nav-text">children:node</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aleen</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

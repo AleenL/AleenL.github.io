@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="keywords" content="前端,技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二章：解构赋值">
+<meta property="og:url" content="https://Aleenl.github.io/2017/07/26/es6入门指南/index.html">
+<meta property="og:site_name" content="李子豪的前端自习室">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://iartdao.com/upload/20150716/20150716113310_577.jpg">
+<meta property="og:updated_time" content="2017-07-26T15:57:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第二章：解构赋值">
+<meta name="twitter:image" content="http://iartdao.com/upload/20150716/20150716113310_577.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://Aleenl.github.io/2017/07/26/es6入门指南/"/>
+
+
+
+
+
+  <title>第二章：解构赋值 | 李子豪的前端自习室</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李子豪的前端自习室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Aleenl.github.io/2017/07/26/es6入门指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aleen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第二章：解构赋值</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-26T22:27:26+08:00">
+                2017-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://iartdao.com/upload/20150716/20150716113310_577.jpg" alt="拾穗者"><br><a id="more"></a></p>
+<h3 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [a,b,c]=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="comment">//a=1</span></div><div class="line"><span class="comment">//b=2</span></div><div class="line"><span class="comment">//c=3</span></div></pre></td></tr></table></figure>
+<p>上面的代码表示，可以从数组中提取值，按照位置的对应关系对变量赋值，本质上，这种写法属于“模式匹配”，只要等号两边的模式相同，左边的变量就会被赋予对应的值。</p>
+<h4 id="嵌套结构赋值"><a href="#嵌套结构赋值" class="headerlink" title="嵌套结构赋值"></a>嵌套结构赋值</h4><p>结构赋值也可以进行嵌套，只要左右两边能够找到相互对应的值，就可以了.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [foo,[[bar],baz]] = [<span class="number">1</span>,[[<span class="number">2</span>],<span class="number">3</span>]]</div><div class="line"><span class="comment">//foo=1</span></div><div class="line"><span class="comment">//bar=2</span></div><div class="line"><span class="comment">//baz=3</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [ , ,third] = [<span class="string">'foo'</span>,<span class="string">'bar'</span>,<span class="string">'baz'</span>]</div><div class="line"><span class="comment">//third='baz'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [head,...tail] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line"><span class="comment">//head=1</span></div><div class="line"><span class="comment">//tail=[2,3,4,5]</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [x,y,...z] = [<span class="string">'a'</span>]</div><div class="line"><span class="comment">//x='a'</span></div><div class="line"><span class="comment">//y=undefined</span></div><div class="line"><span class="comment">//z=[]</span></div></pre></td></tr></table></figure></p>
+<h3 id="解构赋值规则"><a href="#解构赋值规则" class="headerlink" title="解构赋值规则"></a>解构赋值规则</h3><ul>
+<li><p>如果解构不成功，变量的值就等于 undefined</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [foo]=[]<span class="comment">//foo=undefined</span></div><div class="line"><span class="keyword">var</span> [bar,foo]=[<span class="number">1</span>]</div><div class="line"><span class="comment">//bar=1</span></div><div class="line"><span class="comment">//foo=undefined</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>当出现不完全解构时，即等号左边的模式只匹配等号右边数组的一部分，这种情况下，解构依然可以成功</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [x,y] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"><span class="comment">//x=1</span></div><div class="line"><span class="comment">//y=2</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [a,[b],c]=[<span class="number">1</span>,[<span class="number">2</span>,<span class="number">3</span>],<span class="number">4</span>]</div><div class="line"><span class="comment">//a=1</span></div><div class="line"><span class="comment">//b=2</span></div><div class="line"><span class="comment">//c=3</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如果等号的右边不是数组(或者不可遍历对象)，那么将会报错</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [foo] = <span class="number">1</span></div><div class="line"> <span class="comment">//报错</span></div><div class="line"><span class="keyword">let</span> [foo] = <span class="literal">false</span></div><div class="line"><span class="comment">//报错</span></div><div class="line"><span class="keyword">let</span> [foo] =&#123;&#125;</div><div class="line"><span class="comment">//报错</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>解构赋值不仅适用于var命令，也适用于let和const命令</p>
+</li>
+<li><p>对于Set结构，也可以使用数组的解构赋值<br>什么是Set结构？<br>说起Set结构，就要提到Iterator的概念。<br>Iterator(遍历器)就是一种需要统一的接口机制来处理所有不同的数据结构，他是一种接口，为各种不同的数据结构提供统一的访问机制，任何数据结构只要部署Iterator接口，就可以完成便利操作（即依次处理该数据结构的所有成员)<br>Set结构原生具有Iterator接口，可以直接使用for..of循环</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var engines = new Set([1,2,3,4,4])</div><div class="line">for(var e of engines)&#123;</div><div class="line">	console.log(e)</div><div class="line">&#125;</div><div class="line">//1</div><div class="line">//2</div><div class="line">//3</div><div class="line">//4</div></pre></td></tr></table></figure>
+<p>上面的代码就是遍历了Set结构的方法，由此可见，Set结构也可以进行去重<br>使用Set结构遍历时返回的是一个值</p>
+</li>
+<li><p>事实上，只要某种数据结构具有Iterator接口，都可以采用数组形式的解构赋值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span>* <span class="title">fibs</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> 	<span class="keyword">var</span> a = <span class="number">0</span></div><div class="line"> 	<span class="keyword">var</span> b = <span class="number">1</span></div><div class="line"> 	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</div><div class="line"> 	  <span class="keyword">yield</span> a;</div><div class="line"> 	  [a,b] = [b,a+b]</div><div class="line"> 	&#125;</div><div class="line"> &#125;</div><div class="line"><span class="keyword">var</span> [a,b,c,d,e,f] = fibs()</div><div class="line"><span class="comment">//f=5</span></div></pre></td></tr></table></figure>
+<p>fibs是一个Generator函数，什么是Generator函数呢？<br>此知识点仅为了解，以后会具体解释Generator的意义：Generator是ES6提供的一种异步编程解决方案，从语法上，可以理解成一个状态机，封装了很多内不状态，执行Generator函数会返回一个遍历器对象，现在我们只要了解这个函数可以遍历即可</p>
+</li>
+</ul>
+<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><ul>
+<li><p>结构赋值允许指定默认值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [foo=<span class="literal">true</span>] = []</div><div class="line"><span class="comment">//foo = true</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> [x,y=b] = [<span class="string">'a'</span>]</div><div class="line"><span class="comment">//x='a'</span></div><div class="line"><span class="comment">//y='b'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>ES6内部使用严格相等运算符（===）来判断一个位置是否有值，，所以如果数组成员不严格等于undefi的话，默认值是不会生效的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [x=<span class="number">1</span>] =[<span class="literal">undefined</span>]</div><div class="line"><span class="comment">//x=1</span></div><div class="line"><span class="keyword">var</span> [x=<span class="number">1</span>] = [<span class="literal">null</span>]</div><div class="line"><span class="comment">//x=null(由于null和undefined在严格模式下是不相等的，所以默认值并没有生效)</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如果默认值是一个表达式，那么这个表达式是惰性求值得，即只有再用到的时候才会求职</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'aaa'</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> [x=f()]=[<span class="number">1</span>]</div><div class="line"><span class="comment">//1</span></div></pre></td></tr></table></figure>
+<p>由于x能取到值，所以函数f根本不会执行，所以代码可以等价于下面代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> x;</div><div class="line"><span class="keyword">if</span>([<span class="number">1</span>][<span class="number">0</span>]===<span class="literal">undefined</span>)<span class="comment">//判断结构右边的值是否等于undefined</span></div><div class="line"> x = f() <span class="comment">//是的话，就将x赋值为默认值</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line"> x = [<span class="number">1</span>][<span class="number">0</span>]<span class="comment">//不是的话，就将x赋值为等号右边的值</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>默认值可以引用解构函数赋值的其他变量，但该变量必须已经声明</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [x=<span class="number">1</span>,y=x] = []</div><div class="line"><span class="comment">//x=1</span></div><div class="line"><span class="comment">//y=1</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [x=<span class="number">1</span>,y=x] = [<span class="number">2</span>]</div><div class="line"><span class="comment">//x=2</span></div><div class="line"><span class="comment">//y=2</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [x=<span class="number">1</span>,y=x] = [<span class="number">1</span>,<span class="number">2</span>]</div><div class="line"><span class="comment">//x=1</span></div><div class="line"><span class="comment">//y=2</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> [x=y,y=<span class="number">1</span>] = []<span class="comment">//ReferenceError</span></div></pre></td></tr></table></figure>
+<p>最后一个表达式之所以会报错，是因为x用到默认值y是还没有声明</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/25/ES6新特性-一/" rel="next" title="第一章：let 和 const 命令">
+                <i class="fa fa-chevron-left"></i> 第一章：let 和 const 命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/28/es6入门指南-2/" rel="prev" title="第四章：模板字符串">
+                第四章：模板字符串 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Aleen" />
+          <p class="site-author-name" itemprop="name">Aleen</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量的解构赋值"><span class="nav-number">1.</span> <span class="nav-text">变量的解构赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本用法"><span class="nav-number">1.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套结构赋值"><span class="nav-number">1.2.</span> <span class="nav-text">嵌套结构赋值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解构赋值规则"><span class="nav-number">2.</span> <span class="nav-text">解构赋值规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认值"><span class="nav-number">3.</span> <span class="nav-text">默认值</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aleen</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

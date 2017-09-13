@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,React,技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="上一章我们了解了一个RR4很重要的组件，今天还会介绍另外一个很重要的组件">
+<meta name="keywords" content="前端,React,技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-Router-v4中的一些重要API">
+<meta property="og:url" content="https://Aleenl.github.io/2017/08/17/React-Router-v4中的一些重要API/index.html">
+<meta property="og:site_name" content="李子豪的前端自习室">
+<meta property="og:description" content="上一章我们了解了一个RR4很重要的组件，今天还会介绍另外一个很重要的组件">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-17T15:27:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React-Router-v4中的一些重要API">
+<meta name="twitter:description" content="上一章我们了解了一个RR4很重要的组件，今天还会介绍另外一个很重要的组件">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://Aleenl.github.io/2017/08/17/React-Router-v4中的一些重要API/"/>
+
+
+
+
+
+  <title>React-Router-v4中的一些重要API | 李子豪的前端自习室</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李子豪的前端自习室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Aleenl.github.io/2017/08/17/React-Router-v4中的一些重要API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aleen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React-Router-v4中的一些重要API</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-17T22:47:22+08:00">
+                2017-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>上一章我们了解了一个RR4很重要的组件，今天还会介绍另外一个很重要的组件<route><br><a id="more"></a></route></p>
+<h3 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h3><p>Router是RR4中最重要的组件，必须理解，学会使用，他最基本的职责是当页面的访问地址与Route的path匹配时，就渲染出相对应的UI界面。</p>
+<p><route>自带三个render method和三个props。</route></p>
+<h4 id="三个render-method"><a href="#三个render-method" class="headerlink" title="三个render method"></a>三个render method</h4><p>每种render mothod都有不同的应用场景，同一个<route>应该只有一种render method，大部分情况下你讲使用component。</route></p>
+<ul>
+<li><route component=""></route></li>
+<li><route render=""></route></li>
+<li><route children=""><h4 id="三个props"><a href="#三个props" class="headerlink" title="三个props"></a>三个props</h4>所有的render mothod都将传入这些props</route></li>
+<li>match</li>
+<li>location</li>
+<li>history</li>
+</ul>
+<h4 id="component"><a href="#component" class="headerlink" title="component"></a>component</h4><p>只有当访问地址和路由匹配时，一个React component才会被渲染，此时组件接受router props(match,location,history)<br>当使用component时，router将使用React.createElement，根据给定的component创建一个全新的React，这意味着如果你使用内联(linefunction)传值给component将会产生不必要的重复装载，对于内联渲染(inline rendering)建议使用render prop。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">'/user/:username'</span> component=&#123;user&#125;/&gt;</div><div class="line">	<span class="keyword">const</span> user = <span class="function">(<span class="params">&#123;macth&#125;</span>) =&gt;</span> &#123;</div><div class="line">		<span class="keyword">return</span> &lt;h1&gt;hello &#123;match.params.username&#125;!&lt;/h1&gt;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="render-func"><a href="#render-func" class="headerlink" title="render:func"></a>render:func</h4><p>此方法适用于内联渲染，而且不会产生上文说的重复装载。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//内联渲染</span></div><div class="line">&lt;Route path=<span class="string">'/home'</span> render=&#123;()=&gt;&lt;h1&gt;Home&lt;/h1&gt;&#125;/&gt;</div><div class="line"><span class="comment">//包装组合</span></div><div class="line"><span class="keyword">const</span> FaddingRoute = <span class="function">(<span class="params">&#123;component:component,...rest&#125;</span>) =&gt;</span> (</div><div class="line"> &lt;Route &#123;...rest&#125;  render=&#123; props =&gt; (</div><div class="line">  &lt;FadeIn&gt;</div><div class="line">  	&lt;Component &#123;...prop&#125; /&gt;</div><div class="line">  &lt;<span class="regexp">/FadeIn&gt;</span></div><div class="line"><span class="regexp"> )&#125;/</span>&gt;</div><div class="line">)</div><div class="line">&lt;FadingRoute path=<span class="string">'/cool'</span> component=&#123;something&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="children-func"><a href="#children-func" class="headerlink" title="children:func"></a>children:func</h4><p>有时候你可能只想知道访问地址是否被匹配，然后改变下别的东西，而不仅仅是对应的页面<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line"> &lt;listItemLink to=<span class="string">'/somewhere'</span> /&gt;</div><div class="line"> &lt;listItemLink to=<span class="string">'/somewhere-ele'</span>/&gt;</div><div class="line">&lt;<span class="regexp">/ul&gt;</span></div><div class="line"><span class="regexp">const linkItemLink = (&#123;to,...rest&#125;) =&gt; (</span></div><div class="line"><span class="regexp"> &lt;Route path=&#123;to&#125; children=&#123;&#123;match&#125; =&gt; (</span></div><div class="line"><span class="regexp">  &lt;li className=&#123;match?'active':''&#125;&gt;</span></div><div class="line"><span class="regexp">  	&lt;Link to=&#123;to&#125; &#123;...rest&#125;/</span>&gt;</div><div class="line">  &lt;<span class="regexp">/li&gt;</span></div><div class="line"><span class="regexp"> )&#125;</span></div><div class="line"><span class="regexp">)</span></div></pre></td></tr></table></figure></p>
+<h4 id="path-string"><a href="#path-string" class="headerlink" title="path:string"></a>path:string</h4><p>任何可以被path-to-regexp解析的有效URL路径。<br><code>&lt;Route path=&#39;/users/:id&#39; component={User} /&gt;</code><br>如果不给path那么路由将总是匹配</p>
+<ul>
+<li>exact:bool<br>如果为true，path为’/one’的路由将不能匹配’/one/two’，反之亦然。</li>
+<li>strict:bool<br>表示对路径末尾斜杠的匹配，如果为true，path为’/one/‘将不能匹配’/one’，但可以匹配’/one/two’<br>如果要确保路由没有末尾斜杠，那么strict和ecact都必须同时为true。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/16/React-Router-v4/" rel="next" title="React-Router-v4">
+                <i class="fa fa-chevron-left"></i> React-Router-v4
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/18/React-Route-v4的一些API-2/" rel="prev" title="React-Route-v4的一些API(2)">
+                React-Route-v4的一些API(2) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Aleen" />
+          <p class="site-author-name" itemprop="name">Aleen</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Router"><span class="nav-number">1.</span> <span class="nav-text">Router</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三个render-method"><span class="nav-number">1.1.</span> <span class="nav-text">三个render method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三个props"><span class="nav-number">1.2.</span> <span class="nav-text">三个props</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#component"><span class="nav-number">1.3.</span> <span class="nav-text">component</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#render-func"><span class="nav-number">1.4.</span> <span class="nav-text">render:func</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#children-func"><span class="nav-number">1.5.</span> <span class="nav-text">children:func</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#path-string"><span class="nav-number">1.6.</span> <span class="nav-text">path:string</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aleen</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

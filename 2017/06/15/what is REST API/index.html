@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="What is a REST API ?REST 是一种描述网页结构与其他系统架构有何不同的方式。 网页是一种信息网络存在于网络之上，通过浏览器很容易访问。在许多方面都有别于电脑上其他系统结构。 REST是一种架构风格去设计类似网络这样的系统。统一接口的四个规则定义了REST最主要的框架结构。根据定义，REST的API遵循着这四个接口的规则。">
+<meta name="keywords" content="前端,技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What is a REST API">
+<meta property="og:url" content="https://Aleenl.github.io/2017/06/15/what is REST API/index.html">
+<meta property="og:site_name" content="李子豪的前端自习室">
+<meta property="og:description" content="What is a REST API ?REST 是一种描述网页结构与其他系统架构有何不同的方式。 网页是一种信息网络存在于网络之上，通过浏览器很容易访问。在许多方面都有别于电脑上其他系统结构。 REST是一种架构风格去设计类似网络这样的系统。统一接口的四个规则定义了REST最主要的框架结构。根据定义，REST的API遵循着这四个接口的规则。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-06-17T07:03:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="What is a REST API">
+<meta name="twitter:description" content="What is a REST API ?REST 是一种描述网页结构与其他系统架构有何不同的方式。 网页是一种信息网络存在于网络之上，通过浏览器很容易访问。在许多方面都有别于电脑上其他系统结构。 REST是一种架构风格去设计类似网络这样的系统。统一接口的四个规则定义了REST最主要的框架结构。根据定义，REST的API遵循着这四个接口的规则。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://Aleenl.github.io/2017/06/15/what is REST API/"/>
+
+
+
+
+
+  <title>What is a REST API | 李子豪的前端自习室</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李子豪的前端自习室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Aleenl.github.io/2017/06/15/what is REST API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aleen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">What is a REST API</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-15T20:49:29+08:00">
+                2017-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="What-is-a-REST-API"><a href="#What-is-a-REST-API" class="headerlink" title="What is a REST API ?"></a>What is a REST API ?</h3><p>REST 是一种描述网页结构与其他系统架构有何不同的方式。</p>
+<p>网页是一种信息网络存在于网络之上，通过浏览器很容易访问。在许多方面都有别于电脑上其他系统结构。</p>
+<p>REST是一种架构风格去设计类似网络这样的系统。统一接口的四个规则定义了REST最主要的框架结构。根据定义，REST的API遵循着这四个接口的规则。<br><a id="more"></a></p>
+<h4 id="规则1：通过资源提供入口"><a href="#规则1：通过资源提供入口" class="headerlink" title="规则1：通过资源提供入口"></a>规则1：通过资源提供入口</h4><p>在典型的电脑系统上，客户端与服务器交换指令来操作系统的行为。假设在没有RSET方法中我们想创建一个待办事项的模型，使用技术代码就会变成如下所示：<br>NOT REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/changeToDoList.php?item=<span class="number">35</span>&amp;action=changeTitle&amp;title=new_title</div></pre></td></tr></table></figure></p>
+<p>注意这确实是一个指令：改变一些事情<br>但是“changeTODOList”并不是一件事,也不是资源</p>
+<p>在REST结构风格中，服务端只提供资源。资源是一种客户端与服务端交流而产生的概念性的事物。</p>
+<p>REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/todolists/<span class="number">7</span>/items/<span class="number">35</span>/</div></pre></td></tr></table></figure></p>
+<p>上面提到的不是一个指令，而是一个资源的地址，一个东西。<br>你可以通过这个地址去使用标准运作去操作todo list，从而替代专业接口的指令。</p>
+<h4 id="规则2：资源代理"><a href="#规则2：资源代理" class="headerlink" title="规则2：资源代理"></a>规则2：资源代理</h4><p>一种资源是一个我们可以使用不同的格式去描述的事物。例如，人们想去看一个HTML版本，你的浏览器就会转变成一种可读性的排版。但是有些时候，网络上的接口也会通过机器来使用。他们需要一个不同的格式，比如JSON。</p>
+<p>在非REST方法中：不同的格式有着不同的地址</p>
+<p>NOT REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">browser:/showTodoList.php?format=html</div><div class="line">applicarion:/showTodoList.php?format=json</div></pre></td></tr></table></figure></p>
+<p>实现这种功能的方式我们称之为：<a href="https://en.wikipedia.org/wiki/Content_negotiation" target="_blank" rel="external">内容协商</a></p>
+<h4 id="规则3：交换自描述信息"><a href="#规则3：交换自描述信息" class="headerlink" title="规则3：交换自描述信息"></a>规则3：交换自描述信息</h4><p>在REST中，我们可以解读任何信息而不会看到上一个信息。</p>
+<p>想象一下下面的语句：</p>
+<p>NOT REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span>/search-results?q=todo</div><div class="line"><span class="number">2.</span>/search-results?page=<span class="number">2</span></div><div class="line"><span class="number">3.</span>/search-results?page=<span class="number">3</span></div></pre></td></tr></table></figure></p>
+<p>第一个请求会寻找到‘todo’的结果，第二个请求会找到第二个页面，现在我们只看第二个请求，你知道作为服务器是要干嘛吗？</p>
+<p>REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span>/search-results?q=to-<span class="keyword">do</span></div><div class="line"><span class="number">2.</span>/search-results?q=to-<span class="keyword">do</span>&amp;page=<span class="number">2</span></div><div class="line"><span class="number">3.</span>/search-results?q=to-<span class="keyword">do</span>&amp;page=<span class="number">3</span></div></pre></td></tr></table></figure></p>
+<p>注意每一个请求都可以被自身所解读。<br>其他方面，REST中客户端和服务端只能使用被定义的一个协议来进行标准运作。在WEB中我们称之为HTTP协议。</p>
+<h4 id="规则4：通过链接获取资源内容"><a href="#规则4：通过链接获取资源内容" class="headerlink" title="规则4：通过链接获取资源内容"></a>规则4：通过链接获取资源内容</h4><p>你怎样才能浏览一个你从见过的网站？使用链接！<br>你在使用浏览器访问一个新的页面时不必每次都要手动的去填写这个页面的地址。</p>
+<p>在机器接口中事实并非如此，加入一个应用需要请求你的todo List，他也许会是以下的表现方式：</p>
+<p>NOT REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  /todolist/<span class="number">7</span>/</div><div class="line">&#123;</div><div class="line"><span class="string">"name"</span>: <span class="string">"My to-dos"</span>,</div><div class="line"><span class="string">"items"</span>: [<span class="number">35</span>, <span class="number">36</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在你能获取到‘items’中list的内容吗？<br>好问题！我们必须去阅读其中的文档。<br>在REST中，所有的资源内容都可以通过超链接获取。</p>
+<p>REST<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/todolist/<span class="number">7</span>/</div><div class="line">&#123;</div><div class="line"><span class="string">"name"</span>: <span class="string">"My to-dos"</span>,</div><div class="line"><span class="string">"item"</span>: [<span class="string">"/todolists/7/items/35/"</span>, <span class="string">"/todolist/7/items/36/"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在你不必阅读手册来了解你是如何获取到list中items的内容了。你只要遵循这个链接就可以。</p>
+<p>APIs遵循的就是REST的APIs。<br>在你的接口中只要遵循这4个规则，你就拥有了一个REST的API。<br>不幸的是，很多以“REST”为标签的接口实际上是其他的东西（HTTP接口），因为他们并没有遵循这四个规则。规则2和规则4经常会被违反，但好的一方面是规则1不常常会被违反。对于这些开发者而言，REST最简单的意思是，我们没有做有关于XML相关的事情。</p>
+<p>参考第四条规则后，我们就能明白为什么遵循了这四个规则的REST接口会被经常被称之为“超媒体APIs”的原因了。</p>
+<p>文章来源自：www.quora.com，翻译的水平实在是烂，希望能肤浅的理解到REST接口的定义。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/12/使用canvas和JS画出一个钟表/" rel="next" title="使用canvas和JS画出一个钟表">
+                <i class="fa fa-chevron-left"></i> 使用canvas和JS画出一个钟表
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/16/关于call、apply、bind/" rel="prev" title="关于call、apply、bind">
+                关于call、apply、bind <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Aleen" />
+          <p class="site-author-name" itemprop="name">Aleen</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-a-REST-API"><span class="nav-number">1.</span> <span class="nav-text">What is a REST API ?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#规则1：通过资源提供入口"><span class="nav-number">1.1.</span> <span class="nav-text">规则1：通过资源提供入口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则2：资源代理"><span class="nav-number">1.2.</span> <span class="nav-text">规则2：资源代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则3：交换自描述信息"><span class="nav-number">1.3.</span> <span class="nav-text">规则3：交换自描述信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则4：通过链接获取资源内容"><span class="nav-number">1.4.</span> <span class="nav-text">规则4：通过链接获取资源内容</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aleen</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

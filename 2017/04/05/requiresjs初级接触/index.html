@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,requires," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="为什么要使用require.js？在我最先接触前端的时候，我发现所有的JavaScript代码都会写在一个文件里面，文件包含了CSS代码，html代码，JavaSrcipt代码，只要加载一个文件即可，可是随着我学习的深入，发现代码越来越复杂，代码量也越来越多，一个文件已经无法满足了，所以代码被分成若干个文件进行加载，可这种方式有很多弊端。">
+<meta name="keywords" content="前端,requires">
+<meta property="og:type" content="article">
+<meta property="og:title" content="requiresjs初级接触(1)">
+<meta property="og:url" content="https://Aleenl.github.io/2017/04/05/requiresjs初级接触/index.html">
+<meta property="og:site_name" content="李子豪的前端自习室">
+<meta property="og:description" content="为什么要使用require.js？在我最先接触前端的时候，我发现所有的JavaScript代码都会写在一个文件里面，文件包含了CSS代码，html代码，JavaSrcipt代码，只要加载一个文件即可，可是随着我学习的深入，发现代码越来越复杂，代码量也越来越多，一个文件已经无法满足了，所以代码被分成若干个文件进行加载，可这种方式有很多弊端。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://aleenl.github.io/img/input.png">
+<meta property="og:updated_time" content="2017-04-05T10:05:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="requiresjs初级接触(1)">
+<meta name="twitter:description" content="为什么要使用require.js？在我最先接触前端的时候，我发现所有的JavaScript代码都会写在一个文件里面，文件包含了CSS代码，html代码，JavaSrcipt代码，只要加载一个文件即可，可是随着我学习的深入，发现代码越来越复杂，代码量也越来越多，一个文件已经无法满足了，所以代码被分成若干个文件进行加载，可这种方式有很多弊端。">
+<meta name="twitter:image" content="https://aleenl.github.io/img/input.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://Aleenl.github.io/2017/04/05/requiresjs初级接触/"/>
+
+
+
+
+
+  <title>requiresjs初级接触(1) | 李子豪的前端自习室</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李子豪的前端自习室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://Aleenl.github.io/2017/04/05/requiresjs初级接触/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aleen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李子豪的前端自习室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">requiresjs初级接触(1)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-05T16:48:55+08:00">
+                2017-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="为什么要使用require-js？"><a href="#为什么要使用require-js？" class="headerlink" title="为什么要使用require.js？"></a>为什么要使用require.js？</h3><p>在我最先接触前端的时候，我发现所有的JavaScript代码都会写在一个文件里面，文件包含了CSS代码，html代码，JavaSrcipt代码，只要加载一个文件即可，可是随着我学习的深入，发现代码越来越复杂，代码量也越来越多，一个文件已经无法满足了，所以代码被分成若干个文件进行加载，可这种方式有很多弊端。<br><a id="more"></a></p>
+<ol>
+<li>代码必须依次加载，顺序乱了就会报错</li>
+<li>多人协作下，代码中很多变量名会相同，导致代码运行出错</li>
+<li>加载的时候，文件过多网页就会失去响应，时间拉长<br>为了解决这样的问题，require.js应运而生，它解决了上述问题，实现了js的异步加载和管理模块之间的依赖性，方便了代码的编写和维护。</li>
+</ol>
+<h3 id="使用requrie-js的方法"><a href="#使用requrie-js的方法" class="headerlink" title="使用requrie.js的方法"></a>使用requrie.js的方法</h3><h4 id="进入官网，下载最新的requrie文件。"><a href="#进入官网，下载最新的requrie文件。" class="headerlink" title="进入官网，下载最新的requrie文件。"></a>进入官网，下载最新的requrie文件。</h4><p> 下载完成后，将文件放到你所需要编辑的网页文件夹下，<br> <img src="/img/input.png" alt="&#39;放置require.js文件&#39;"><br> 然后在html文档中插入script标签，</p>
+<p> <code>&lt;script src=&quot;js/require.js&quot; defer async=&quot;true&quot;&gt;&lt;/script&gt;</code></p>
+<p> 这样表明这个文件需要异步加载，避免了网页失去响应，同时你可以吧这个文件放到head里面去。</p>
+<h4 id="载我们自己的代码"><a href="#载我们自己的代码" class="headerlink" title="载我们自己的代码"></a>载我们自己的代码</h4><p> 成功加载require.js以后，下一步就要加载我们自己的代码了，一般我们需要加入一个入口模块，在代码界普遍使用main作为入口模块名，将这个入口文件同样放在js文档下，代码如下：</p>
+<p> <code>&lt;script src=&quot;js/require,js&quot; data-main=&quot;js/main&quot;&gt;&lt;/script&gt;</code></p>
+<h4 id="入口模块怎么写？"><a href="#入口模块怎么写？" class="headerlink" title="入口模块怎么写？"></a>入口模块怎么写？</h4><p> 入口模块依赖于其他模块，这个时候就要使用AMD规范定义的require()函数。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">require([&apos;module1&apos;,&apos;module2&apos;],function(module1,module2))&#123;</div><div class="line">  //to do something</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p> require()函数接受两个参数，第一个是一个数组，数组中包含所使用的模块名，第二个是一个回调函数，当前面制定的模块都加载成功后，他将会被调用。</p>
+<h4 id="模块的加载"><a href="#模块的加载" class="headerlink" title="模块的加载"></a>模块的加载</h4><p>  使用require.config()方法，我们可以对模块的加载进行自定义，require.config()就卸载住模块(main.js)的头部，参数就是一个对象，这个对象的paths属性制定各个模块的加载路径。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">require.config(&#123;</div><div class="line">	paths:&#123;</div><div class="line">		&quot;module1&quot;:&quot;module1.min&quot;,</div><div class="line">		&quot;module2&quot;:&quot;module2.min&quot;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> 上面的写法是旨在模块说在和main模块在同一个目录下，如果这些模块在其他的目录下，则有下面两种写法：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">require.config(&#123;</div><div class="line">paths:&#123;</div><div class="line"> &quot;module1&quot;: &quot;xx/module1.min&quot;,</div><div class="line"> &quot;module2&quot;: &quot;xx/module2.min&quot;</div><div class="line">&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> 第二种是直接改变基目录（baseURL）</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">require.config(&#123;</div><div class="line">	baseUrl:&quot;js/xx&quot;,</div><div class="line">	paths:&#123;</div><div class="line">		&quot;module1&quot;:&quot;module1.min&quot;,</div><div class="line">		&quot;module2&quot;:&quot;module2.min&quot;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="require使用实例。"><a href="#require使用实例。" class="headerlink" title="require使用实例。"></a>require使用实例。</h3><p> require.js加载的模块，采用的是AMD规范，模块的写法要使用AMD所归定的写法，模块使用define()函数来定义，如果一个模块不依赖其他模块，那么可以直接定义在define()函数之中。</p>
+<p> 假定一个math.js文件，定义了一个math模块，那么根据AMD的规定。模块就要这样写：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//math.js</div><div class="line"></div><div class="line">define(function()&#123;</div><div class="line">	var mult = fuction(x,y)&#123;</div><div class="line">	 return x*y</div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	return &#123;</div><div class="line">	 mult: mult</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> 那么在main.js模块就要使用如下代码进行加载：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//main.js</div><div class="line"></div><div class="line">require([&apos;math&apos;],function(math)&#123;</div><div class="line"> console.log(math.mult(2,3));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> 如果math模块还要依赖其他模块的话，那么define（）函数的第一个参数，就必须是一个数组，知名该模块的依赖性。举个例子,比如math模块必须依赖”Num”模块下的mult函数：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//main.js</div><div class="line">require([&apos;math&apos;],function(math)&#123;</div><div class="line"> console.log(2.3)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> math 模块：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> //math.js</div><div class="line"></div><div class="line"> define([&quot;Num&quot;],function(myLib)&#123;</div><div class="line">	var foo = function(x,y)&#123;</div><div class="line">		return Num.mult(x,y)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	return &#123;</div><div class="line">		foo:foo</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> Num模块：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> //Num.js</div><div class="line"></div><div class="line"> define(function()&#123;</div><div class="line">	var Mult = function(x,y)&#123;</div><div class="line">		return x+y</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	return &#123;</div><div class="line">		Mult: Mult</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/requires/" rel="tag"># requires</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/01/hello/" rel="next" title="我困在了眼前的苟且">
+                <i class="fa fa-chevron-left"></i> 我困在了眼前的苟且
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/20/初探React/" rel="prev" title="初探React">
+                初探React <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Aleen" />
+          <p class="site-author-name" itemprop="name">Aleen</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要使用require-js？"><span class="nav-number">1.</span> <span class="nav-text">为什么要使用require.js？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用requrie-js的方法"><span class="nav-number">2.</span> <span class="nav-text">使用requrie.js的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进入官网，下载最新的requrie文件。"><span class="nav-number">2.1.</span> <span class="nav-text">进入官网，下载最新的requrie文件。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#载我们自己的代码"><span class="nav-number">2.2.</span> <span class="nav-text">载我们自己的代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#入口模块怎么写？"><span class="nav-number">2.3.</span> <span class="nav-text">入口模块怎么写？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模块的加载"><span class="nav-number">2.4.</span> <span class="nav-text">模块的加载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#require使用实例。"><span class="nav-number">3.</span> <span class="nav-text">require使用实例。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aleen</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
